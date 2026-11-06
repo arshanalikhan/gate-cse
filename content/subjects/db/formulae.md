@@ -46,7 +46,9 @@ Revision sheet. Explanations and examples are in the [notes](#/subjects/db/notes
 | $F \models X \to Y$ | $Y \subseteq X^+$ |
 | Always in every key | attributes on no right-hand side |
 
-## Normal forms (FD $X \to A$, non-trivial)
+## Normal forms
+
+For every non-trivial FD $X \to A$:
 
 | Form | Condition |
 |---|---|

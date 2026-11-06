@@ -16,7 +16,9 @@ Revision sheet. Explanations and examples are in the [notes](#/subjects/dm/notes
 | Valid one-way | $\exists y\,\forall x\,R \to \forall x\,\exists y\,R$ |
 | "every $S$ is $P$" / "some $S$ is $P$" | $\forall x(S \to P)$ / $\exists x(S \land P)$ |
 
-## Sets and relations ($|A| = n$)
+## Sets and relations
+
+For a set $A$ with $n$ elements:
 
 | Quantity | Formula |
 |---|---|
@@ -30,7 +32,9 @@ Revision sheet. Explanations and examples are in the [notes](#/subjects/dm/notes
 | Reflexive and antisymmetric | $3^{n(n-1)/2}$ |
 | Equivalence relations | Bell $B_n$: 1, 1, 2, 5, 15, 52, 203 ($n = 0..6$) |
 
-## Functions ($|A| = n \to |B| = m$)
+## Functions
+
+From an $n$-element set to an $m$-element set:
 
 | Quantity | Formula |
 |---|---|

@@ -15,7 +15,9 @@ Revision sheet. Explanations and worked examples are in the [notes](#/subjects/c
 | Path throughput | bottleneck link rate |
 | Traffic intensity | $La/R$ (keep below 1) |
 
-## Sliding window ($a = T_p/T_t$)
+## Sliding window
+
+With $a = T_p / T_t$:
 
 | Quantity | Formula |
 |---|---|
@@ -84,7 +86,9 @@ Revision sheet. Explanations and worked examples are in the [notes](#/subjects/c
 | Wrap-around time | $2^{32} / \text{bytes per second}$ |
 | SYN, FIN | each consumes one sequence number |
 
-## HTTP (base page + $n$ objects)
+## HTTP page-load time
+
+Base page plus $n$ small objects:
 
 | Connection | Time |
 |---|---|

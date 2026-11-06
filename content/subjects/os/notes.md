@@ -6,7 +6,7 @@ Exam-focused notes for GATE 2027 Section 8. Each topic ends with the question pa
 
 A **process** is a program in execution: code, data, heap, stack, plus its **process control block (PCB)** (state, program counter, registers, scheduling info, memory-management info, open files).
 
-**States:** new → ready → running → (waiting ↔ ready) → terminated. Only *running → waiting* is caused by the process itself (I/O or event wait); *running → ready* happens on a timer interrupt or preemption.
+**States:** new → ready → running → (waiting ↔ ready) → terminated. *Running → waiting* (I/O or event wait) and *running → terminated* (exit) are caused by the process itself; *running → ready* comes from a timer interrupt or preemption.
 
 **Schedulers:** long-term (admits jobs, controls degree of multiprogramming), short-term (CPU scheduler, runs very often), medium-term (swaps processes out/in).
 

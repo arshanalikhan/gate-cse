@@ -61,6 +61,13 @@
       .slice(0, 80);
   }
 
+  // Visible text of a rendered element, without KaTeX's hidden MathML copy or UI controls.
+  function visibleText(el) {
+    const c = el.cloneNode(true);
+    c.querySelectorAll('.katex-mathml, .anchor, .study-toggle, button').forEach((n) => n.remove());
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  }
+
   // Plain text of a Markdown heading line (no math or markup), used for ids + search.
   function headingPlain(md) {
     return md
@@ -231,7 +238,7 @@
     if (seq !== S.seq) return;
 
     const h1 = $('h1', doc);
-    const pageTitle = h1 ? h1.textContent.replace(/#$/, '').trim() : 'GATE CSE 2027';
+    const pageTitle = h1 ? visibleText(h1) : 'GATE CSE 2027';
     document.title = r.path === 'home' ? 'GATE CSE 2027 Prep' : `${pageTitle} · GATE CSE 2027`;
     buildToc(doc, r);
     renderPager(r, ok);
@@ -286,7 +293,7 @@
     // Heading ids + anchor links
     const used = new Set();
     for (const hd of $$('h1, h2, h3, h4', doc)) {
-      let id = slugify(hd.textContent) || 'section';
+      let id = slugify(visibleText(hd)) || 'section';
       const base = id;
       let n = 2;
       while (used.has(id)) id = `${base}-${n++}`;
@@ -612,7 +619,7 @@
     const heads = $$('h2, h3', doc).filter((x) => x.id);
     if (heads.length < 3) return;
     const mkList = () => h('ul', {}, heads.map((x) => h('li', { class: x.tagName === 'H3' ? 'l3' : 'l2' },
-      h('a', { href: routeHref(r.path, x.id), 'data-id': x.id, text: (x.querySelector('.anchor') ? Array.from(x.childNodes).filter((n) => !(n.classList && (n.classList.contains('anchor') || n.classList.contains('study-toggle')))).map((n) => n.textContent).join('') : x.textContent).trim() }))));
+      h('a', { href: routeHref(r.path, x.id), 'data-id': x.id, text: visibleText(x) }))));
     toc.append(h('div', { class: 'toc-title', text: 'On this page' }), mkList());
     // Collapsible copy at the top of the page for narrower screens
     const h2s = heads.filter((x) => x.tagName === 'H2');

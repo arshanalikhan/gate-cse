@@ -13,7 +13,9 @@ Revision sheet. Explanations and worked examples are in the [notes](#/subjects/a
 | $\sum_{i=0}^{\log n} 2^i$ | $\Theta(n)$ |
 | $a^{\log_b n}$ | $n^{\log_b a}$ |
 
-## Master theorem: $T(n) = aT(n/b) + f(n)$
+## Master theorem
+
+For $T(n) = aT(n/b) + f(n)$:
 
 | Compare $f(n)$ with $n^{\log_b a}$ | Result |
 |---|---|
@@ -67,7 +69,7 @@ Revision sheet. Explanations and worked examples are in the [notes](#/subjects/a
 | Counting | $n + k$ | | | ✓ | ✗ |
 | Radix | $d(n + k)$ | | | ✓ | ✗ |
 
-## Hashing ($\alpha = n/m$)
+## Hashing (load factor α = n/m)
 
 | Quantity | Value |
 |---|---|

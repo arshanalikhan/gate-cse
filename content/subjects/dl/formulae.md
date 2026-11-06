@@ -57,7 +57,9 @@ Revision sheet. Explanations and examples are in the [notes](#/subjects/dl/notes
 | Ring counter ($n$ FFs) | $n$ states |
 | Johnson counter ($n$ FFs) | $2n$ states |
 
-## Number representation ($n$ bits)
+## Number representation
+
+For $n$-bit numbers:
 
 | Quantity | Formula |
 |---|---|

@@ -90,7 +90,7 @@ Bottom-up shift-reduce parsers find the **handle** (the right side to reduce) an
 - **Operator-precedence** parsing handles grammars with no ε-productions and no two adjacent non-terminals.
 
 > [!EXAMPLE] Building LR(0) items
-> For $S' \to S$, $S \to (S) \mid a$: $I_0 = $ closure$\{S' \to \cdot S\} = \{S' \to \cdot S,\ S \to \cdot(S),\ S \to \cdot a\}$. goto($I_0$, a) = $\{S \to a\cdot\}$; goto($I_0$, ( ) = $\{S \to (\cdot S),\ S \to \cdot(S),\ S \to \cdot a\}$.
+> For $S' \to S$, $S \to (S) \mid a$: $I_0 = \text{closure}(\{S' \to \cdot S\}) = \{S' \to \cdot S,\ S \to \cdot(S),\ S \to \cdot a\}$. goto($I_0$, a) = $\{S \to a\cdot\}$; goto($I_0$, ( ) = $\{S \to (\cdot S),\ S \to \cdot(S),\ S \to \cdot a\}$.
 
 > [!TRAP] Conflicts appear in the items, not the grammar
 > Decide "is the grammar SLR(1)?" by building the item sets: a state containing both $A \to \alpha\cdot$ and $B \to \beta \cdot a\gamma$ has an SLR shift–reduce conflict only if $a \in$ FOLLOW($A$).
