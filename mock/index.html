@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mock test · GATE CSE 2027</title>
+<meta name="description" content="Timed computer-based mock test of the predicted GATE CSE 2027 paper: 65 questions, 3 hours, GATE marking, subject-wise score report.">
+<script src="../assets/js/theme.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body>
+<header class="m-top">
+  <a class="m-back" href="../#/predicted-2027" aria-label="Back to the site">&larr; GATE CSE 2027</a>
+  <div class="m-title">Mock test <span class="m-sub">Predicted 2027 paper</span></div>
+  <div class="m-top-right">
+    <button class="m-btn" id="calc-toggle" type="button" aria-controls="calc" aria-expanded="false" hidden>Calculator</button>
+    <div class="m-timer" id="timer" hidden aria-live="off"><span class="m-timer-label">Time left</span> <span id="timer-val">3:00:00</span></div>
+    <button class="m-btn m-btn-ghost" id="theme-toggle" type="button" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<main id="app" class="m-main">
+  <section class="m-card m-start" id="screen-start">
+    <h1>Predicted GATE CSE 2027 paper</h1>
+    <p class="m-lead">65 questions · 100 marks · 3 hours, in the same format as the GATE computer-based test.</p>
+    <div class="m-grid2">
+      <div>
+        <h2>Sections</h2>
+        <ul>
+          <li><strong>General Aptitude</strong>: Q.1–Q.10, 15 marks</li>
+          <li><strong>Computer Science &amp; IT</strong>: Q.11–Q.65, 85 marks</li>
+        </ul>
+        <h2>Marking</h2>
+        <ul>
+          <li><strong>MCQ</strong>: one correct option. Wrong answer costs 1/3 of the question's marks.</li>
+          <li><strong>MSQ</strong>: one or more correct options. Marks only for exactly the right set; no negative marks.</li>
+          <li><strong>NAT</strong>: type a number. Marks if it falls in the accepted range; no negative marks.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Question palette</h2>
+        <ul class="m-legend-list">
+          <li><span class="m-dot st-nv"></span> Not visited</li>
+          <li><span class="m-dot st-na"></span> Not answered</li>
+          <li><span class="m-dot st-a"></span> Answered</li>
+          <li><span class="m-dot st-m"></span> Marked for review</li>
+          <li><span class="m-dot st-am"></span> Answered and marked for review (counts for scoring)</li>
+        </ul>
+        <h2>Before you start</h2>
+        <ul>
+          <li>Keep paper and pen for rough work. GATE allows only an on-screen calculator.</li>
+          <li>The test submits itself when the timer reaches zero.</li>
+          <li>Your progress is saved in this browser, so you can close the tab and resume.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-actions">
+      <button class="m-btn m-btn-primary" id="btn-start" type="button">Start the 3-hour test</button>
+      <button class="m-btn" id="btn-resume" type="button" hidden>Resume saved attempt</button>
+      <button class="m-btn m-btn-ghost" id="btn-practice" type="button">Practice mode (no timer)</button>
+    </div>
+    <p class="m-muted" id="load-status">Loading questions…</p>
+  </section>
+
+  <section class="m-exam" id="screen-exam" hidden>
+    <div class="m-exam-main">
+      <nav class="m-tabs" aria-label="Sections">
+        <button type="button" class="m-tab" data-section="GA">General Aptitude</button>
+        <button type="button" class="m-tab" data-section="CS">Computer Science &amp; IT</button>
+      </nav>
+      <article class="m-card m-question" id="question" aria-live="polite"></article>
+      <div class="m-controls">
+        <button type="button" class="m-btn" id="btn-mark">Mark for review &amp; next</button>
+        <button type="button" class="m-btn m-btn-ghost" id="btn-clear">Clear response</button>
+        <span class="m-spacer"></span>
+        <button type="button" class="m-btn" id="btn-prev">Previous</button>
+        <button type="button" class="m-btn m-btn-primary" id="btn-next">Save &amp; next</button>
+      </div>
+    </div>
+    <aside class="m-card m-palette" aria-label="Question palette">
+      <div class="m-palette-head">
+        <strong id="palette-title">Questions</strong>
+        <button type="button" class="m-btn m-btn-danger" id="btn-submit">Submit test</button>
+      </div>
+      <div class="m-counts" id="counts"></div>
+      <div class="m-pal-grid" id="palette"></div>
+    </aside>
+  </section>
+
+  <section class="m-result" id="screen-result" hidden></section>
+</main>
+
+<div class="m-modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="m-modal-box">
+    <h2 id="modal-title">Submit the test?</h2>
+    <div id="modal-body"></div>
+    <div class="m-actions">
+      <button type="button" class="m-btn" id="modal-cancel">Keep working</button>
+      <button type="button" class="m-btn m-btn-danger" id="modal-ok">Submit</button>
+    </div>
+  </div>
+</div>
+
+<div class="m-calc" id="calc" hidden role="dialog" aria-label="Scientific calculator">
+  <div class="m-calc-head" id="calc-head">
+    <strong>Scientific calculator</strong>
+    <div class="m-calc-mode" role="group" aria-label="Angle unit">
+      <button type="button" data-mode="deg" class="m-on">Deg</button><button type="button" data-mode="rad">Rad</button>
+    </div>
+    <button type="button" class="m-calc-x" id="calc-close" aria-label="Close calculator">&times;</button>
+  </div>
+  <div class="m-calc-screen">
+    <div class="m-calc-expr" id="calc-expr" aria-label="Expression"></div>
+    <div class="m-calc-out" id="calc-out" aria-live="polite">0</div>
+  </div>
+  <div class="m-calc-keys" id="calc-keys"></div>
+</div>
+
+<noscript><p style="padding:16px">The mock test needs JavaScript.</p></noscript>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "title": "GATE CSE 2027",
+  "exam": {
+    "first_day": "2027-02-06",
+    "facts": [
+      ["Organiser", "IIT Madras"],
+      ["Exam days", "6, 7, 13, 14, 20, 21 Feb 2027 (CS date TBA)"],
+      ["Exam city slip", "4 Jan 2027"],
+      ["Results", "19 Mar 2027"],
+      ["Paper", "65 questions · 100 marks · 3 hours"]
+    ]
+  },
+  "nav": [
+    {
+      "title": "Start here",
+      "items": [
+        { "title": "Home", "route": "home" },
+        { "title": "Official syllabus 2027", "route": "syllabus" },
+        { "title": "Exam pattern & scoring", "route": "exam-pattern" },
+        { "title": "Preparation strategy", "route": "strategy" }
+      ]
+    },
+    {
+      "title": "Analysis & practice",
+      "items": [
+        { "title": "Topic weightage & trends", "route": "analysis" },
+        { "title": "Predicted 2027 paper", "route": "predicted-2027" },
+        { "title": "Mock test (CBT)", "href": "mock/", "badge": "Timed" },
+        { "title": "Past papers & answer keys", "route": "papers" }
+      ]
+    },
+    { "title": "Subjects", "subjects": true },
+    {
+      "title": "More",
+      "items": [
+        { "title": "Books & resources", "route": "resources" }
+      ]
+    }
+  ],
+  "pending": {
+    "analysis": { "title": "Topic weightage & trends", "note": "Every question from the 2007–2026 GATE CSE papers is being tagged by subject and topic. The weightage tables and trend charts appear here as soon as that analysis is published." },
+    "predicted-2027": { "title": "Predicted GATE 2027 paper", "note": "The predicted paper is built from the topic-frequency analysis of past papers and is being finalised. It will appear here, with a timed mock-test version." },
+    "papers": { "title": "Past papers & answer keys", "note": "The list of verified past papers with links to the official question papers and answer keys is being compiled." }
+  },
+  "subjects": [
+    { "code": "GA", "slug": "ga", "name": "General Aptitude", "blurb": "Verbal, quantitative, analytical and spatial aptitude. 15 sure-shot marks." },
+    { "code": "DM", "slug": "dm", "name": "Discrete Mathematics", "blurb": "Logic, sets and relations, groups, graph theory, combinatorics and recurrences." },
+    { "code": "EM", "slug": "em", "name": "Engineering Mathematics", "blurb": "Linear algebra, calculus, probability and statistics." },
+    { "code": "DL", "slug": "dl", "name": "Digital Logic", "blurb": "Boolean algebra, K-maps, combinational and sequential circuits, number representation." },
+    { "code": "COA", "slug": "coa", "name": "Computer Organization & Architecture", "blurb": "ISA and addressing, ALU and control unit, memory hierarchy and cache, I/O, pipelining." },
+    { "code": "PDS", "slug": "pds", "name": "Programming & Data Structures", "blurb": "C programming, recursion, arrays, stacks, queues, lists, trees, BSTs, heaps, graphs." },
+    { "code": "ALGO", "slug": "algo", "name": "Algorithms", "blurb": "Asymptotics, sorting and searching, hashing, greedy, DP, divide and conquer, graph algorithms." },
+    { "code": "TOC", "slug": "toc", "name": "Theory of Computation", "blurb": "Regular languages, CFLs and PDAs, pumping lemmas, Turing machines and undecidability." },
+    { "code": "CD", "slug": "cd", "name": "Compiler Design", "blurb": "Lexing, parsing, SDT, runtime environments, intermediate code, optimisation and data-flow analysis." },
+    { "code": "OS", "slug": "os", "name": "Operating System", "blurb": "Processes and threads, synchronisation, deadlock, scheduling, memory and virtual memory, file systems." },
+    { "code": "DB", "slug": "db", "name": "Databases", "blurb": "ER model, relational algebra, calculus and SQL, normal forms, indexing, transactions." },
+    { "code": "CN", "slug": "cn", "name": "Computer Networks", "blurb": "Layering, switching, data link and MAC, routing, IPv4 and CIDR, TCP, DNS and HTTP." }
+  ]
+}

@@ -1,0 +1,120 @@
+/* Design tokens shared by the whole site (main app + mock test).
+   Owner: session C. Every value below has a reason in GATE/DESIGN.md.
+   Token names are a contract with site/mock/: change values, never rename or remove.
+   Theme: follows the OS unless <html data-theme="light|dark"> is set
+   (assets/js/theme.js applies the saved choice before first paint). */
+
+:root {
+  color-scheme: light;
+  /* Dark text on a warm light "paper" (positive polarity reads and proofreads better). */
+  --bg: #f8f5ee;
+  --surface: #fffdf9;
+  --surface-2: #f1ece2;
+  --text: #1f1d1a;          /* 15.4:1 on --bg (WCAG AAA) */
+  --text-muted: #5a554c;    /* 6.8:1 on --bg */
+  --border: #e2dbcd;
+  --border-strong: #c9c0ae;
+  /* Colour is reserved for meaning: blue = interactive, green = correct/tip,
+     red = error/trap only, amber = example/PYQ, violet = key idea. */
+  --accent: #1d58b8;        /* 6.1:1 */
+  --accent-strong: #15458f;
+  --accent-soft: #e4ebf7;
+  --on-accent: #ffffff;
+  --good: #1a6e43;
+  --good-soft: #e3f0e6;
+  --bad: #b0261b;
+  --bad-soft: #f9e8e4;
+  --warn: #875000;
+  --warn-soft: #f8ecd6;
+  --mark: #6a3fb5;
+  --mark-soft: #eee7f7;
+  --code-bg: #f2ede3;
+  --shadow: 0 1px 2px rgba(40, 30, 10, .05), 0 6px 20px rgba(40, 30, 10, .06);
+
+  /* Atkinson Hyperlegible Next: built so I l 1, O 0, rn m, b d p q cannot be confused,
+     which matters for identifiers, IP addresses and binary. JetBrains Mono for code. */
+  --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --header-h: 56px;
+
+  /* Reading typography. 17px on phones rising to 19px on desktops keeps the x-height
+     above the ~0.2 degree critical print size; 30em is about 66-72 characters per line (measured). */
+  --reading-scale: 1;   /* set by the reader (study.js: S / M / L / XL) */
+  --text-body: calc(clamp(1.0625rem, 1.0107rem + 0.221vw, 1.1875rem) * var(--reading-scale));
+  --leading: 1.6;
+  --measure: 30em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    /* Not pure black/white: reduces halation for astigmatic readers. */
+    --bg: #131416;
+    --surface: #1a1b1e;
+    --surface-2: #222327;
+    --text: #e6e3dc;        /* 14.4:1 */
+    --text-muted: #a9a49b;  /* 7.4:1 */
+    --border: #2d2f33;
+    --border-strong: #44474d;
+    --accent: #8db0ff;
+    --accent-strong: #b5cbff;
+    --accent-soft: #1c2843;
+    --on-accent: #0c1222;
+    --good: #5ec48e;
+    --good-soft: #14281d;
+    --bad: #ff8b80;
+    --bad-soft: #3a1d1a;
+    --warn: #efb560;
+    --warn-soft: #32270f;
+    --mark: #c1a7ff;
+    --mark-soft: #29223f;
+    --code-bg: #1c1d21;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 20px rgba(0, 0, 0, .25);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #131416;
+  --surface: #1a1b1e;
+  --surface-2: #222327;
+  --text: #e6e3dc;
+  --text-muted: #a9a49b;
+  --border: #2d2f33;
+  --border-strong: #44474d;
+  --accent: #8db0ff;
+  --accent-strong: #b5cbff;
+  --accent-soft: #1c2843;
+  --on-accent: #0c1222;
+  --good: #5ec48e;
+  --good-soft: #14281d;
+  --bad: #ff8b80;
+  --bad-soft: #3a1d1a;
+  --warn: #efb560;
+  --warn-soft: #32270f;
+  --mark: #c1a7ff;
+  --mark-soft: #29223f;
+  --code-bg: #1c1d21;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 20px rgba(0, 0, 0, .25);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent-strong); }
+code, kbd, pre { font-family: var(--font-mono); }
+/* Show code exactly as exam papers print it: "!=" must not become a single glyph. */
+code, kbd, pre, samp { font-variant-ligatures: none; }

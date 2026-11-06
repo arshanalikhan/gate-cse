@@ -1,0 +1,1532 @@
+{
+ "title": "Predicted GATE CSE 2027 paper",
+ "version": "2026-11-06",
+ "duration_minutes": 180,
+ "total_marks": 100,
+ "marking": {
+  "MCQ": {
+   "1": -0.3333333333333333,
+   "2": -0.6666666666666666
+  },
+  "MSQ": 0,
+  "NAT": 0,
+  "partial_msq": false
+ },
+ "sections": [
+  {
+   "id": "GA",
+   "name": "General Aptitude",
+   "from": 1,
+   "to": 10
+  },
+  {
+   "id": "CS",
+   "name": "Computer Science & IT",
+   "from": 11,
+   "to": 65
+  }
+ ],
+ "blueprint": [
+  {
+   "code": "GA",
+   "name": "General Aptitude",
+   "marks": 15,
+   "one_mark": 5,
+   "two_mark": 5,
+   "questions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "code": "EM",
+   "name": "Engineering Mathematics",
+   "marks": 8,
+   "one_mark": 2,
+   "two_mark": 3,
+   "questions": [
+    11,
+    12,
+    36,
+    37,
+    38
+   ]
+  },
+  {
+   "code": "DM",
+   "name": "Discrete Mathematics",
+   "marks": 7,
+   "one_mark": 1,
+   "two_mark": 3,
+   "questions": [
+    13,
+    39,
+    40,
+    41
+   ]
+  },
+  {
+   "code": "DL",
+   "name": "Digital Logic",
+   "marks": 7,
+   "one_mark": 3,
+   "two_mark": 2,
+   "questions": [
+    14,
+    15,
+    16,
+    42,
+    43
+   ]
+  },
+  {
+   "code": "COA",
+   "name": "Computer Organization & Architecture",
+   "marks": 9,
+   "one_mark": 3,
+   "two_mark": 3,
+   "questions": [
+    17,
+    18,
+    19,
+    44,
+    45,
+    46
+   ]
+  },
+  {
+   "code": "PDS",
+   "name": "Programming & Data Structures",
+   "marks": 10,
+   "one_mark": 2,
+   "two_mark": 4,
+   "questions": [
+    20,
+    21,
+    47,
+    48,
+    49,
+    50
+   ]
+  },
+  {
+   "code": "ALGO",
+   "name": "Algorithms",
+   "marks": 8,
+   "one_mark": 2,
+   "two_mark": 3,
+   "questions": [
+    22,
+    23,
+    51,
+    52,
+    53
+   ]
+  },
+  {
+   "code": "TOC",
+   "name": "Theory of Computation",
+   "marks": 7,
+   "one_mark": 3,
+   "two_mark": 2,
+   "questions": [
+    24,
+    25,
+    26,
+    54,
+    55
+   ]
+  },
+  {
+   "code": "CD",
+   "name": "Compiler Design",
+   "marks": 6,
+   "one_mark": 2,
+   "two_mark": 2,
+   "questions": [
+    27,
+    28,
+    56,
+    57
+   ]
+  },
+  {
+   "code": "OS",
+   "name": "Operating System",
+   "marks": 8,
+   "one_mark": 2,
+   "two_mark": 3,
+   "questions": [
+    29,
+    30,
+    58,
+    59,
+    60
+   ]
+  },
+  {
+   "code": "DB",
+   "name": "Databases",
+   "marks": 7,
+   "one_mark": 3,
+   "two_mark": 2,
+   "questions": [
+    31,
+    32,
+    33,
+    61,
+    62
+   ]
+  },
+  {
+   "code": "CN",
+   "name": "Computer Networks",
+   "marks": 8,
+   "one_mark": 2,
+   "two_mark": 3,
+   "questions": [
+    34,
+    35,
+    63,
+    64,
+    65
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "no": 1,
+   "section": "GA",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "verbal",
+   "topic_name": "Verbal aptitude",
+   "text": "The committee, along with its two advisers, ______ expected to submit the report by Friday.",
+   "options": [
+    "are",
+    "were",
+    "is",
+    "have been"
+   ],
+   "answer": "C",
+   "solution": "The subject is *the committee* (singular). A phrase introduced by *along with* does not change the number of the subject, so the verb is **is**.",
+   "why": "Subject–verb agreement appears in almost every GA section."
+  },
+  {
+   "no": 2,
+   "section": "GA",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "verbal",
+   "topic_name": "Verbal aptitude",
+   "text": "Cartographer : Map :: Lexicographer : ______",
+   "options": [
+    "Dictionary",
+    "Novel",
+    "Calendar",
+    "Atlas"
+   ],
+   "answer": "A",
+   "solution": "A cartographer compiles maps; a lexicographer compiles **dictionaries**.",
+   "why": "Word analogies are a regular 1-mark GA item."
+  },
+  {
+   "no": 3,
+   "section": "GA",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "quant",
+   "topic_name": "Quantitative aptitude",
+   "text": "The price of a book is first increased by 20% and then the new price is decreased by 20%. Compared with the original price, the final price is",
+   "options": [
+    "the same",
+    "4% lower",
+    "4% higher",
+    "2% lower"
+   ],
+   "answer": "B",
+   "solution": "$1.2 \\times 0.8 = 0.96$, so the final price is **4% lower** than the original.",
+   "why": "Successive percentage change is a staple of numerical computation."
+  },
+  {
+   "no": 4,
+   "section": "GA",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "analytical",
+   "topic_name": "Analytical aptitude",
+   "text": "'Every student who submitted the assignment on time received a bonus mark.' If this statement is true, which one of the following must also be true?",
+   "options": [
+    "A student who received a bonus mark submitted the assignment on time.",
+    "A student who did not receive a bonus mark did not submit the assignment on time.",
+    "A student who did not submit the assignment on time did not receive a bonus mark.",
+    "No student received a bonus mark without submitting the assignment on time."
+   ],
+   "answer": "B",
+   "solution": "The statement is $p \\Rightarrow q$ (on time $\\Rightarrow$ bonus). Only its **contrapositive** $\\neg q \\Rightarrow \\neg p$ must hold: no bonus $\\Rightarrow$ not on time. (A) and (D) are the converse; (C) is the inverse.",
+   "why": "GATE 2026 Set 1 Q5 tested exactly this logical-implication trap."
+  },
+  {
+   "no": 5,
+   "section": "GA",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "spatial",
+   "topic_name": "Spatial aptitude",
+   "text": "A square sheet of paper is folded in half along a vertical line, then folded in half along a horizontal line, and finally folded along a diagonal of the small square obtained. One hole is punched through all the layers, away from every fold line. When the sheet is unfolded completely, the number of holes in it is",
+   "options": [
+    "3",
+    "4",
+    "6",
+    "8"
+   ],
+   "answer": "D",
+   "solution": "Each fold doubles the number of layers: $2 \\to 4 \\to 8$. A single punch through 8 layers makes **8** holes.",
+   "why": "Paper folding and punching is the most common spatial-aptitude question."
+  },
+  {
+   "no": 6,
+   "section": "GA",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "verbal",
+   "topic_name": "Verbal aptitude",
+   "text": "Read the passage and answer the question.\n\n*Cities that expanded their public bus networks between 2010 and 2020 saw a fall in average commute times, but only where dedicated bus lanes were also introduced. In cities that added buses without dedicated lanes, commute times stayed roughly the same, because the extra buses were caught in the same traffic as cars.*\n\nBased **only** on the passage, which one of the following can be inferred?",
+   "options": [
+    "Adding buses always reduces commute times.",
+    "In these cities, dedicated bus lanes were needed for the bus expansion to reduce commute times.",
+    "Cars are the main cause of long commutes in all cities.",
+    "Cities without bus lanes should stop adding buses."
+   ],
+   "answer": "B",
+   "solution": "The passage says commute times fell **only where** bus lanes were added, so in these cities lanes were a necessary condition. (A) contradicts the passage; (C) over-generalises to all cities; (D) is a recommendation the passage never makes.",
+   "why": "Every recent paper has a 2-mark 'infer from the passage' question."
+  },
+  {
+   "no": 7,
+   "section": "GA",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "quant",
+   "topic_name": "Quantitative aptitude",
+   "text": "The table gives a factory's production (in thousand units) of two products P and Q.\n\n| Year | 2021 | 2022 | 2023 | 2024 | 2025 |\n|---|---:|---:|---:|---:|---:|\n| P | 40 | 45 | 50 | 60 | 55 |\n| Q | 30 | 35 | 30 | 40 | 45 |\n\nIn which year was the percentage increase in total production (P + Q) over the previous year the highest?",
+   "options": [
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "answer": "C",
+   "solution": "Totals: 70, 80, 80, 100, 100. Increases: 2022: $10/70 = 14.3\\%$; 2023: 0%; 2024: $20/80 = 25\\%$; 2025: 0%. The highest is **2024**.",
+   "why": "Data interpretation from a table or chart is in every GA section."
+  },
+  {
+   "no": 8,
+   "section": "GA",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "quant",
+   "topic_name": "Quantitative aptitude",
+   "text": "Two distinct numbers are chosen at random from $\\{1, 2, \\ldots, 10\\}$. The probability that their sum is even is",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{4}{9}$",
+    "$\\frac{5}{9}$",
+    "$\\frac{2}{5}$"
+   ],
+   "answer": "B",
+   "solution": "The sum is even when both numbers are even or both are odd: $\\binom{5}{2} + \\binom{5}{2} = 20$ out of $\\binom{10}{2} = 45$ pairs, so $P = \\frac{20}{45} = \\frac{4}{9}$.",
+   "why": "Elementary probability and counting is in the GA syllabus and asked often."
+  },
+  {
+   "no": 9,
+   "section": "GA",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "analytical",
+   "topic_name": "Analytical aptitude",
+   "text": "Five friends P, Q, R, S and T sit in a row of five seats, all facing north.\n\n- Q sits at one of the two ends.\n- R sits in the middle seat.\n- P sits immediately to the right of R.\n- T does not sit at an end.\n- S does not sit next to Q.\n\nWho sits at the end that is **not** occupied by Q?",
+   "options": [
+    "P",
+    "S",
+    "T",
+    "R"
+   ],
+   "answer": "B",
+   "solution": "Number the seats 1–5 from left to right (facing north, 'right' is the higher number). R = 3, P = 4. If Q = 1, the free seats are 2 and 5; T is not at an end, so T = 2 and S = 5. If Q = 5, the free seats are 1 and 2; T = 2 and S = 1. Either way the other end holds **S**.",
+   "why": "Seating-arrangement puzzles are the usual 2-mark analytical item."
+  },
+  {
+   "no": 10,
+   "section": "GA",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "GA",
+   "subject_name": "General Aptitude",
+   "topic": "spatial",
+   "topic_name": "Spatial aptitude",
+   "text": "A solid cube of side 4 cm is painted on all six faces and then cut into 64 small cubes of side 1 cm. The number of small cubes with paint on exactly two faces is",
+   "options": [
+    "8",
+    "16",
+    "24",
+    "32"
+   ],
+   "answer": "C",
+   "solution": "Cubes with exactly two painted faces lie on the edges but not at the corners: $12 \\text{ edges} \\times (4 - 2) = 24$.",
+   "why": "Painted-cube counting is a classic 3-D spatial question."
+  },
+  {
+   "no": 11,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "EM",
+   "subject_name": "Engineering Mathematics",
+   "topic": "la",
+   "topic_name": "Linear Algebra",
+   "text": "Let $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. The eigenvalues of $A^{5} - 2A$ are",
+   "options": [
+    "$-1$ and $237$",
+    "$1$ and $243$",
+    "$-1$ and $241$",
+    "$3$ and $237$"
+   ],
+   "answer": "A",
+   "solution": "The eigenvalues of $A$ are $1$ and $3$ (trace 4, determinant 3). For a polynomial $p(A)$ the eigenvalues are $p(\\lambda)$: $1^5 - 2 = -1$ and $3^5 - 6 = 237$.",
+   "why": "Linear algebra appeared in all 10 papers of 2021–2026; eigenvalues of a matrix power came in 2025 (S1 Q41, S2 Q11)."
+  },
+  {
+   "no": 12,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "EM",
+   "subject_name": "Engineering Mathematics",
+   "topic": "prob",
+   "topic_name": "Probability & Statistics",
+   "text": "A fair die is rolled twice. Given that the sum of the two outcomes is 8, the probability that both outcomes are even is",
+   "options": [
+    "$\\frac{1}{3}$",
+    "$\\frac{2}{5}$",
+    "$\\frac{1}{2}$",
+    "$\\frac{3}{5}$"
+   ],
+   "answer": "D",
+   "solution": "Sum 8: $(2,6), (3,5), (4,4), (5,3), (6,2)$, five equally likely outcomes. Both even: $(2,6), (4,4), (6,2)$. So $P = \\frac{3}{5}$.",
+   "why": "Conditional probability is the single biggest-scoring topic (34 marks in 2021–26)."
+  },
+  {
+   "no": 13,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "DM",
+   "subject_name": "Discrete Mathematics",
+   "topic": "fol",
+   "topic_name": "First-Order (Predicate) Logic",
+   "text": "Over the domain of all people, let $L(x, y)$ mean '$x$ loves $y$'. Which one of the following formulas expresses 'Everyone loves someone, but no one loves everyone'?",
+   "options": [
+    "$\\forall x\\, \\exists y\\, L(x,y) \\;\\wedge\\; \\neg \\exists x\\, \\forall y\\, L(x,y)$",
+    "$\\exists y\\, \\forall x\\, L(x,y) \\;\\wedge\\; \\forall x\\, \\exists y\\, \\neg L(x,y)$",
+    "$\\forall x\\, \\exists y\\, L(x,y) \\;\\wedge\\; \\exists x\\, \\forall y\\, \\neg L(x,y)$",
+    "$\\forall x\\, \\exists y\\, L(x,y) \\;\\wedge\\; \\neg \\forall x\\, \\exists y\\, L(x,y)$"
+   ],
+   "answer": "A",
+   "solution": "'Everyone loves someone' is $\\forall x\\, \\exists y\\, L(x,y)$; 'no one loves everyone' is $\\neg \\exists x\\, \\forall y\\, L(x,y)$. (B) says someone is loved by everyone; (C) says someone loves no one; (D) is a contradiction.",
+   "why": "English-to-predicate-logic translation came in 2024 S2 and 2025 S1, and 2026 S2 Q11."
+  },
+  {
+   "no": 14,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "DL",
+   "subject_name": "Digital Logic",
+   "topic": "numsys",
+   "topic_name": "Number Systems & Fixed-Point Arithmetic",
+   "text": "In 8-bit two's complement arithmetic, which of the following additions produce an **overflow**?",
+   "options": [
+    "0111 0000 + 0001 0000",
+    "1000 0000 + 1111 1111",
+    "0111 1111 + 1000 0000",
+    "1100 0000 + 1100 0000"
+   ],
+   "answer": [
+    "A",
+    "B"
+   ],
+   "solution": "Range is $-128 \\ldots 127$. (A) $112 + 16 = 128$: overflow. (B) $-128 + (-1) = -129$: overflow. (C) $127 + (-128) = -1$: no overflow (operands of opposite sign never overflow). (D) $-64 + (-64) = -128$: representable, no overflow.",
+   "why": "Number representation appeared in all 10 recent papers; overflow MSQs in 2022, 2024 S1, 2026 S1 and S2."
+  },
+  {
+   "no": 15,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "DL",
+   "subject_name": "Digital Logic",
+   "topic": "fp",
+   "topic_name": "Floating Point (IEEE 754)",
+   "text": "The 32-bit IEEE 754 single-precision representation of a number is `0xC1340000`. The value of the number in decimal is ______ (rounded off to two decimal places).",
+   "options": null,
+   "answer": {
+    "min": -11.25,
+    "max": -11.25
+   },
+   "solution": "`C1340000` = `1 10000010 0110100…0`. Sign = 1; exponent = $130 - 127 = 3$; significand = $1.0110100_2 = 1.40625$. Value $= -1.40625 \\times 2^3 = -11.25$.",
+   "why": "IEEE 754 conversion was asked in 8 of the 10 recent papers."
+  },
+  {
+   "no": 16,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "DL",
+   "subject_name": "Digital Logic",
+   "topic": "bool",
+   "topic_name": "Boolean Algebra & Minimization",
+   "text": "The number of prime implicants of $F(A, B, C) = \\sum m(1, 3, 4, 6, 7)$ is ______.",
+   "options": null,
+   "answer": {
+    "min": 4,
+    "max": 4
+   },
+   "solution": "Combine adjacent minterms (tabular method): $1,3 \\to A'C$; $3,7 \\to BC$; $4,6 \\to AC'$; $6,7 \\to AB$. No group of four exists, so there are **4** prime implicants ($A'C$ and $AC'$ are essential).",
+   "why": "The 2027 syllabus now names the tabular (Quine–McCluskey) method explicitly."
+  },
+  {
+   "no": 17,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "isa",
+   "topic_name": "Instruction Set & Addressing Modes",
+   "text": "Match each addressing mode with its typical use.\n\n| Addressing mode | Use |\n|---|---|\n| P. Register indirect | 1. Accessing array elements |\n| Q. Indexed | 2. Dereferencing a pointer |\n| R. PC-relative | 3. Position-independent branches |\n| S. Immediate | 4. Loading constants |",
+   "options": [
+    "P-2, Q-1, R-3, S-4",
+    "P-1, Q-2, R-3, S-4",
+    "P-2, Q-3, R-1, S-4",
+    "P-4, Q-1, R-3, S-2"
+   ],
+   "answer": "A",
+   "solution": "Register indirect uses a register holding an address (a pointer). Indexed adds an index to a base (arrays). PC-relative branches work wherever the code is loaded. Immediate operands are constants in the instruction.",
+   "why": "Addressing modes came in 8 of 10 recent papers; GATE 2026 S1 Q14 was a match-the-following on them."
+  },
+  {
+   "no": 18,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "cache",
+   "topic_name": "Cache Memory",
+   "text": "A 64 KB, 4-way set-associative cache with 32-byte blocks is used with byte-addressable memory and 32-bit physical addresses. The number of bits in the tag field is ______.",
+   "options": null,
+   "answer": {
+    "min": 18,
+    "max": 18
+   },
+   "solution": "Sets $= \\frac{64\\,\\text{KB}}{32\\,\\text{B} \\times 4} = 512$, so 9 index bits; block offset = 5 bits. Tag $= 32 - 9 - 5 = 18$.",
+   "why": "Cache address splitting is asked almost every year (9 of 10 recent papers)."
+  },
+  {
+   "no": 19,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "datapath",
+   "topic_name": "ALU, Datapath & Control Unit",
+   "text": "Which of the following statements about control units is/are correct?",
+   "options": [
+    "A hardwired control unit is generally faster than a microprogrammed control unit.",
+    "In a microprogrammed control unit, changing the instruction set requires redesigning the control logic circuit.",
+    "For the same set of control signals, horizontal microinstructions are wider than vertical (encoded) microinstructions.",
+    "A microprogrammed control unit needs a control memory and a control address register (micro-program counter)."
+   ],
+   "answer": [
+    "A",
+    "C",
+    "D"
+   ],
+   "solution": "(A) Hardwired logic produces signals directly, so it is faster. (B) is false: only the control-memory contents change. (C) Horizontal format uses one bit per signal, so it is wider. (D) Microinstructions are fetched from control memory using a control address register.",
+   "why": "New in the 2027 syllabus: 'Design of control unit – hardwired and microprogrammed'."
+  },
+  {
+   "no": 20,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "c",
+   "topic_name": "C Programming",
+   "text": "Consider the following C program.\n\n```c\n#include <stdio.h>\nint f(int n) {\n    static int s = 0;\n    s += n;\n    return s;\n}\nint main(void) {\n    int x = f(2);\n    int y = f(3);\n    int z = f(x);\n    printf(\"%d\", x + y + z);\n    return 0;\n}\n```\n\nThe value printed is ______.",
+   "options": null,
+   "answer": {
+    "min": 14,
+    "max": 14
+   },
+   "solution": "`s` is static, so it keeps its value between calls: `f(2)` returns 2, `f(3)` returns 5, `f(x)` = `f(2)` returns 7. Output $2 + 5 + 7 = 14$.",
+   "why": "C tracing with static variables is IIT Madras's favourite (GATE 2019 had six C programs)."
+  },
+  {
+   "no": 21,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "heap",
+   "topic_name": "Binary Heaps",
+   "text": "A binary min-heap holding 10 distinct keys is stored in an array $A[1..10]$ with the root at $A[1]$. Which of the following positions can hold the **largest** key?",
+   "options": [
+    "5",
+    "6",
+    "8",
+    "10"
+   ],
+   "answer": [
+    "B",
+    "C",
+    "D"
+   ],
+   "solution": "The largest key must be a leaf. With $n = 10$ the leaves are positions $\\lfloor n/2 \\rfloor + 1 = 6$ to $10$. Position 5 has child 10, so it is internal.",
+   "why": "Heap index properties were asked in 2023, 2024 S1 and 2026 S1."
+  },
+  {
+   "no": 22,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "ALGO",
+   "subject_name": "Algorithms",
+   "topic": "asym",
+   "topic_name": "Asymptotic Analysis",
+   "text": "Which one of the following lists the functions in increasing order of asymptotic growth?\n\n$f_1 = n^{\\log_2 n}$, $\\quad f_2 = 2^{\\sqrt{n}}$, $\\quad f_3 = n^{3}$, $\\quad f_4 = (\\log_2 n)^{n}$",
+   "options": [
+    "$f_3, f_1, f_2, f_4$",
+    "$f_1, f_3, f_2, f_4$",
+    "$f_3, f_2, f_1, f_4$",
+    "$f_3, f_1, f_4, f_2$"
+   ],
+   "answer": "A",
+   "solution": "Compare logarithms: $\\log f_3 = 3\\log n$, $\\log f_1 = (\\log n)^2$, $\\log f_2 = \\sqrt{n}$, $\\log f_4 = n \\log\\log n$. Increasing: $f_3, f_1, f_2, f_4$.",
+   "why": "Growth-rate ordering came in 2021 S1, 2023 and 2026 S2."
+  },
+  {
+   "no": 23,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "ALGO",
+   "subject_name": "Algorithms",
+   "topic": "mst",
+   "topic_name": "Minimum Spanning Trees",
+   "text": "Let $G$ be a connected undirected graph with distinct positive edge weights, and let $T$ be its minimum spanning tree. Which of the following is/are always TRUE?",
+   "options": [
+    "The lightest edge of $G$ is in $T$.",
+    "The heaviest edge of $G$ is never in $T$.",
+    "For every cycle of $G$, the heaviest edge on that cycle is not in $T$.",
+    "The path in $T$ between any two vertices is a shortest path between them in $G$."
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "(A) follows from the cut property. (B) is false when the heaviest edge is a bridge. (C) is the cycle property (weights distinct). (D) is false: an MST does not preserve shortest paths.",
+   "why": "MST properties were asked in 7 of 10 recent papers, often as MSQs (2022, 2026 S1)."
+  },
+  {
+   "no": 24,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "TOC",
+   "subject_name": "Theory of Computation",
+   "topic": "fa",
+   "topic_name": "Finite Automata & Regular Expressions",
+   "text": "The minimum number of states in a DFA over $\\{a, b\\}$ that accepts exactly the strings in which the number of $a$'s is divisible by 3 and the number of $b$'s is even is",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "8"
+   ],
+   "answer": "B",
+   "solution": "Track ($\\#a \\bmod 3$, $\\#b \\bmod 2$): $3 \\times 2 = 6$ states, all reachable and pairwise distinguishable; only $(0,0)$ is accepting.",
+   "why": "Finite automata appeared in all 10 recent papers; minimal-DFA counting is the most common form."
+  },
+  {
+   "no": 25,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "TOC",
+   "subject_name": "Theory of Computation",
+   "topic": "cfl",
+   "topic_name": "Context-Free Languages & Closure",
+   "text": "Let $R$ be a regular language and $L$ a context-free language over the same alphabet. Which of the following are always context-free?",
+   "options": [
+    "$L \\cap R$",
+    "$L \\cup R$",
+    "$\\overline{L}$ (complement of $L$)",
+    "$L \\cdot R$ (concatenation)"
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "CFLs are closed under intersection with regular languages, union and concatenation (every regular language is context-free). They are **not** closed under complement.",
+   "why": "Closure properties are a favourite MSQ (2021 S1/S2, 2023, 2025 S2)."
+  },
+  {
+   "no": 26,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "TOC",
+   "subject_name": "Theory of Computation",
+   "topic": "tm",
+   "topic_name": "Turing Machines & Decidability",
+   "text": "Which one of the following problems is **undecidable**?",
+   "options": [
+    "Given a DFA $D$, is $L(D) = \\Sigma^*$?",
+    "Given a CFG $G$, is $L(G) = \\emptyset$?",
+    "Given a CFG $G$, is $L(G) = \\Sigma^*$?",
+    "Given a CFG $G$ and a string $w$, is $w \\in L(G)$?"
+   ],
+   "answer": "C",
+   "solution": "Universality of CFGs is undecidable. DFA universality, CFG emptiness and CFG membership (CYK) are all decidable.",
+   "why": "Decidability questions about grammars and automata recur (2022, 2025 S2, 2026 S2)."
+  },
+  {
+   "no": 27,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "CD",
+   "subject_name": "Compiler Design",
+   "topic": "lex",
+   "topic_name": "Lexical Analysis & Compiler Phases",
+   "text": "The number of tokens produced by a C lexical analyser for the statement below is\n\n```c\nif (x >= 10) y = x * 2.5;\n```",
+   "options": [
+    "10",
+    "11",
+    "12",
+    "13"
+   ],
+   "answer": "C",
+   "solution": "Tokens: `if` `(` `x` `>=` `10` `)` `y` `=` `x` `*` `2.5` `;` — **12** in all (`>=` and `2.5` are single tokens).",
+   "why": "Token counting came in 2026 S2 Q35 and 2023 Q19."
+  },
+  {
+   "no": 28,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "CD",
+   "subject_name": "Compiler Design",
+   "topic": "parse",
+   "topic_name": "Parsing (LL/LR)",
+   "text": "Which of the following statements is/are TRUE?",
+   "options": [
+    "Every LL(1) grammar is unambiguous.",
+    "A left-recursive grammar can be LL(1).",
+    "Every SLR(1) grammar is also LALR(1).",
+    "An LALR(1) parser can have a shift-reduce conflict even when the canonical LR(1) parser for the same grammar has none."
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "(A) An LL(1) table has at most one entry per cell, so the grammar is unambiguous. (B) Left recursion causes FIRST-set clashes, so it is never LL(1). (C) SLR(1) $\\subset$ LALR(1). (D) Merging LR(1) states with the same core can add reduce-reduce conflicts but never shift-reduce conflicts.",
+   "why": "Parsing was asked in 9 of 10 recent papers; parser-power MSQs came in 2024 S1 and 2026 S1."
+  },
+  {
+   "no": 29,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "OS",
+   "subject_name": "Operating System",
+   "topic": "paging",
+   "topic_name": "Paging, TLB & Page Tables",
+   "text": "A system uses 32-bit virtual addresses, 4 KB pages and 4-byte page-table entries. With a single-level page table, the page table of one process occupies",
+   "options": [
+    "1 MB",
+    "2 MB",
+    "4 MB",
+    "8 MB"
+   ],
+   "answer": "C",
+   "solution": "Pages $= 2^{32} / 2^{12} = 2^{20}$ entries, each 4 bytes: $2^{22}$ bytes = **4 MB**.",
+   "why": "Paging/TLB appeared in every one of the 10 recent papers."
+  },
+  {
+   "no": 30,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "OS",
+   "subject_name": "Operating System",
+   "topic": "proc",
+   "topic_name": "Processes & Threads",
+   "text": "Which of the following are shared by all threads of the same process?",
+   "options": [
+    "Heap",
+    "Stack",
+    "Open file descriptors",
+    "Program counter"
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "Threads share the address space (code, globals, heap) and OS resources such as open files. Each thread has its own stack, program counter and registers.",
+   "why": "Thread questions appeared in 2017, 2023 and 2024 S1."
+  },
+  {
+   "no": 31,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "DB",
+   "subject_name": "Databases",
+   "topic": "fd",
+   "topic_name": "FDs, Keys & Normalization",
+   "text": "A relation $R(A, B, C, D, E)$ has the functional dependencies $\\{A \\to B,\\; B \\to A,\\; AC \\to D,\\; D \\to E\\}$. The number of superkeys of $R$ is ______.",
+   "options": null,
+   "answer": {
+    "min": 12,
+    "max": 12
+   },
+   "solution": "$C$ never appears on a right side, so every key contains $C$. $AC^+$ and $BC^+$ are both $ABCDE$, so the candidate keys are $AC$ and $BC$. Supersets of $AC$: $2^3 = 8$; of $BC$: 8; of both ($ABC$): $2^2 = 4$. Superkeys $= 8 + 8 - 4 = 12$.",
+   "why": "Key/superkey counting came in 2022 Q31 and 2026 S1 Q65."
+  },
+  {
+   "no": 32,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "DB",
+   "subject_name": "Databases",
+   "topic": "idx",
+   "topic_name": "File Organization & Indexing (B/B+ Trees)",
+   "text": "Which one of the following statements about a B+ tree index is **FALSE**?",
+   "options": [
+    "All leaves are at the same depth.",
+    "Internal nodes hold keys and child pointers only, not pointers to data records.",
+    "Leaves are linked to one another, which makes range queries efficient.",
+    "A search for a key can end at an internal node."
+   ],
+   "answer": "D",
+   "solution": "In a B+ tree every search goes down to a leaf, because the record pointers are only in the leaves. Early termination at an internal node happens in a B-tree, not a B+ tree.",
+   "why": "B/B+ tree questions came in 7 of 10 recent papers (GATE 2019 Q14 was this very idea)."
+  },
+  {
+   "no": 33,
+   "section": "CS",
+   "marks": 1,
+   "type": "MCQ",
+   "subject": "DB",
+   "subject_name": "Databases",
+   "topic": "txn",
+   "topic_name": "Transactions & Concurrency Control",
+   "text": "Consider the schedule $S$: $r_1(X),\\; w_2(X),\\; w_1(X),\\; r_2(Y),\\; c_1,\\; c_2$. Which one of the following is correct?",
+   "options": [
+    "$S$ is conflict serializable and recoverable.",
+    "$S$ is not conflict serializable but is view serializable.",
+    "$S$ is neither conflict nor view serializable, but it is recoverable.",
+    "$S$ is not recoverable."
+   ],
+   "answer": "C",
+   "solution": "$r_1(X)$ before $w_2(X)$ gives $T_1 \\to T_2$; $w_2(X)$ before $w_1(X)$ gives $T_2 \\to T_1$: a cycle, so not conflict serializable. Serial $T_1T_2$ would make $w_2(X)$ the final write; serial $T_2T_1$ would make $r_1(X)$ read from $T_2$; neither matches, so not view serializable. No transaction reads a value written by another, so $S$ is recoverable.",
+   "why": "Transactions were asked in 8 of 10 recent papers."
+  },
+  {
+   "no": 34,
+   "section": "CS",
+   "marks": 1,
+   "type": "MSQ",
+   "subject": "CN",
+   "subject_name": "Computer Networks",
+   "topic": "tcp",
+   "topic_name": "TCP & Congestion Control",
+   "text": "Which of the following statements about TCP is/are correct?",
+   "options": [
+    "A connection is set up with a three-way handshake.",
+    "A SYN segment consumes one sequence number.",
+    "The receiver's advertised window is the mechanism TCP uses for congestion control.",
+    "TCP offers a byte-stream service, so application message boundaries are not preserved."
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "(C) is false: the advertised window is **flow** control; congestion control uses the congestion window. The other three are standard TCP facts.",
+   "why": "TCP was asked in 9 of 10 recent papers and remains fully in the 2027 syllabus."
+  },
+  {
+   "no": 35,
+   "section": "CS",
+   "marks": 1,
+   "type": "NAT",
+   "subject": "CN",
+   "subject_name": "Computer Networks",
+   "topic": "ip",
+   "topic_name": "IPv4 Addressing, CIDR & Forwarding",
+   "text": "An organisation is assigned the address block 172.20.64.0/19. The number of addresses in this block that can be assigned to hosts (excluding the network and broadcast addresses) is ______.",
+   "options": null,
+   "answer": {
+    "min": 8190,
+    "max": 8190
+   },
+   "solution": "A /19 leaves $32 - 19 = 13$ host bits: $2^{13} - 2 = 8190$.",
+   "why": "CIDR questions came in 8 of 10 recent papers; CIDR stays in the trimmed 2027 networks syllabus."
+  },
+  {
+   "no": 36,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "EM",
+   "subject_name": "Engineering Mathematics",
+   "topic": "la",
+   "topic_name": "Linear Algebra",
+   "text": "Let $A$ be a $3 \\times 3$ real matrix with eigenvalues $1$, $2$ and $3$. Which of the following is/are TRUE?",
+   "options": [
+    "$\\det(A) = 6$",
+    "$\\operatorname{trace}(A^2) = 14$",
+    "$A$ is invertible and the eigenvalues of $A^{-1}$ are $1, \\tfrac{1}{2}, \\tfrac{1}{3}$",
+    "$A - 2I$ is invertible"
+   ],
+   "answer": [
+    "A",
+    "B",
+    "C"
+   ],
+   "solution": "$\\det A = 1 \\cdot 2 \\cdot 3 = 6$. $A^2$ has eigenvalues $1, 4, 9$, so its trace is 14. No eigenvalue is 0, so $A^{-1}$ exists with reciprocal eigenvalues. $2$ is an eigenvalue, so $\\det(A - 2I) = 0$ and (D) is false.",
+   "why": "Eigenvalue properties are the most-asked linear algebra idea (2022, 2024 S1, 2026 S1)."
+  },
+  {
+   "no": 37,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "EM",
+   "subject_name": "Engineering Mathematics",
+   "topic": "prob",
+   "topic_name": "Probability & Statistics",
+   "text": "The time (in minutes) between successive requests arriving at a server is exponentially distributed with mean 2 minutes. Given that no request has arrived in the first 3 minutes, the probability that no request arrives in the first 5 minutes is ______ (rounded off to three decimal places).",
+   "options": null,
+   "answer": {
+    "min": 0.366,
+    "max": 0.37
+   },
+   "solution": "The exponential distribution is memoryless: $P(T > 5 \\mid T > 3) = P(T > 2) = e^{-\\lambda \\cdot 2}$ with $\\lambda = \\tfrac{1}{2}$, so $e^{-1} \\approx 0.368$.",
+   "why": "Continuous distributions (exponential, normal) came in 2021 S1, 2025 S1 and 2026 S2; IIT Madras favours them."
+  },
+  {
+   "no": 38,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "EM",
+   "subject_name": "Engineering Mathematics",
+   "topic": "calc",
+   "topic_name": "Calculus",
+   "text": "Let $f(x) = x^3 - 6x^2 + 9x + 1$ on the interval $[0, 4]$. Which of the following is/are TRUE?",
+   "options": [
+    "The maximum value of $f$ on $[0, 4]$ is 5, attained at two different points.",
+    "$f$ has a local minimum at $x = 3$.",
+    "$f$ is increasing on $(1, 3)$.",
+    "$f$ has a point of inflection at $x = 2$."
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "$f'(x) = 3(x-1)(x-3)$, $f''(x) = 6x - 12$. $f(0)=1$, $f(1)=5$, $f(3)=1$, $f(4)=5$, so the maximum 5 is reached at $x = 1$ and $x = 4$. $f''(3) = 6 > 0$: local minimum. $f' < 0$ on $(1,3)$, so $f$ decreases there. $f''$ changes sign at $x = 2$: inflection point.",
+   "why": "Calculus appeared in all 10 recent papers; extrema MSQs came in 2023 and 2026 S1."
+  },
+  {
+   "no": 39,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "DM",
+   "subject_name": "Discrete Mathematics",
+   "topic": "graph",
+   "topic_name": "Graph Theory",
+   "text": "A matching in a graph is a set of edges no two of which share a vertex (the empty set counts as a matching). The number of matchings in the cycle graph $C_8$ is ______.",
+   "options": null,
+   "answer": {
+    "min": 47,
+    "max": 47
+   },
+   "solution": "For a path on $n$ vertices the count $m(P_n)$ follows Fibonacci: $m(P_n) = m(P_{n-1}) + m(P_{n-2})$, giving $m(P_6) = 13$, $m(P_8) = 34$. In $C_8$, matchings that avoid a chosen edge $e = uv$ are the matchings of the path $P_8$ (34); those using $e$ are matchings of the remaining path $P_6$ (13). Total $34 + 13 = 47$ (the Lucas number $L_8$).",
+   "why": "GATE 2026 S1 Q57 counted matchings in a path on 8 vertices; the cycle is the natural next step."
+  },
+  {
+   "no": 40,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "DM",
+   "subject_name": "Discrete Mathematics",
+   "topic": "comb",
+   "topic_name": "Combinatorics & Counting",
+   "text": "The number of ways to put 10 identical balls into 4 distinct boxes so that every box gets at least 1 and at most 4 balls is ______.",
+   "options": null,
+   "answer": {
+    "min": 44,
+    "max": 44
+   },
+   "solution": "Let $y_i = x_i - 1$: $y_1 + \\dots + y_4 = 6$ with $0 \\le y_i \\le 3$. Without the upper bound: $\\binom{9}{3} = 84$. Subtract solutions with some $y_i \\ge 4$: $4 \\times \\binom{5}{3} = 40$. Two variables $\\ge 4$ would need a sum of 8, impossible. Answer $84 - 40 = 44$.",
+   "why": "Counting with constraints (inclusion–exclusion) came in 2021 S1, 2022 and 2025 S1."
+  },
+  {
+   "no": 41,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "DM",
+   "subject_name": "Discrete Mathematics",
+   "topic": "group",
+   "topic_name": "Groups & Algebraic Structures",
+   "text": "Let $G = (\\mathbb{Z}_{12}, +_{12})$ be the integers modulo 12 under addition. Which of the following is/are TRUE?",
+   "options": [
+    "$G$ is cyclic and 5 is a generator of $G$.",
+    "$G$ has exactly 4 generators.",
+    "$G$ has a subgroup of order 5.",
+    "The element 8 has order 3."
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "$k$ generates $\\mathbb{Z}_{12}$ iff $\\gcd(k, 12) = 1$: the generators are $1, 5, 7, 11$, so (A) and (B) hold. By Lagrange, a subgroup's order divides 12, so no subgroup of order 5. $8, 16 \\equiv 4, 24 \\equiv 0$: the order of 8 is 3.",
+   "why": "Group questions were asked in 6 of 10 recent papers (2024 S2 Q63 used $\\mathbb{Z}_2 \times \\mathbb{Z}_3 \times \\mathbb{Z}_4$)."
+  },
+  {
+   "no": 42,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "DL",
+   "subject_name": "Digital Logic",
+   "topic": "seq",
+   "topic_name": "Sequential Circuits",
+   "text": "A 3-bit synchronous counter is built from three T flip-flops with outputs $Q_2 Q_1 Q_0$ ($Q_2$ is the most significant bit). Their inputs are $T_2 = Q_1$, $T_1 = Q_0$ and $T_0 = 1$. Starting from $Q_2Q_1Q_0 = 000$, the next four states are",
+   "options": [
+    "001, 010, 011, 100",
+    "001, 010, 111, 000",
+    "001, 011, 111, 000",
+    "001, 010, 110, 000"
+   ],
+   "answer": "B",
+   "solution": "A T flip-flop toggles when $T = 1$. From 000: $T = (0,0,1) \\to 001$. From 001: $T = (0,1,1) \\to 010$. From 010: $T = (1,0,1) \\to 111$. From 111: $T = (1,1,1) \\to 000$.",
+   "why": "Sequential-circuit state sequences came in 2021 S1, 2023 and 2025 S1; the 2027 syllabus asks for 'design of sequential circuits'."
+  },
+  {
+   "no": 43,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "DL",
+   "subject_name": "Digital Logic",
+   "topic": "bool",
+   "topic_name": "Boolean Algebra & Minimization",
+   "text": "Which of the following are **minimal** sum-of-products expressions for $F(A, B, C) = \\sum m(0, 1, 2, 5, 6, 7)$?",
+   "options": [
+    "$\\bar{A}\\bar{B} + B\\bar{C} + AC$",
+    "$\\bar{A}\\bar{C} + \\bar{B}C + AB$",
+    "$\\bar{A}\\bar{B} + \\bar{B}C + B\\bar{C} + AC$",
+    "$\\bar{A}\\bar{C} + AC + \\bar{B}C$"
+   ],
+   "answer": [
+    "A",
+    "B"
+   ],
+   "solution": "The six prime implicants $\\bar A\\bar B, \\bar A\\bar C, \\bar BC, B\\bar C, AC, AB$ each cover two minterms and none is essential (a cyclic map). Three are needed, and the two ways to cover all six minterms with three are (A) and (B). (C) is correct but has four terms. (D) misses minterm 6 ($AB\\bar C$).",
+   "why": "K-map minimization with multiple minimal covers was asked in 2026 S1 Q48; the 2027 syllabus names K-maps explicitly."
+  },
+  {
+   "no": 44,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "pipe",
+   "topic_name": "Pipelining & Hazards",
+   "text": "A 5-stage pipeline (IF, ID, EX, MEM, WB) has stage latencies of 200, 150, 250, 300 and 150 ps, and each pipeline register adds 20 ps. A non-pipelined version of the same datapath takes 1050 ps per instruction. Ignoring hazards, the speedup of the pipelined processor over the non-pipelined one when running 1000 instructions is ______ (rounded off to two decimal places).",
+   "options": null,
+   "answer": {
+    "min": 3.25,
+    "max": 3.29
+   },
+   "solution": "Pipelined clock $= \\max(\\text{stage}) + 20 = 320$ ps. Time $= (5 + 1000 - 1) \\times 320 = 321{,}280$ ps. Non-pipelined: $1000 \\times 1050 = 1{,}050{,}000$ ps. Speedup $= 1{,}050{,}000 / 321{,}280 \\approx 3.27$.",
+   "why": "Pipelining was asked in 9 of 10 recent papers, usually as this kind of 2-mark NAT."
+  },
+  {
+   "no": 45,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "cache",
+   "topic_name": "Cache Memory",
+   "text": "A two-level cache has an L1 hit time of 1 ns with hit rate 90%, and an L2 hit time of 10 ns with a local hit rate of 80%. Main memory takes 100 ns. L2 is looked up only on an L1 miss, and memory only on an L2 miss. The average memory access time is",
+   "options": [
+    "3.0 ns",
+    "4.0 ns",
+    "5.0 ns",
+    "11.0 ns"
+   ],
+   "answer": "B",
+   "solution": "$\\text{AMAT} = t_{L1} + m_{L1}(t_{L2} + m_{L2} \\cdot t_{mem}) = 1 + 0.1 \\times (10 + 0.2 \\times 100) = 1 + 0.1 \\times 30 = 4.0$ ns.",
+   "why": "Two-level cache AMAT came in 2025 S1 Q53 and 2025 S2 Q55."
+  },
+  {
+   "no": 46,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "COA",
+   "subject_name": "Computer Organization & Architecture",
+   "topic": "datapath",
+   "topic_name": "ALU, Datapath & Control Unit",
+   "text": "A microprogrammed control unit generates 48 control signals, split into 4 mutually exclusive groups of 15, 12, 10 and 11 signals (in each microinstruction at most one signal of a group is active). The control memory holds 1024 microinstructions; each microinstruction has the control field and a next-address field only. If each group is encoded separately (vertical format), the minimum width of a microinstruction is",
+   "options": [
+    "22 bits",
+    "26 bits",
+    "48 bits",
+    "58 bits"
+   ],
+   "answer": "B",
+   "solution": "A group of $k$ signals plus a 'none' code needs $\\lceil \\log_2(k+1) \\rceil$ bits: $15 \\to 4$, $12 \\to 4$, $10 \\to 4$, $11 \\to 4$, so 16 bits. Next address: $\\log_2 1024 = 10$ bits. Width $= 26$ bits. (Horizontal format would need $48 + 10 = 58$.)",
+   "why": "Microprogrammed control is newly named in the 2027 COA syllabus."
+  },
+  {
+   "no": 47,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "recursion",
+   "topic_name": "Recursion",
+   "text": "Consider the following C function.\n\n```c\nint g(int n) {\n    if (n <= 1) return 1;\n    if (n % 2 == 0) return g(n / 2) + 1;\n    return g(n - 1) + g(n - 2);\n}\n```\n\nThe value returned by `g(7)` is ______.",
+   "options": null,
+   "answer": {
+    "min": 10,
+    "max": 10
+   },
+   "solution": "Build up: $g(0) = g(1) = 1$, $g(2) = g(1)+1 = 2$, $g(3) = g(2)+g(1) = 3$, $g(4) = g(2)+1 = 3$, $g(5) = g(4)+g(3) = 6$, $g(6) = g(3)+1 = 4$, $g(7) = g(6)+g(5) = 10$.",
+   "why": "Recursive C functions came in 5 of 10 recent papers (2025 S1 Q61, 2026 S1 Q61, 2026 S2 Q61)."
+  },
+  {
+   "no": 48,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "ll",
+   "topic_name": "Linked Lists",
+   "text": "Consider the following C function on a singly linked list (`free` is from `stdlib.h`).\n\n```c\nstruct node { int val; struct node *next; };\n\nint f(struct node *p) {\n    int c = 0;\n    while (p != NULL && p->next != NULL) {\n        struct node *q = p->next;\n        p->next = q->next;\n        free(q);\n        p = p->next;\n        c++;\n    }\n    return c;\n}\n```\n\nIt is called with a pointer to the list 10 → 20 → 30 → 40 → 50 → 60 → 70. Which one of the following is correct?",
+   "options": [
+    "It returns 3 and the list becomes 10 → 30 → 50 → 70.",
+    "It returns 3 and the list becomes 20 → 40 → 60.",
+    "It returns 4 and the list becomes 10 → 30 → 50 → 70.",
+    "It returns 3 and the list becomes 10 → 30 → 50."
+   ],
+   "answer": "A",
+   "solution": "Each iteration deletes the node after `p` and moves `p` two places: 20, 40 and 60 are freed (c = 3). At 70, `p->next` is `NULL`, so the loop stops. The list is 10 → 30 → 50 → 70.",
+   "why": "Linked-list code came in 2023, 2025 S1 and 2026 S1; IIT Madras likes pointer tracing."
+  },
+  {
+   "no": 49,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "bst",
+   "topic_name": "BST & AVL Trees",
+   "text": "The keys 50, 30, 70, 20, 40, 60, 80, 35, 45, 65 are inserted in this order into an empty binary search tree. The root is then deleted, replacing it with its **inorder successor**. In the resulting tree, the sum of the keys at depth 2 (the root is at depth 0) is ______.",
+   "options": null,
+   "answer": {
+    "min": 205,
+    "max": 205
+   },
+   "solution": "The inorder successor of 50 is 60 (leftmost node of the right subtree); 60's right child 65 takes 60's old place under 70. New tree: root 60; depth 1: 30, 70; depth 2: 20, 40 (under 30) and 65, 80 (under 70). Sum $= 20 + 40 + 65 + 80 = 205$.",
+   "why": "BST questions appeared in 7 of 10 recent papers."
+  },
+  {
+   "no": 50,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "PDS",
+   "subject_name": "Programming & Data Structures",
+   "topic": "stackq",
+   "topic_name": "Stacks & Queues",
+   "text": "The numbers 1, 2, 3, 4, 5 are pushed onto an initially empty stack in this order. Pops may be done at any time between pushes, and each popped number is printed at once. Which of the following output sequences are possible?",
+   "options": [
+    "3 2 5 4 1",
+    "3 1 2 5 4",
+    "1 5 4 3 2",
+    "4 5 3 1 2"
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "(A) push 1, 2, 3; pop 3, 2; push 4, 5; pop 5, 4, 1. (C) push 1, pop 1; push 2–5; pop 5, 4, 3, 2. (B) After 3 is popped, 2 is on top, so 1 cannot come next. (D) After 4, 5, 3 are printed, 2 is on top of 1, so 1 cannot come before 2.",
+   "why": "Stack/queue simulations came in 6 of 10 recent papers (2026 S2 Q50 combined a stack and a queue)."
+  },
+  {
+   "no": 51,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "ALGO",
+   "subject_name": "Algorithms",
+   "topic": "dp",
+   "topic_name": "Dynamic Programming",
+   "text": "Four items have (weight, value) pairs $(1, 1)$, $(3, 4)$, $(4, 5)$ and $(5, 7)$. Each item can be taken at most once (0/1 knapsack). The maximum total value that fits in a knapsack of capacity 7 is ______.",
+   "options": null,
+   "answer": {
+    "min": 9,
+    "max": 9
+   },
+   "solution": "Feasible sets of weight $\\le 7$: $\\{3,4\\}$ gives value $4 + 5 = 9$; $\\{5, 1\\}$ gives 8; $\\{3, 1\\}$ gives 5; $\\{4, 1\\}$ gives 6. The best is **9**. Note that greedy by value/weight picks the weight-5 item first and ends at 8.",
+   "why": "Dynamic programming has been quiet since 2021 (3 questions, against 10 before) and is due."
+  },
+  {
+   "no": 52,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "ALGO",
+   "subject_name": "Algorithms",
+   "topic": "sp",
+   "topic_name": "Shortest Paths",
+   "text": "A directed graph has some negative-weight edges but no negative-weight cycle. Which of the following is/are TRUE?",
+   "options": [
+    "Dijkstra's algorithm may report a distance larger than the true shortest distance for some vertex.",
+    "The Bellman–Ford algorithm computes all single-source shortest distances correctly.",
+    "Adding the same positive constant to every edge weight (so that all weights become positive) leaves all shortest paths unchanged.",
+    "If the graph is acyclic, single-source shortest distances can be found in $O(V + E)$ time by relaxing edges in topological order."
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "(A) Example: $s \\to a$ (1), $s \\to b$ (2), $b \\to a$ ($-2$). Dijkstra finalises $a$ at 1, but the true distance is 0. (B) Bellman–Ford handles negative edges without negative cycles. (C) is false: paths with more edges are penalised more. (D) Topological-order relaxation works for any weights on a DAG.",
+   "why": "Shortest paths have only 3 questions since 2021 but remain core syllabus; GATE 2026 S2 asked the DAG case."
+  },
+  {
+   "no": 53,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "ALGO",
+   "subject_name": "Algorithms",
+   "topic": "recur",
+   "topic_name": "Recurrence Relations",
+   "text": "The solution of the recurrence $T(n) = 4\\,T(n/2) + n^2 \\log n$, with $T(1) = 1$, is",
+   "options": [
+    "$\\Theta(n^2)$",
+    "$\\Theta(n^2 \\log n)$",
+    "$\\Theta(n^2 \\log^2 n)$",
+    "$\\Theta(n^3)$"
+   ],
+   "answer": "C",
+   "solution": "$n^{\\log_b a} = n^{\\log_2 4} = n^2$ and $f(n) = n^2 \\log n = \\Theta(n^{\\log_b a} \\log^{1} n)$. By the extended master theorem, $T(n) = \\Theta(n^2 \\log^{2} n)$. (Unrolling: $\\sum_{i} n^2 \\log(n/2^i) = n^2 \\cdot \\Theta(\\log^2 n)$.)",
+   "why": "Recurrences appeared in 6 of 10 recent papers (2024 S1 Q42, 2025 S1 Q20, 2026 S1 Q17)."
+  },
+  {
+   "no": 54,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "TOC",
+   "subject_name": "Theory of Computation",
+   "topic": "reg",
+   "topic_name": "Regular Languages & Properties",
+   "text": "Which one of the following languages over $\\{a, b\\}$ is regular?",
+   "options": [
+    "$\\{a^n b^n \\mid n \\ge 0\\}$",
+    "$\\{w \\mid w \\text{ has as many occurrences of } ab \\text{ as of } ba\\}$",
+    "$\\{ww \\mid w \\in \\{a, b\\}^*\\}$",
+    "$\\{a^p \\mid p \\text{ is prime}\\}$"
+   ],
+   "answer": "B",
+   "solution": "In any string the counts of $ab$ and $ba$ differ by at most 1, and they are equal exactly when the string is empty or starts and ends with the same symbol, which a small DFA checks. (A), (C) and (D) are classic non-regular languages (pumping lemma).",
+   "why": "Regular-or-not identification came in 2022, 2024 S1, 2025 S1 and S2."
+  },
+  {
+   "no": 55,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "TOC",
+   "subject_name": "Theory of Computation",
+   "topic": "cfl",
+   "topic_name": "Context-Free Languages & Closure",
+   "text": "Which of the following languages are context-free?",
+   "options": [
+    "$\\{a^i b^j c^k \\mid i = j \\text{ or } j = k\\}$",
+    "$\\{a^i b^j c^k \\mid i = j = k\\}$",
+    "$\\{w w^R \\mid w \\in \\{a, b\\}^*\\}$",
+    "$\\{a^i b^j c^i d^j \\mid i, j \\ge 0\\}$"
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "(A) is the union of two CFLs. (C) even-length palindromes: $S \\to aSa \\mid bSb \\mid \\varepsilon$. (B) needs three equal counts and (D) needs two crossing matches; both fail the CFL pumping lemma.",
+   "why": "CFL identification is a fixture (2022, 2025 S1, 2026 S2 Q48)."
+  },
+  {
+   "no": 56,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "CD",
+   "subject_name": "Compiler Design",
+   "topic": "parse",
+   "topic_name": "Parsing (LL/LR)",
+   "text": "Consider the augmented grammar\n\n$$S' \\to S \\qquad S \\to A\\,A \\qquad A \\to a\\,A \\mid b$$\n\nThe number of states in the canonical **LR(1)** collection of item sets is ______.",
+   "options": null,
+   "answer": {
+    "min": 10,
+    "max": 10
+   },
+   "solution": "$I_0$; $I_1 = goto(I_0, S)$; $I_2 = goto(I_0, A)$, whose items have lookahead `$`; $I_3, I_4$ from $a$ and $b$ with lookaheads $a/b$; $I_5$: $S \\to AA\\cdot$; $I_6, I_7$: the $a$ and $b$ items again, now with lookahead `$`; $I_8$: $A \\to aA\\cdot$ (lookahead $a/b$); $I_9$: $A \\to aA\\cdot$ (lookahead `$`). That is **10** states. LALR(1) merges $I_3/I_6$, $I_4/I_7$ and $I_8/I_9$, leaving 7 (the LR(0) count).",
+   "why": "LR item-set counting came in 2021 S2 Q51, 2022 Q29 and 2026 S2 Q41."
+  },
+  {
+   "no": 57,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "CD",
+   "subject_name": "Compiler Design",
+   "topic": "opt",
+   "topic_name": "Code Optimization & Data-Flow Analysis",
+   "text": "Consider the basic block\n\n```text\na = b + c\nd = a - e\nb = d * 2\ne = b + c\n```\n\nOnly `e` is live at the exit of the block. The set of variables live at the **entry** of the block is",
+   "options": [
+    "$\\{b, c\\}$",
+    "$\\{b, c, e\\}$",
+    "$\\{a, b, c, e\\}$",
+    "$\\{c, e\\}$"
+   ],
+   "answer": "B",
+   "solution": "Work backwards with $IN = USE \\cup (OUT - DEF)$. After line 4: $\\{e\\}$. Line 4: $\\{b, c\\}$. Line 3: $\\{c, d\\}$. Line 2: $\\{a, c, e\\}$. Line 1: $(\\{a,c,e\\} - \\{a\\}) \\cup \\{b, c\\} = \\{b, c, e\\}$.",
+   "why": "Liveness and data-flow analysis came in 2021 S2, 2023 and 2026 S2 Q45."
+  },
+  {
+   "no": 58,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "OS",
+   "subject_name": "Operating System",
+   "topic": "sync",
+   "topic_name": "Synchronization & Concurrency",
+   "text": "Two processes $P_0$ and $P_1$ share `bool flag[2]` (both initially false) and `int turn`. Process $P_i$ (with $j = 1 - i$) runs:\n\n```c\nwhile (1) {\n    flag[i] = true;\n    turn = i;                        /* note: i, not j */\n    while (flag[j] && turn == i) ;   /* busy wait */\n    /* critical section */\n    flag[i] = false;\n    /* remainder section */\n}\n```\n\nWhich of the following is/are TRUE?",
+   "options": [
+    "Mutual exclusion is guaranteed.",
+    "The two processes can deadlock, each waiting for ever.",
+    "If both processes want to enter, the one that wrote `turn` last waits.",
+    "A waiting process can be overtaken by the other process an unbounded number of times."
+   ],
+   "answer": [
+    "A",
+    "C"
+   ],
+   "solution": "This is Peterson's algorithm with `turn` meaning 'who arrived last'. If both are trying, `turn` holds the id of the later writer, and only that process waits, so exactly one enters: mutual exclusion and progress hold. When the other process re-enters it sets `turn` to its own id, which releases the waiter, so waiting is bounded (once).",
+   "why": "Synchronisation is IIT Madras's favourite OS topic; 7 of 10 recent papers asked it."
+  },
+  {
+   "no": 59,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "OS",
+   "subject_name": "Operating System",
+   "topic": "vm",
+   "topic_name": "Virtual Memory & Page Replacement",
+   "text": "A process with 3 page frames (initially empty) makes the page references\n\n2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2\n\nThe number of page faults under **LRU** replacement is ______.",
+   "options": null,
+   "answer": {
+    "min": 7,
+    "max": 7
+   },
+   "solution": "2 fault, 3 fault, 2 hit, 1 fault, 5 fault (evicts 3), 2 hit, 4 fault (evicts 1), 5 hit, 3 fault (evicts 2), 2 fault (evicts 4), 5 hit, 2 hit. Total **7** faults. (For comparison, FIFO gives 9 and optimal replacement gives 6 on this string.)",
+   "why": "Page-replacement traces came in 2022, 2025 S1 and 2025 S2."
+  },
+  {
+   "no": 60,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "OS",
+   "subject_name": "Operating System",
+   "topic": "sched",
+   "topic_name": "CPU Scheduling",
+   "text": "Four processes arrive with (arrival time, CPU burst) in milliseconds: P1 (0, 9), P2 (1, 4), P3 (2, 2), P4 (4, 3). Using preemptive **shortest remaining time first** scheduling, the average waiting time in milliseconds is ______ (rounded off to two decimal places).",
+   "options": null,
+   "answer": {
+    "min": 3.5,
+    "max": 3.5
+   },
+   "solution": "Gantt chart: P1 0–1, P2 1–2, P3 2–4, P2 4–7, P4 7–10, P1 10–18. Waiting = completion − arrival − burst: P1 $18-0-9 = 9$, P2 $7-1-4 = 2$, P3 $4-2-2 = 0$, P4 $10-4-3 = 3$. Average $= 14/4 = 3.5$. (At $t = 4$, P2 and P4 both have 3 ms left; running P4 first gives waits 9, 5, 0, 0 and the same average.)",
+   "why": "CPU scheduling was asked in 9 of 10 recent papers; SRTF came in GATE 2019 (IIT Madras) and 2025 S2."
+  },
+  {
+   "no": 61,
+   "section": "CS",
+   "marks": 2,
+   "type": "MSQ",
+   "subject": "DB",
+   "subject_name": "Databases",
+   "topic": "fd",
+   "topic_name": "FDs, Keys & Normalization",
+   "text": "A relation $R(A, B, C, D)$ has the functional dependencies $\\{A \\to B,\\; B \\to C,\\; C \\to A,\\; A \\to D\\}$. Which of the following is/are TRUE?",
+   "options": [
+    "$R$ has exactly three candidate keys.",
+    "$R$ is in BCNF.",
+    "$R$ is in 3NF but not in BCNF.",
+    "Decomposing $R$ into $R_1(A, B, C)$ and $R_2(A, D)$ is lossless and dependency preserving."
+   ],
+   "answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "solution": "$A^+ = B^+ = C^+ = ABCD$, and $D$ determines nothing, so the candidate keys are $A$, $B$ and $C$. Every FD has a superkey on the left, so $R$ is in BCNF (hence (C) is false). In the decomposition the common attribute $A$ is a key of $R_2$, so it is lossless; $A \\to B$, $B \\to C$, $C \\to A$ hold in $R_1$ and $A \\to D$ in $R_2$, so it preserves dependencies.",
+   "why": "Normalization was asked in 9 of 10 recent papers, often as 2-mark MSQs."
+  },
+  {
+   "no": 62,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "DB",
+   "subject_name": "Databases",
+   "topic": "sql",
+   "topic_name": "SQL",
+   "text": "The table `Emp(eid, dept, salary)` contains:\n\n| eid | dept | salary |\n|---:|---|---:|\n| 1 | CS | 70 |\n| 2 | CS | 50 |\n| 3 | EE | 60 |\n| 4 | EE | 80 |\n| 5 | ME | 40 |\n| 6 | CS | 90 |\n| 7 | ME | NULL |\n\n```sql\nSELECT dept, COUNT(*)\nFROM Emp e1\nWHERE salary > (SELECT AVG(salary) FROM Emp e2 WHERE e2.dept = e1.dept)\nGROUP BY dept;\n```\n\nThe number of rows returned by the query is",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": "B",
+   "solution": "`AVG` ignores NULL: CS average 70, EE 70, ME 40. Rows that pass: eid 6 (90 > 70, CS) and eid 4 (80 > 70, EE). ME has none (40 is not > 40, and `NULL > 40` is unknown). The result has 2 groups: (CS, 1) and (EE, 1).",
+   "why": "SQL with correlated subqueries and NULLs came in 2022 Q56, 2025 S1 Q55 and S2 Q54."
+  },
+  {
+   "no": 63,
+   "section": "CS",
+   "marks": 2,
+   "type": "NAT",
+   "subject": "CN",
+   "subject_name": "Computer Networks",
+   "topic": "sw",
+   "topic_name": "Flow Control & Sliding Window",
+   "text": "A 10 Mbps link has a one-way propagation delay of 15 ms. Frames are 1250 bytes long and acknowledgements are negligibly small. Using Go-Back-N, the minimum number of bits needed in the sequence-number field to achieve 100% link utilisation is ______.",
+   "options": null,
+   "answer": {
+    "min": 5,
+    "max": 5
+   },
+   "solution": "Transmission time $= 1250 \\times 8 / 10^7 = 1$ ms, so $a = 15$. Full utilisation needs a window of $1 + 2a = 31$ frames. Go-Back-N allows a window of $2^k - 1$, so $2^k - 1 \\ge 31$ gives $k = 5$.",
+   "why": "Sliding-window sizing came in 2021 S1, 2026 S1 Q45 and 2026 S2 Q65."
+  },
+  {
+   "no": 64,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "CN",
+   "subject_name": "Computer Networks",
+   "topic": "tcp",
+   "topic_name": "TCP & Congestion Control",
+   "text": "A TCP Reno sender has a timeout when its congestion window is 20 MSS. It sets ssthresh to half of that window and restarts with cwnd = 1 MSS. Treat each RTT as one round: in slow start cwnd doubles each round but never exceeds ssthresh; once cwnd equals ssthresh it grows by 1 MSS per round. The congestion window during the 6th round after the timeout is",
+   "options": [
+    "8 MSS",
+    "10 MSS",
+    "11 MSS",
+    "16 MSS"
+   ],
+   "answer": "C",
+   "solution": "ssthresh $= 10$. Rounds 1–6: 1, 2, 4, 8, then $\\min(16, 10) = 10$, then congestion avoidance gives 11.",
+   "why": "TCP congestion control was asked in 9 of 10 recent papers (2024 S2 Q54, 2026 S1 Q44, 2026 S2 Q58)."
+  },
+  {
+   "no": 65,
+   "section": "CS",
+   "marks": 2,
+   "type": "MCQ",
+   "subject": "CN",
+   "subject_name": "Computer Networks",
+   "topic": "frag",
+   "topic_name": "IPv4 Fragmentation",
+   "text": "An IPv4 datagram with total length 2400 bytes (20-byte header, no options) must cross a link whose MTU is 1000 bytes. The number of fragments and the fragment-offset field of the **last** fragment are",
+   "options": [
+    "3 and 244",
+    "3 and 245",
+    "2 and 122",
+    "3 and 122"
+   ],
+   "answer": "A",
+   "solution": "Data $= 2380$ bytes. Each fragment carries at most $1000 - 20 = 980$ bytes, rounded down to a multiple of 8: 976. Fragments carry 976, 976 and 428 bytes, at byte offsets 0, 976 and 1952. The offset field counts 8-byte units: $1952 / 8 = 244$.",
+   "why": "IPv4 fragmentation came in 5 of 10 recent papers and stays in the 2027 syllabus."
+  }
+ ]
+}
