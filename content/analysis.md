@@ -1,9 +1,11 @@
 # Topic weightage & trends
 
-Every Computer Science question in **28 GATE CSE papers from 2007 to 2026** was read and tagged with a subject and a topic: **1,605 technical questions** in all. For 2021–2026 the question type and marks come from the official answer keys. This page shows what that data says about where the marks are, and what it means for GATE 2027.
+Every Computer Science question in **28 GATE CSE papers from 2007 to 2026** was tagged by hand with a subject and a topic: **1,605 technical questions** in all. For 2021–2026 the question type and marks come from the official answer keys. This page shows what that data says about where the marks are, and what it means for GATE 2027.
 
 > [!NOTE] What was analysed
-> All papers from 2007 to 2026 except two: the 2011 paper and 2017 Set 1 in the source folder are corrupted and can't be opened, and no official copy is online any more. Years with several sets (2014, 2015, 2016, 2021, 2024, 2025, 2026) count every set. Marks are out of the **85 technical marks** of today's paper; the 2007–2009 papers, which had different totals, are scaled to match. General Aptitude has been a fixed 15 marks since 2010.
+> All papers from 2007 to 2026 except two: the 2011 paper and 2017 Set 1 in the source folder are corrupted and can't be opened, and no official copy is online any more.
+>
+> **How the tagging was done.** Text PDFs were read directly. The scanned papers (2007–2010, 2015, 2017 Set 2 and 2019–2021) were read from OCR text, with the page images checked wherever the text was unclear. On review, the four oldest papers (2007–2010) were re-read in full, which corrected 23 of their 285 labels. For those scanned years a question number can still be off by one in a few places, because the scans lose the page layout. A trial text classifier was trained during the work, but none of its labels are used. Years with several sets (2014, 2015, 2016, 2021, 2024, 2025, 2026) count every set. Marks are out of the **85 technical marks** of today's paper; the 2007–2009 papers, which had different totals, are scaled to match. General Aptitude has been a fixed 15 marks since 2010.
 
 ## The short version
 
@@ -25,19 +27,19 @@ Average marks per paper, out of 85 technical marks. "2019 (IITM)" is the last pa
 
 | Subject | 2007–13 | 2014–20 | 2021–26 | Range 2021–26 | 2019 (IITM) | Trend |
 |---|---:|---:|---:|---:|---:|---|
-| [Programming & Data Structures](#/subjects/pds) | 7.8 | 10.8 | **9.3** | 6–12 | 12 | high; 10–12 in 2025–26 |
-| [Computer Organization & Architecture](#/subjects/coa) | 8.5 | 6.8 | **8.3** | 5–10 | 4 | rising |
-| [Computer Networks](#/subjects/cn) | 7.5 | 8.4 | **8.1** | 6–10 | 9 | steady |
-| [Operating System](#/subjects/os) | 7.8 | 7.7 | **8.0** | 6–10 | 10 | steady |
+| [Programming & Data Structures](#/subjects/pds) | 7.6 | 10.8 | **9.3** | 6–12 | 12 | high; 10–12 in 2025–26 |
+| [Computer Organization & Architecture](#/subjects/coa) | 9.0 | 6.8 | **8.3** | 5–10 | 4 | rising |
+| [Computer Networks](#/subjects/cn) | 7.7 | 8.4 | **8.1** | 6–10 | 9 | steady |
+| [Operating System](#/subjects/os) | 7.9 | 7.7 | **8.0** | 6–10 | 10 | steady |
 | [Engineering Mathematics](#/subjects/em) | 6.1 | 8.0 | **7.8** | 6–9 | 9 | steady |
 | [Algorithms](#/subjects/algo) | 10.5 | 8.9 | **7.7** | 4–12 | 6 | falling |
-| [Discrete Mathematics](#/subjects/dm) | 9.0 | 9.2 | **7.4** | 3–15 | 6 | falling |
-| [Theory of Computation](#/subjects/toc) | 7.1 | 7.1 | **7.4** | 6–9 | 8 | steady |
+| [Discrete Mathematics](#/subjects/dm) | 8.7 | 9.2 | **7.4** | 3–15 | 6 | falling |
+| [Theory of Computation](#/subjects/toc) | 7.3 | 7.1 | **7.4** | 6–9 | 8 | steady |
 | [Databases](#/subjects/db) | 8.0 | 6.9 | **7.3** | 5–9 | 8 | steady |
-| [Digital Logic](#/subjects/dl) | 5.1 | 5.8 | **7.0** | 5–9 | 7 | rising |
-| [Compiler Design](#/subjects/cd) | 5.0 | 4.5 | **6.7** | 4–8 | 6 | rising |
+| [Digital Logic](#/subjects/dl) | 4.8 | 5.8 | **7.0** | 5–9 | 7 | rising |
+| [Compiler Design](#/subjects/cd) | 4.8 | 4.5 | **6.7** | 4–8 | 6 | rising |
 
-Before 2016 the syllabus also had Software Engineering, Web Technologies and numerical methods; those took about 2.7 marks a paper in 2007–13 and have not been asked since 2015.
+Before 2016 the syllabus also had Software Engineering and Web Technologies, which took about 2.7 marks a paper in 2007–13, and numerical methods inside Engineering Mathematics. None of them has been asked since 2015.
 
 ### Paper by paper, 2021–2026
 
@@ -79,32 +81,32 @@ Ranked by how many of the 10 recent papers asked at least one question on the to
 | # | Topic | Subject | Papers (of 10) | Questions | Marks | Asked since 2007 |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | Linear Algebra | EM | 10 | 20 | 29 | 49 |
-| 2 | Finite Automata & Regular Expressions | TOC | 10 | 17 | 27 | 45 |
+| 2 | Finite Automata & Regular Expressions | TOC | 10 | 17 | 27 | 44 |
 | 3 | Paging, TLB & Page Tables | OS | 10 | 11 | 19 | 22 |
 | 4 | Calculus | EM | 10 | 13 | 15 | 38 |
 | 5 | Number Systems & Fixed-Point Arithmetic | DL | 10 | 10 | 11 | 24 |
 | 6 | Probability & Statistics | EM | 9 | 21 | 34 | 51 |
-| 7 | C Programming | PDS | 9 | 20 | 29 | 59 |
-| 8 | Cache Memory | COA | 9 | 16 | 28 | 44 |
+| 7 | C Programming | PDS | 9 | 20 | 29 | 58 |
+| 8 | Cache Memory | COA | 9 | 16 | 28 | 45 |
 | 9 | Parsing (LL/LR) | CD | 9 | 15 | 24 | 41 |
 | 10 | FDs, Keys & Normalization | DB | 9 | 13 | 21 | 30 |
 | 11 | Pipelining & Hazards | COA | 9 | 11 | 18 | 32 |
-| 12 | TCP & Congestion Control | CN | 9 | 10 | 16 | 26 |
+| 12 | TCP & Congestion Control | CN | 9 | 10 | 16 | 27 |
 | 13 | CPU Scheduling | OS | 9 | 9 | 13 | 24 |
-| 14 | Boolean Algebra & Minimization | DL | 8 | 13 | 22 | 44 |
+| 14 | Boolean Algebra & Minimization | DL | 8 | 13 | 22 | 42 |
 | 15 | Instruction Set & Addressing Modes | COA | 8 | 10 | 17 | 21 |
 | 16 | IPv4 Addressing, CIDR & Forwarding | CN | 8 | 10 | 16 | 28 |
 | 17 | Transactions & Concurrency Control | DB | 8 | 11 | 16 | 29 |
 | 18 | Floating Point (IEEE 754) | DL | 8 | 8 | 12 | 13 |
-| 19 | Graph Theory | DM | 7 | 17 | 30 | 47 |
-| 20 | Minimum Spanning Trees | ALGO | 7 | 9 | 15 | 24 |
+| 19 | Graph Theory | DM | 7 | 17 | 30 | 46 |
+| 20 | Minimum Spanning Trees | ALGO | 7 | 9 | 15 | 23 |
 | 21 | CFGs & Pushdown Automata | TOC | 7 | 9 | 15 | 16 |
 | 22 | Synchronization & Concurrency | OS | 7 | 7 | 13 | 25 |
 | 23 | BST & AVL Trees | PDS | 7 | 8 | 12 | 22 |
-| 24 | Context-Free Languages & Closure | TOC | 7 | 8 | 12 | 23 |
+| 24 | Context-Free Languages & Closure | TOC | 7 | 8 | 12 | 24 |
 | 25 | Syntax-Directed Translation | CD | 7 | 7 | 12 | 10 |
 | 26 | File Organization & Indexing (B/B+ Trees) | DB | 7 | 7 | 10 | 22 |
-| 27 | I/O, Interrupts & DMA | COA | 7 | 7 | 7 | 13 |
+| 27 | I/O, Interrupts & DMA | COA | 7 | 7 | 7 | 15 |
 | 28 | Graph Traversal (BFS/DFS) | ALGO | 6 | 8 | 15 | 20 |
 | 29 | Sequential Circuits | DL | 6 | 8 | 14 | 19 |
 | 30 | Binary Heaps | PDS | 6 | 8 | 12 | 22 |
@@ -117,7 +119,7 @@ These were asked often before 2021 but rarely since. Examiners rotate topics, so
 
 - **Dynamic Programming**: 10 questions before 2021, only 3 since (last in 2026). LCS, 0/1 knapsack, matrix-chain and LIS are all fair game.
 - **Propositional Logic**: 13 questions before 2021, 3 since.
-- **Main Memory & Interfacing**: 10 before 2021, 1 since, and the 2027 syllabus now names *memory interfacing* explicitly. Chip-select decoding and memory-chip counting are likely.
+- **Main Memory & Interfacing**: 9 before 2021, 1 since, and the 2027 syllabus now names *memory interfacing* explicitly. Chip-select decoding and memory-chip counting are likely.
 - **Greedy Algorithms**: 7 before 2021, 1 since (Huffman coding, activity selection, fractional knapsack).
 - **Relations, Recurrences & Generating Functions**: steady before 2021, fewer since.
 - **Shortest Paths and Runtime Environments**: 3 questions each since 2021, but both are core syllabus.
