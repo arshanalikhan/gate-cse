@@ -130,6 +130,23 @@
    settings (study.js); headings are in em so they scale with the chosen size. */
 .doc { font-size: var(--text-body); line-height: var(--leading); font-family: var(--font-reading, var(--font-sans)); }
 .doc > :is(p, ul, ol, blockquote, details, h1, h2, h3, h4) { max-width: var(--measure); }
+
+/* Wide content column: prose stays at the readable measure and the space to its right
+   holds the callouts (key idea, trap, tip, example, PYQ, note) beside the text they
+   annotate, like margin notes. Recall cards stay inline because they are the test. */
+.main { container: main / inline-size; }
+@container main (min-width: 860px) {
+  .doc { --gutter: 28px; }
+  .doc > blockquote.callout:not(.callout-recall) {
+    float: right; clear: right;
+    /* the callout text is .86em, so divide to get the measure in the body's em */
+    width: calc(100% - var(--measure) / .86 - var(--gutter)); max-width: none;
+    margin: .3em 0 1em var(--gutter);
+    font-size: .86em;
+  }
+  .doc > :is(h1, h2, .table-wrap, pre, .widget, .cards, .katex-display, hr, .study-bar, .pyq-list) { clear: both; }
+  .doc > h3 { max-width: calc(var(--measure) / 1.14); } /* h3 is 1.14em: keep its box out of the margin */
+}
 .doc h1 { font-size: 1.75em; line-height: 1.18; letter-spacing: -.02em; margin: 0 0 .5em; font-weight: 700; }
 .doc h2 { font-size: 1.36em; line-height: 1.28; letter-spacing: -.01em; margin: 2.1em 0 .55em; padding-top: .75em; border-top: 1px solid var(--border); font-weight: 650; }
 .doc h3 { font-size: 1.14em; line-height: 1.35; margin: 1.7em 0 .45em; font-weight: 650; }
