@@ -28,3 +28,7 @@ then open http://localhost:8000.
 ## Sources
 
 Syllabus, dates and exam rules come from the official [GATE 2027 website](https://gate2027.iitm.ac.in/); check dates there. Question papers and answer keys are the official IIT publications. Notes are original study material.
+
+## Credits
+
+Created by **Arshan Ali Khan**, built with **Claude** (Anthropic): the past-paper analysis, predicted paper, mock test, notes, design and study tools.
