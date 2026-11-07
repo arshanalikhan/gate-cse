@@ -43,17 +43,17 @@
     "papers": { "title": "Past papers & answer keys", "note": "The list of verified past papers with links to the official question papers and answer keys is being compiled." }
   },
   "subjects": [
-    { "code": "GA", "slug": "ga", "name": "General Aptitude", "blurb": "Verbal, quantitative, analytical and spatial aptitude. 15 sure-shot marks." },
-    { "code": "DM", "slug": "dm", "name": "Discrete Mathematics", "blurb": "Logic, sets and relations, groups, graph theory, combinatorics and recurrences." },
-    { "code": "EM", "slug": "em", "name": "Engineering Mathematics", "blurb": "Linear algebra, calculus, probability and statistics." },
-    { "code": "DL", "slug": "dl", "name": "Digital Logic", "blurb": "Boolean algebra, K-maps, combinational and sequential circuits, number representation." },
-    { "code": "COA", "slug": "coa", "name": "Computer Organization & Architecture", "blurb": "ISA and addressing, ALU and control unit, memory hierarchy and cache, I/O, pipelining." },
-    { "code": "PDS", "slug": "pds", "name": "Programming & Data Structures", "blurb": "C programming, recursion, arrays, stacks, queues, lists, trees, BSTs, heaps, graphs." },
-    { "code": "ALGO", "slug": "algo", "name": "Algorithms", "blurb": "Asymptotics, sorting and searching, hashing, greedy, DP, divide and conquer, graph algorithms." },
-    { "code": "TOC", "slug": "toc", "name": "Theory of Computation", "blurb": "Regular languages, CFLs and PDAs, pumping lemmas, Turing machines and undecidability." },
-    { "code": "CD", "slug": "cd", "name": "Compiler Design", "blurb": "Lexing, parsing, SDT, runtime environments, intermediate code, optimisation and data-flow analysis." },
-    { "code": "OS", "slug": "os", "name": "Operating System", "blurb": "Processes and threads, synchronisation, deadlock, scheduling, memory and virtual memory, file systems." },
-    { "code": "DB", "slug": "db", "name": "Databases", "blurb": "ER model, relational algebra, calculus and SQL, normal forms, indexing, transactions." },
-    { "code": "CN", "slug": "cn", "name": "Computer Networks", "blurb": "Layering, switching, data link and MAC, routing, IPv4 and CIDR, TCP, DNS and HTTP." }
+    { "code": "GA", "slug": "ga", "name": "General Aptitude", "avg_recent": 15, "blurb": "Verbal, quantitative, analytical and spatial aptitude. 15 sure-shot marks." },
+    { "code": "PDS", "slug": "pds", "name": "Programming & Data Structures", "avg_recent": 9.3, "blurb": "C programming, recursion, arrays, stacks, queues, lists, trees, BSTs, heaps, graphs." },
+    { "code": "COA", "slug": "coa", "name": "Computer Organization & Architecture", "avg_recent": 8.3, "blurb": "ISA and addressing, ALU and control unit, memory hierarchy and cache, I/O, pipelining." },
+    { "code": "CN", "slug": "cn", "name": "Computer Networks", "avg_recent": 8.1, "blurb": "Layering, switching, data link and MAC, routing, IPv4 and CIDR, TCP, DNS and HTTP." },
+    { "code": "OS", "slug": "os", "name": "Operating System", "avg_recent": 8, "blurb": "Processes and threads, synchronisation, deadlock, scheduling, memory and virtual memory, file systems." },
+    { "code": "EM", "slug": "em", "name": "Engineering Mathematics", "avg_recent": 7.8, "blurb": "Linear algebra, calculus, probability and statistics." },
+    { "code": "ALGO", "slug": "algo", "name": "Algorithms", "avg_recent": 7.7, "blurb": "Asymptotics, sorting and searching, hashing, greedy, DP, divide and conquer, graph algorithms." },
+    { "code": "DM", "slug": "dm", "name": "Discrete Mathematics", "avg_recent": 7.4, "blurb": "Logic, sets and relations, groups, graph theory, combinatorics and recurrences." },
+    { "code": "TOC", "slug": "toc", "name": "Theory of Computation", "avg_recent": 7.4, "blurb": "Regular languages, CFLs and PDAs, pumping lemmas, Turing machines and undecidability." },
+    { "code": "DB", "slug": "db", "name": "Databases", "avg_recent": 7.3, "blurb": "ER model, relational algebra, calculus and SQL, normal forms, indexing, transactions." },
+    { "code": "DL", "slug": "dl", "name": "Digital Logic", "avg_recent": 7, "blurb": "Boolean algebra, K-maps, combinational and sequential circuits, number representation." },
+    { "code": "CD", "slug": "cd", "name": "Compiler Design", "avg_recent": 6.7, "blurb": "Lexing, parsing, SDT, runtime environments, intermediate code, optimisation and data-flow analysis." }
   ]
 }

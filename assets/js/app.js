@@ -241,6 +241,7 @@
     const pageTitle = h1 ? visibleText(h1) : 'GATE CSE 2027';
     document.title = r.path === 'home' ? 'GATE CSE 2027 Prep' : `${pageTitle} · GATE CSE 2027`;
     buildToc(doc, r);
+    if (r.subject) paintProgress(r.subject);
     renderPager(r, ok);
     doc.removeAttribute('aria-busy');
     if (r.anchor) scrollToAnchor(r.anchor, false);
@@ -280,7 +281,8 @@
           class: r.tab === key ? 'active' : null,
           'aria-current': r.tab === key ? 'page' : null,
           text: label,
-        })))));
+        }))),
+      h('details', { class: 'sp-inline' }, h('summary', { text: 'Your progress' }), h('div', { class: 'sp-inline-body' }))));
   }
 
   const CALLOUTS = {
@@ -529,17 +531,25 @@
     const selYears = h('select', { 'aria-label': 'Filter by years' },
       h('option', { value: '', text: 'All years' }), h('option', { value: 'recent', text: '2021–2026 (MSQ era)' }), h('option', { value: 'old', text: 'Before 2021' }));
     const selSort = h('select', { 'aria-label': 'Sort order' }, h('option', { value: 'new', text: 'Newest first' }), h('option', { value: 'old', text: 'Oldest first' }));
+    const selStatus = h('select', { 'aria-label': 'Filter by your result' },
+      h('option', { value: '', text: 'All' }), h('option', { value: 'todo', text: 'Not tried yet' }),
+      h('option', { value: 'r', text: 'Got right' }), h('option', { value: 'w', text: 'Got wrong' }));
     const count = h('span', { class: 'muted', style: 'font-size:13px' });
     doc.append(h('div', { class: 'filters' },
-      h('label', {}, 'Topic', selTopic), h('label', {}, 'Type', selType), h('label', {}, 'Years', selYears), h('label', {}, 'Sort', selSort), count));
+      h('label', {}, 'Topic', selTopic), h('label', {}, 'Type', selType), h('label', {}, 'Years', selYears),
+      h('label', {}, 'My result', selStatus), h('label', {}, 'Sort', selSort), count));
+    doc.append(h('p', { class: 'muted', style: 'font-size:13px;margin-top:0' },
+      'Solve a question, check the official key, then mark it right or wrong. Your results feed the progress report for this subject (saved in this browser only).'));
     const list = h('ol', { class: 'pyq-list' });
     doc.append(list);
 
     const paint = () => {
+      const marks = getPyqMarks();
       const sorted = mine
         .filter((q) => (!selTopic.value || q.topic === selTopic.value)
           && (!selType.value || q.type === selType.value)
-          && (!selYears.value || (selYears.value === 'recent' ? yearOf(q) >= 2021 : yearOf(q) < 2021)))
+          && (!selYears.value || (selYears.value === 'recent' ? yearOf(q) >= 2021 : yearOf(q) < 2021))
+          && (!selStatus.value || (selStatus.value === 'todo' ? !marks[pyqKey(q)] : marks[pyqKey(q)] === selStatus.value)))
         .sort((a, b) => (selSort.value === 'old' ? 1 : -1) * (yearOf(a) - yearOf(b) || String(a.paper).localeCompare(String(b.paper)) || ((+a.qno || 0) - (+b.qno || 0))));
       count.textContent = `${sorted.length} shown`;
       list.replaceChildren(...sorted.map((q) => {
@@ -564,11 +574,199 @@
               pdf && official ? ' · ' : null,
               official ? h('a', { href: official, target: '_blank', rel: 'noopener', text: 'official copy' }) : null,
               keyUrl ? ' · ' : null,
-              keyUrl ? h('a', { href: keyUrl, target: '_blank', rel: 'noopener', text: 'answer key' }) : null)));
+              keyUrl ? h('a', { href: keyUrl, target: '_blank', rel: 'noopener', text: 'answer key' }) : null)),
+          pyqMarkButtons(q));
       }));
     };
-    [selTopic, selType, selYears, selSort].forEach((x) => x.addEventListener('change', paint));
+    [selTopic, selType, selYears, selStatus, selSort].forEach((x) => x.addEventListener('change', paint));
     paint();
+  }
+
+  // ---------------------------------------------------------------- past-question results (per viewer)
+  const PYQ_KEY = 'gate-pyq';
+  const pyqKey = (q) => `${q.paper}|${q.qno}`;
+  function getPyqMarks() {
+    const m = store.get(PYQ_KEY, {});
+    return m && typeof m === 'object' ? m : {};
+  }
+  function setPyqMark(key, value) {
+    const m = getPyqMarks();
+    if (value) m[key] = value; else delete m[key];
+    store.set(PYQ_KEY, m);
+  }
+  function pyqMarkButtons(q) {
+    const key = pyqKey(q);
+    const current = getPyqMarks()[key];
+    const make = (value, label) => h('button', {
+      type: 'button', class: `pyq-mark pyq-mark-${value}`, 'data-value': value,
+      'aria-pressed': current === value ? 'true' : 'false', text: label,
+    });
+    const right = make('r', '✓ Got it right');
+    const wrong = make('w', '✗ Got it wrong');
+    const wrap = h('div', { class: 'pyq-actions', role: 'group', 'aria-label': 'Your result for this question' }, right, wrong);
+    wrap.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-value]');
+      if (!b) return;
+      const on = b.getAttribute('aria-pressed') !== 'true';
+      setPyqMark(key, on ? b.dataset.value : null);
+      for (const x of [right, wrong]) x.setAttribute('aria-pressed', x === b && on ? 'true' : 'false');
+    });
+    return wrap;
+  }
+
+  // ---------------------------------------------------------------- subject progress report
+  // Reads only this browser's records: topics marked studied (gate-progress), recall-card
+  // ratings from study.js (gate-study), past-question results (gate-pyq) and the mock test
+  // attempt (gate-mock-2027, graded with the same rules as mock/mock.js).
+  const isoToday = () => {
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  };
+  let predictedP = null;
+  function getPredicted() {
+    if (!predictedP) predictedP = fetchJSON('data/predicted-2027.json').then((d) => { if (!d) predictedP = null; return d; });
+    return predictedP;
+  }
+
+  function gradeMock(D, attempt, code) {
+    if (!D || !Array.isArray(D.questions) || !attempt) return null;
+    if (!attempt.submitted) return { inProgress: true };
+    if (D.version != null && attempt.version != null && D.version !== attempt.version) return null;
+    const answered = (a) => a != null && a !== '' && !(Array.isArray(a) && !a.length);
+    const res = { right: 0, wrong: 0, skip: 0, got: 0, max: 0 };
+    for (const x of D.questions) {
+      if (String(x.subject).toUpperCase() !== code) continue;
+      const a = attempt.ans ? attempt.ans[x.no] : undefined;
+      const marks = +x.marks || 0;
+      res.max += marks;
+      if (!answered(a)) { res.skip++; continue; }
+      let ok = false;
+      if (x.type === 'MCQ') ok = a === x.answer;
+      else if (x.type === 'MSQ') ok = Array.isArray(a) && Array.isArray(x.answer) && [...a].sort().join() === [...x.answer].sort().join();
+      else { const v = parseFloat(a); ok = Number.isFinite(v) && !!x.answer && v >= x.answer.min - 1e-9 && v <= x.answer.max + 1e-9; }
+      if (ok) { res.right++; res.got += marks; } else { res.wrong++; if (x.type === 'MCQ') res.got -= marks / 3; }
+    }
+    return res.max ? res : null;
+  }
+
+  async function progressReport(subject) {
+    const [topics, notesMd, pyq, D] = await Promise.all([
+      subjectTopics(subject), fetchText(`content/subjects/${subject.slug}/notes.md`), getPyq(), getPredicted(),
+    ]);
+    const studiedMap = getProgress()[subject.slug] || {};
+    const studied = topics.filter((t) => studiedMap[t.id]).length;
+    const next = topics.find((t) => !studiedMap[t.id]) || null;
+
+    const totalCards = notesMd ? (notesMd.match(/^>\s*\[!RECALL\]/gm) || []).length : 0;
+    const study = store.get('gate-study', {}) || {};
+    const cards = Object.values(study.cards || {}).filter((c) => c && c.subject === subject.slug);
+    const today = isoToday();
+    const due = cards.filter((c) => c.due && c.due <= today).length
+      + Object.values(study.topics || {}).filter((t) => t && t.subject === subject.slug && t.due && t.due <= today).length;
+
+    const items = Array.isArray(pyq) ? pyq : (pyq && Array.isArray(pyq.questions) ? pyq.questions : []);
+    const mine = items.filter((q) => String(q.subject).toUpperCase() === subject.code);
+    const marks = getPyqMarks();
+    let right = 0;
+    let wrong = 0;
+    const missed = {};
+    for (const q of mine) {
+      const m = marks[pyqKey(q)];
+      if (m === 'r') right++;
+      else if (m === 'w') { wrong++; const k = q.topic_name || q.topic || 'Other'; missed[k] = (missed[k] || 0) + 1; }
+    }
+    const worst = Object.entries(missed).sort((a, b) => b[1] - a[1])[0] || null;
+
+    return {
+      topics: topics.length, studied, next,
+      totalCards, rated: cards.length, due,
+      strong: cards.filter((c) => (c.box || 0) >= 3).length,
+      learning: cards.filter((c) => (c.box || 0) >= 1 && (c.box || 0) < 3).length,
+      shaky: cards.filter((c) => !c.box).length,
+      pyqTotal: mine.length, right, wrong, worst,
+      mock: gradeMock(D, store.get('gate-mock-2027', null), subject.code),
+    };
+  }
+
+  function progressPanel(subject, p) {
+    const s = subject.slug;
+    const pct = (a, b) => (b ? Math.round((100 * a) / b) : 0);
+    const num = (v) => (Math.round(v * 100) / 100).toString();
+    const block = (label, value, ...rest) => h('div', { class: 'sp-block' },
+      h('div', { class: 'sp-row' }, h('span', { class: 'sp-label', text: label }), h('span', { class: 'sp-value', text: value })),
+      ...rest);
+    const hint = (text, href, linkText) => h('p', { class: 'sp-hint' }, text, ' ', h('a', { href, text: linkText }));
+    const tried = p.right + p.wrong;
+
+    const notes = block('Notes studied', p.topics ? `${p.studied} / ${p.topics}` : '–',
+      p.topics ? h('div', { class: 'meter', role: 'img', 'aria-label': `${pct(p.studied, p.topics)}% of topics studied` }, h('span', { style: `width:${pct(p.studied, p.topics)}%` })) : null,
+      p.next
+        ? h('p', { class: 'sp-hint' }, p.studied ? 'Next: ' : 'Start with ', h('a', { href: routeHref(`subjects/${s}/notes`, p.next.id), text: p.next.title }))
+        : (p.topics ? h('p', { class: 'sp-hint', text: 'Every topic is marked studied.' }) : null));
+
+    const cards = block('Recall cards', p.totalCards ? `${p.rated} / ${p.totalCards} rated` : '–',
+      p.rated
+        ? h('p', { class: 'sp-stats' }, h('span', { text: `Strong ${p.strong}` }), h('span', { text: `Learning ${p.learning}` }), h('span', { text: `Shaky ${p.shaky}` }))
+        : hint('Rate the recall cards in the notes to see what sticks.', routeHref(`subjects/${s}/notes`), 'Open notes'),
+      p.due ? h('p', { class: 'sp-hint' }, h('strong', { text: `${p.due} due for review today` }), ' · ', h('a', { href: '#/', text: 'review on Home' })) : null);
+
+    const splitBar = () => {
+      const bar = h('div', { class: 'sp-split', role: 'img', 'aria-label': `${p.right} right, ${p.wrong} wrong` });
+      if (p.right) { const x = h('span', { class: 'ok' }); x.style.flexGrow = p.right; bar.append(x); }
+      if (p.wrong) { const x = h('span', { class: 'bad' }); x.style.flexGrow = p.wrong; bar.append(x); }
+      return bar;
+    };
+    const pyq = block('Past questions', p.pyqTotal ? `${tried} / ${p.pyqTotal} tried` : '–',
+      tried ? splitBar() : null,
+      tried
+        ? h('p', { class: 'sp-stats' },
+          h('span', {}, h('span', { class: 'sp-ico ok', text: '✓', 'aria-hidden': 'true' }), ` ${p.right} right`),
+          h('span', {}, h('span', { class: 'sp-ico bad', text: '✗', 'aria-hidden': 'true' }), ` ${p.wrong} wrong`),
+          h('span', { text: `${pct(p.right, tried)}% correct` }))
+        : hint('Mark questions right or wrong as you solve them.', `#/subjects/${s}/pyq`, 'Open past questions'),
+      p.worst ? h('p', { class: 'sp-hint' }, 'Most missed: ', h('strong', { text: p.worst[0] }), ` (${p.worst[1]})`) : null);
+
+    let mock;
+    if (p.mock && !p.mock.inProgress) {
+      const n = p.mock.right + p.mock.wrong + p.mock.skip;
+      mock = block('Mock test', `${p.mock.right} / ${n} right`,
+        h('p', { class: 'sp-hint', text: `${num(p.mock.got)} of ${p.mock.max} marks in this subject${p.mock.skip ? ` · ${p.mock.skip} skipped` : ''}` }));
+    } else if (p.mock && p.mock.inProgress) {
+      mock = block('Mock test', 'in progress', hint('Submit it to see your score here.', 'mock/', 'Resume the mock'));
+    } else {
+      mock = block('Mock test', '–', hint('Take the predicted-paper mock to see your score here.', 'mock/', 'Start the mock'));
+    }
+
+    return h('section', { class: 'sp', 'aria-label': `Your progress in ${subject.name}` },
+      h('div', { class: 'sp-kicker', text: 'Your progress' }),
+      notes, cards, pyq, mock,
+      h('p', { class: 'sp-note', text: 'Saved in this browser only.' }));
+  }
+
+  let progressSeq = 0;
+  async function paintProgress(subject) {
+    const seq = ++progressSeq;
+    let report;
+    try { report = await progressReport(subject); } catch (e) { console.error(e); return; }
+    if (seq !== progressSeq || !S.route || !S.route.subject || S.route.subject.slug !== subject.slug) return;
+    const side = $('#toc');
+    const panel = progressPanel(subject, report);
+    const old = $('#toc .sp');
+    if (old) old.replaceWith(panel); else side.append(panel);
+    const body = $('#page-head .sp-inline-body');
+    if (body) body.replaceChildren(progressPanel(subject, report));
+    const summary = $('#page-head .sp-inline > summary');
+    if (summary) {
+      const tried = report.right + report.wrong;
+      summary.textContent = `Your progress: ${report.studied}/${report.topics} topics studied${tried ? ` · ${report.right}/${tried} questions right` : ''}`;
+    }
+  }
+
+  let progressTimer = null;
+  function refreshProgressSoon() {
+    clearTimeout(progressTimer);
+    progressTimer = setTimeout(() => { if (S.route && S.route.subject) paintProgress(S.route.subject); }, 150);
   }
 
   // ---------------------------------------------------------------- nav, toc, pager
@@ -578,14 +776,16 @@
     for (const sec of S.site.nav) {
       const box = h('div', { class: 'nav-sec' }, h('div', { class: 'nav-title', text: sec.title }));
       if (sec.subjects) {
-        for (const s of S.site.subjects) {
+        // site.json lists subjects in weightage order (avg marks per paper, 2021-26); show that rank
+        S.site.subjects.forEach((s, i) => {
+          const tip = s.avg_recent != null ? `${s.code}: about ${s.avg_recent} marks per paper (2021–26)` : s.code;
           box.append(h('details', { class: 'nav-subject', 'data-slug': s.slug },
-            h('summary', {}, h('span', { class: 'code-badge', text: s.code }), h('span', { text: s.name })),
+            h('summary', { title: tip }, h('span', { class: 'code-badge nav-rank', text: String(i + 1), 'aria-label': `Rank ${i + 1}` }), h('span', { text: s.name })),
             h('a', { href: `#/subjects/${s.slug}`, 'data-route': `subjects/${s.slug}`, text: 'Overview' }),
             h('a', { href: `#/subjects/${s.slug}/notes`, 'data-route': `subjects/${s.slug}/notes`, text: 'Notes' }),
             h('a', { href: `#/subjects/${s.slug}/formulae`, 'data-route': `subjects/${s.slug}/formulae`, text: 'Formulae' }),
             h('a', { href: `#/subjects/${s.slug}/pyq`, 'data-route': `subjects/${s.slug}/pyq`, text: 'Previous-year questions' })));
-        }
+        });
       } else {
         for (const it of sec.items) {
           box.append(h('a', {
@@ -852,6 +1052,9 @@
     renderNav();
     initSearch();
     window.addEventListener('hashchange', render);
+    document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('#doc button, #doc input')) refreshProgressSoon(); });
+    document.addEventListener('change', (e) => { if (e.target.closest && e.target.closest('#doc')) refreshProgressSoon(); });
+    window.addEventListener('storage', refreshProgressSoon);
     render();
   }
 
