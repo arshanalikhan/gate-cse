@@ -810,27 +810,17 @@
       let next = pre.nextElementSibling;
       while (next && langOf(next) && !group.some((g) => langOf(g) === langOf(next))) { group.push(next); next = next.nextElementSibling; }
       if (group.length < 2) continue;
-      const box = h('div', { class: 'code-tabs' });
-      const bar = h('div', { class: 'code-tabs-bar', role: 'tablist', 'aria-label': 'Language' });
-      box.append(bar);
+      // user request: show both languages at once, side by side, clearly labelled, with a divider
+      group.sort((a, b) => (langOf(a) === 'c' ? -1 : 1) - (langOf(b) === 'c' ? -1 : 1));   // C on the left
+      const box = h('div', { class: 'code-tabs code-split' });
       pre.before(box);
-      const show = (lang) => {
-        for (const b of bar.children) { const on = b.dataset.lang === lang; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); }
-        for (const p of box.querySelectorAll('pre')) p.hidden = langOf(p) !== lang;
-      };
       for (const p of group) {
         const lang = langOf(p);
-        bar.append(h('button', { type: 'button', role: 'tab', 'data-lang': lang, text: CODE_LANGS[lang] }));
-        box.append(p);
+        box.append(h('div', { class: `code-col code-col-${lang}` },
+          h('div', { class: 'code-label', text: CODE_LANGS[lang] }), p));
       }
-      bar.addEventListener('click', (e) => {
-        const b = e.target.closest('button[data-lang]'); if (!b) return;
-        try { localStorage.setItem('gate-code-lang', b.dataset.lang); } catch (err) { /* ignore */ }
-        for (const other of $$('.code-tabs', doc)) other.dispatchEvent(new CustomEvent('code-lang', { detail: b.dataset.lang }));
-      });
-      box.addEventListener('code-lang', (e) => show(group.some((p) => langOf(p) === e.detail) ? e.detail : langOf(group[0])));
-      show(group.some((p) => langOf(p) === pref) ? pref : langOf(group[0]));
     }
+    void pref;
   }
 
   function updateNav(r) {
