@@ -779,12 +779,9 @@
         // site.json lists subjects in weightage order (avg marks per paper, 2021-26); show that rank
         S.site.subjects.forEach((s, i) => {
           const tip = s.avg_recent != null ? `${s.code}: about ${s.avg_recent} marks per paper (2021–26)` : s.code;
-          box.append(h('details', { class: 'nav-subject', 'data-slug': s.slug },
-            h('summary', { title: tip }, h('span', { class: 'code-badge nav-rank', text: String(i + 1), 'aria-label': `Rank ${i + 1}` }), h('span', { text: s.name })),
-            h('a', { href: `#/subjects/${s.slug}`, 'data-route': `subjects/${s.slug}`, text: 'Overview' }),
-            h('a', { href: `#/subjects/${s.slug}/notes`, 'data-route': `subjects/${s.slug}/notes`, text: 'Notes' }),
-            h('a', { href: `#/subjects/${s.slug}/formulae`, 'data-route': `subjects/${s.slug}/formulae`, text: 'Formulae' }),
-            h('a', { href: `#/subjects/${s.slug}/pyq`, 'data-route': `subjects/${s.slug}/pyq`, text: 'Previous-year questions' })));
+          // one link per subject, straight to its Overview; Notes/Formulae/PYQ are the tabs on the subject page
+          box.append(h('a', { class: 'nav-link nav-subject-link', href: `#/subjects/${s.slug}`, 'data-subject': s.slug, title: tip },
+            h('span', { class: 'code-badge nav-rank', text: String(i + 1), 'aria-label': `Rank ${i + 1}` }), h('span', { text: s.name })));
         });
       } else {
         for (const it of sec.items) {
@@ -805,9 +802,11 @@
       a.classList.toggle('active', on);
       if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     }
-    if (r.subject) {
-      const d = $(`#sidebar details[data-slug="${r.subject.slug}"]`);
-      if (d) d.open = true;
+    // a subject stays highlighted on all of its tabs (Overview, Notes, Formulae, PYQ)
+    for (const a of $$('#sidebar a[data-subject]')) {
+      const on = !!(r.subject && a.dataset.subject === r.subject.slug);
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     }
   }
 
