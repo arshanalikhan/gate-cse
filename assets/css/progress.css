@@ -44,3 +44,14 @@
 /* sidebar credit (user request) */
 .nav-credit { margin: 6px 0 4px; padding: 14px 10px 0; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
 .nav-credit strong { color: var(--text); font-weight: 600; }
+
+/* sidebar collapse on wide screens (user request): the menu button hides / shows the sidebar */
+@media (min-width: 881px) {
+  .menu-btn { display: inline-grid; }
+  .layout { transition: grid-template-columns .2s ease; }
+  body.nav-collapsed .layout { grid-template-columns: 0 minmax(0, 1fr) 232px; }
+  body.nav-collapsed .sidebar { visibility: hidden; padding: 0; border-right: 0; overflow: hidden; }
+}
+@media (min-width: 881px) and (max-width: 1180px) {
+  body.nav-collapsed .layout { grid-template-columns: 0 minmax(0, 1fr); }
+}

@@ -1125,7 +1125,30 @@
   function initMobileNav() {
     const btn = $('.menu-btn');
     const scrim = $('.scrim');
+    // wide screens: the same button collapses / restores the sidebar (user request); remembered in "gate-nav"
+    const wide = window.matchMedia('(min-width: 881px)');
+    const setCollapsed = (c) => {
+      document.body.classList.toggle('nav-collapsed', c);
+      if (wide.matches) {
+        btn.setAttribute('aria-expanded', String(!c));
+        btn.setAttribute('aria-label', c ? 'Show navigation' : 'Hide navigation');
+        btn.title = c ? 'Show sidebar' : 'Hide sidebar';
+      }
+    };
+    let collapsed = false;
+    try { collapsed = localStorage.getItem('gate-nav') === 'collapsed'; } catch (e) { /* storage blocked */ }
+    setCollapsed(collapsed);
+    wide.addEventListener('change', () => {
+      if (wide.matches) { closeNav(); setCollapsed(document.body.classList.contains('nav-collapsed')); }
+      else { btn.setAttribute('aria-label', 'Open navigation'); btn.title = ''; btn.setAttribute('aria-expanded', 'false'); }
+    });
     btn.addEventListener('click', () => {
+      if (wide.matches) {
+        const c = !document.body.classList.contains('nav-collapsed');
+        setCollapsed(c);
+        try { localStorage.setItem('gate-nav', c ? 'collapsed' : 'open'); } catch (e) { /* storage blocked */ }
+        return;
+      }
       const open = !document.body.classList.contains('nav-open');
       document.body.classList.toggle('nav-open', open);
       btn.setAttribute('aria-expanded', String(open));
