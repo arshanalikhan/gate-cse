@@ -1298,7 +1298,7 @@
    "text": "Which one of the following languages over $\\{a, b\\}$ is regular?",
    "options": [
     "$\\{a^n b^n \\mid n \\ge 0\\}$",
-    "$\\{w \\mid w \\text{ has as many occurrences of } ab \\text{ as of } ba\\}$",
+    "The set of strings $w$ with as many occurrences of $ab$ as of $ba$",
     "$\\{ww \\mid w \\in \\{a, b\\}^*\\}$",
     "$\\{a^p \\mid p \\text{ is prime}\\}$"
    ],

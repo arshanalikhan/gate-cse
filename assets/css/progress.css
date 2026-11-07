@@ -55,3 +55,7 @@
 @media (min-width: 881px) and (max-width: 1180px) {
   body.nav-collapsed .layout { grid-template-columns: 0 minmax(0, 1fr); }
 }
+
+/* KaTeX hides an absolutely positioned MathML copy of each formula; without a positioned ancestor it escapes
+   the sideways-scrolling table / display box and widens the whole page on phones (seen on CN notes). */
+.doc .table-wrap, .doc .katex-display { position: relative; }

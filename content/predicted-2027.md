@@ -1180,7 +1180,7 @@ $n^{\log_b a} = n^{\log_2 4} = n^2$ and $f(n) = n^2 \log n = \Theta(n^{\log_b a}
 Which one of the following languages over $\{a, b\}$ is regular?
 
 - **(A)** $\{a^n b^n \mid n \ge 0\}$
-- **(B)** $\{w \mid w \text{ has as many occurrences of } ab \text{ as of } ba\}$
+- **(B)** The set of strings $w$ with as many occurrences of $ab$ as of $ba$
 - **(C)** $\{ww \mid w \in \{a, b\}^*\}$
 - **(D)** $\{a^p \mid p \text{ is prime}\}$
 
