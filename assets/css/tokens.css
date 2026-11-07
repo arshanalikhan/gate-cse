@@ -44,7 +44,7 @@
   --reading-scale: 1;   /* set by the reader (study.js: S / M / L / XL) */
   --text-body: calc(clamp(1.0625rem, 1.0107rem + 0.221vw, 1.1875rem) * var(--reading-scale));
   --leading: 1.6;
-  --measure: 30em;   /* ~70 chars per line; on wide screens the space beside it holds callouts (site.css) */
+  --measure: none;   /* USER REQUEST (twice): text must fill the content column. Do not narrow. */
 }
 
 @media (prefers-color-scheme: dark) {

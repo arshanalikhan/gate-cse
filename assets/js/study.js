@@ -461,7 +461,7 @@
   const SETTINGS_KEY = 'gate-reading';
   const OPTIONS = {
     font: [['hyper', 'Hyperlegible'], ['system', 'System'], ['serif', 'Serif']],
-    size: [['s', 'S'], ['m', 'M'], ['l', 'L'], ['xl', 'XL']],
+    size: [['xs', 'XS'], ['s', 'S'], ['m', 'M'], ['l', 'L'], ['xl', 'XL']],
     spacing: [['normal', 'Normal'], ['wide', 'Wide']],
     breakEvery: [['0', 'Off'], ['25', '25 min'], ['50', '50 min']],
   };

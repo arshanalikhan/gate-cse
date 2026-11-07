@@ -8,6 +8,7 @@
 /* ---------- reading settings (study.js sets data-* on <html>) ---------- */
 :root[data-font="system"] { --font-reading: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 :root[data-font="serif"] { --font-reading: "Literata", Georgia, "Times New Roman", serif; }
+:root[data-size="xs"] { --reading-scale: .8; }
 :root[data-size="s"] { --reading-scale: .9; }
 :root[data-size="l"] { --reading-scale: 1.12; }
 :root[data-size="xl"] { --reading-scale: 1.25; }
