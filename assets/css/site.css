@@ -73,8 +73,8 @@
   font-size: 14px;
 }
 .main { min-width: 0; padding: 28px 40px 64px; outline: none; }
-.doc { max-width: 800px; margin: 0 auto; }
-#page-head { max-width: 800px; margin: 0 auto; }
+.doc { max-width: 880px; margin: 0 auto; }
+#page-head { max-width: 880px; margin: 0 auto; }
 .toc {
   position: sticky; top: var(--header-h);
   height: calc(100vh - var(--header-h));
@@ -213,12 +213,12 @@
 .toc li.l3 a.current { padding-left: 21px; }
 
 /* ---------- pager & footer ---------- */
-.pager { max-width: 800px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pager { max-width: 880px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pager a { display: block; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--text); background: var(--surface); }
 .pager a:hover { border-color: var(--accent); }
 .pager .dir { display: block; font-size: 12px; color: var(--text-muted); }
 .pager .next { text-align: right; grid-column: 2; }
-.foot { max-width: 800px; margin: 40px auto 0; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+.foot { max-width: 880px; margin: 40px auto 0; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
 
 /* ---------- study toggles ---------- */
 .study-toggle {

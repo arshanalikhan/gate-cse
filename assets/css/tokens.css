@@ -44,7 +44,7 @@
   --reading-scale: 1;   /* set by the reader (study.js: S / M / L / XL) */
   --text-body: calc(clamp(1.0625rem, 1.0107rem + 0.221vw, 1.1875rem) * var(--reading-scale));
   --leading: 1.6;
-  --measure: 30em;
+  --measure: none;   /* user preference: text fills the content column (was 30em) */
 }
 
 @media (prefers-color-scheme: dark) {
