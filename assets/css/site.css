@@ -372,3 +372,11 @@ a.card:hover { border-color: var(--accent); color: var(--text); transform: trans
   .layout { display: block; }
   .main { padding: 0; }
 }
+
+/* ---------- C / Python code tabs (app.js groupCodeTabs) ---------- */
+.code-tabs { margin: 1em 0 1.4em; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.code-tabs-bar { display: flex; gap: 2px; background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 4px 6px 0; }
+.code-tabs-bar button { font: inherit; font-size: 13px; font-weight: 600; padding: 5px 14px; border: 0; border-radius: 6px 6px 0 0; background: transparent; color: var(--text-muted); cursor: pointer; }
+.code-tabs-bar button.active { background: var(--code-bg); color: var(--accent); }
+.code-tabs pre { margin: 0; border: 0; border-radius: 0; }
+.code-tabs pre[hidden] { display: none; }

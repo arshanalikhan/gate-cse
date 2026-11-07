@@ -94,6 +94,27 @@ Trace recursion with a **call tree** (or an explicit stack, one frame per line).
 > [!RECALL] How many calls does naive `fib(5)` make, with `fib(0)` and `fib(1)` as base cases?
 > $2F_6 - 1 = 2 \times 8 - 1 = 15$.
 
+```c
+/* Tower of Hanoi: 2^n - 1 moves */
+void hanoi(int n, char from, char to, char via) {
+    if (n == 0) return;
+    hanoi(n - 1, from, via, to);
+    printf("move disk %d: %c -> %c\n", n, from, to);
+    hanoi(n - 1, via, to, from);
+}
+```
+
+```python
+# Tower of Hanoi: 2^n - 1 moves
+def hanoi(n, src="A", dst="C", via="B", moves=None):
+    moves = [] if moves is None else moves
+    if n:
+        hanoi(n - 1, src, via, dst, moves)
+        moves.append((n, src, dst))
+        hanoi(n - 1, via, dst, src, moves)
+    return moves
+```
+
 ## Arrays
 
 **Address calculation** for `A[lr..ur][lc..uc]` with element size $w$, $m$ rows and $n$ columns:
@@ -108,6 +129,26 @@ C uses row-major order. For 3-D `A[p][q][r]` in row-major order, element `[i][j]
 
 > [!RECALL] Address of `A[2][3]` in `int A[5][6]`, row-major, base 1000, 4-byte int, 0-based?
 > $1000 + (2 \times 6 + 3) \times 4 = 1060$.
+
+```c
+/* Row-major 2-D array: address of a[i][j] = base + (i*cols + j) * sizeof(int) */
+int sum2d(int rows, int cols, int a[rows][cols]) {
+    int s = 0;
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            s += a[i][j];
+    return s;
+}
+```
+
+```python
+# Python lists of lists; the row-major offset formula is the same idea
+def offset(i, j, cols, elem_size=4, base=0):
+    return base + (i * cols + j) * elem_size
+
+def sum2d(a):
+    return sum(sum(row) for row in a)
+```
 
 ## Stacks
 
@@ -124,6 +165,38 @@ LIFO; `push`, `pop`, `top` are $O(1)$. Applications: function calls, expression 
 > [!RECALL] Can a stack turn input 1 2 3 into output 3 1 2?
 > No. After 3 is popped, 2 sits above 1 on the stack, so 1 cannot come out before 2.
 
+```c
+#define MAX 100
+int stack[MAX], top = -1;
+void push(int x) { if (top < MAX - 1) stack[++top] = x; }
+int  pop(void)   { return top >= 0 ? stack[top--] : -1; }
+
+/* evaluate a postfix expression of single digits, e.g. "23*5+" = 11 */
+int eval_postfix(const char *s) {
+    for (; *s; s++) {
+        if (*s >= '0' && *s <= '9') push(*s - '0');
+        else {
+            int b = pop(), a = pop();
+            push(*s == '+' ? a + b : *s == '-' ? a - b : *s == '*' ? a * b : a / b);
+        }
+    }
+    return pop();
+}
+```
+
+```python
+# a Python list is a stack: append = push, pop = pop
+def eval_postfix(expr):
+    st = []
+    for ch in expr:
+        if ch.isdigit():
+            st.append(int(ch))
+        else:
+            b, a = st.pop(), st.pop()
+            st.append({'+': a + b, '-': a - b, '*': a * b, '/': a // b}[ch])
+    return st.pop()
+```
+
 ## Queues
 
 FIFO; `enqueue` at the rear, `dequeue` at the front.
@@ -139,6 +212,28 @@ FIFO; `enqueue` at the rear, `dequeue` at the front.
 
 > [!RECALL] When is a circular queue in an array of size $n$ full?
 > When `(rear + 1) % n == front`; it holds at most $n - 1$ elements.
+
+```c
+/* circular queue holding at most N-1 items */
+#define N 8
+int q[N], front = 0, rear = 0;
+int enqueue(int x) {
+    if ((rear + 1) % N == front) return 0;   /* full */
+    q[rear] = x; rear = (rear + 1) % N; return 1;
+}
+int dequeue(int *x) {
+    if (front == rear) return 0;             /* empty */
+    *x = q[front]; front = (front + 1) % N; return 1;
+}
+```
+
+```python
+from collections import deque   # O(1) at both ends
+
+q = deque()
+q.append(10); q.append(20)      # enqueue
+first = q.popleft()             # dequeue -> 10
+```
 
 ## Linked lists
 
@@ -157,6 +252,18 @@ struct node *reverse(struct node *head) {
     while (cur) { next = cur->next; cur->next = prev; prev = cur; cur = next; }
     return prev;
 }
+```
+
+```python
+class Node:
+    def __init__(self, val, nxt=None):
+        self.val, self.next = val, nxt
+
+def reverse(head):
+    prev, cur = None, head
+    while cur:
+        cur.next, prev, cur = prev, cur, cur.next
+    return prev
 ```
 
 > [!RECALL] Cost of deleting a node of a singly linked list when you only have a pointer to it?
@@ -188,6 +295,32 @@ Height of a single node is 0 (edges on the longest root-to-leaf path).
 > [!RECALL] Which pairs of traversals determine a binary tree uniquely?
 > Inorder with preorder, or inorder with postorder.
 
+```c
+struct tnode { int key; struct tnode *left, *right; };
+
+void inorder(struct tnode *t) {          /* left, root, right */
+    if (!t) return;
+    inorder(t->left); printf("%d ", t->key); inorder(t->right);
+}
+int height(struct tnode *t) {            /* edges on the longest root-leaf path */
+    if (!t) return -1;
+    int l = height(t->left), r = height(t->right);
+    return 1 + (l > r ? l : r);
+}
+```
+
+```python
+class TNode:
+    def __init__(self, key, left=None, right=None):
+        self.key, self.left, self.right = key, left, right
+
+def inorder(t):                          # left, root, right
+    return inorder(t.left) + [t.key] + inorder(t.right) if t else []
+
+def height(t):                           # edges on the longest root-leaf path
+    return -1 if t is None else 1 + max(height(t.left), height(t.right))
+```
+
 ## Binary search trees and AVL trees
 
 **BST property:** left subtree keys < node < right subtree keys. Inorder traversal is sorted. Search, insert and delete are $O(h)$: $O(\log n)$ when balanced, $O(n)$ in the worst case (sorted insertions build a chain).
@@ -210,6 +343,36 @@ giving 1, 2, 4, 7, 12, 20, 33, …; the height is at most about $1.44 \log_2 n$.
 
 > [!RECALL] How many BSTs can be built from the keys 1–4?
 > $C_4 = 14$.
+
+```c
+struct tnode *insert(struct tnode *t, int key) {
+    if (!t) {
+        t = malloc(sizeof *t); t->key = key; t->left = t->right = NULL;
+    } else if (key < t->key) t->left = insert(t->left, key);
+    else if (key > t->key)   t->right = insert(t->right, key);
+    return t;
+}
+struct tnode *search(struct tnode *t, int key) {
+    while (t && t->key != key) t = key < t->key ? t->left : t->right;
+    return t;
+}
+```
+
+```python
+def insert(t, key):
+    if t is None:
+        return TNode(key)
+    if key < t.key:
+        t.left = insert(t.left, key)
+    elif key > t.key:
+        t.right = insert(t.right, key)
+    return t
+
+def search(t, key):
+    while t and t.key != key:
+        t = t.left if key < t.key else t.right
+    return t
+```
 
 ## Binary heaps
 
@@ -242,6 +405,35 @@ A **complete** binary tree with the heap property (min-heap: parent ≤ children
 > [!RECALL] Where is the maximum of a min-heap?
 > In one of the leaves (indices $\lfloor n/2 \rfloor + 1 \ldots n$), so finding it takes $O(n)$.
 
+```c
+/* max-heap in a[1..n]: children of i are 2i and 2i+1 */
+void sift_down(int a[], int n, int i) {
+    while (2 * i <= n) {
+        int c = 2 * i;
+        if (c < n && a[c + 1] > a[c]) c++;
+        if (a[i] >= a[c]) break;
+        int t = a[i]; a[i] = a[c]; a[c] = t;
+        i = c;
+    }
+}
+void build_heap(int a[], int n) {        /* O(n) */
+    for (int i = n / 2; i >= 1; i--) sift_down(a, n, i);
+}
+```
+
+```python
+import heapq                     # min-heap on a plain list (0-indexed)
+
+a = [5, 3, 8, 1, 9]
+heapq.heapify(a)                 # O(n) build
+smallest = heapq.heappop(a)      # O(log n)
+heapq.heappush(a, 0)
+
+# max-heap trick: store negatives
+mx = [-x for x in [5, 3, 8]]; heapq.heapify(mx)
+largest = -mx[0]
+```
+
 ## Graph representation
 
 | | Adjacency matrix | Adjacency list |
@@ -255,3 +447,27 @@ Handshake lemma: $\sum_v \deg(v) = 2|E|$. Traversals (BFS, DFS) and graph algori
 
 > [!RECALL] Space used by an adjacency list vs an adjacency matrix?
 > $\Theta(V + E)$ vs $\Theta(V^2)$.
+
+```c
+/* adjacency matrix: O(V^2) space; adjacency list: O(V + E) */
+#define V 5
+int adj[V][V];
+void add_edge(int u, int v) { adj[u][v] = adj[v][u] = 1; }   /* undirected */
+int degree(int u) {
+    int d = 0;
+    for (int v = 0; v < V; v++) d += adj[u][v];
+    return d;
+}
+```
+
+```python
+from collections import defaultdict
+
+graph = defaultdict(list)        # adjacency list
+def add_edge(u, v):              # undirected
+    graph[u].append(v)
+    graph[v].append(u)
+
+add_edge(0, 1); add_edge(0, 2); add_edge(1, 2)
+```
+

@@ -342,6 +342,7 @@
     }
     await Promise.all(widgetJobs);
     if (seq !== S.seq) return;
+    groupCodeTabs(doc);
 
     // Notes pages: "studied" toggle on every topic (h2)
     if (r.subject && r.tab === 'notes') addStudyToggles(doc, r.subject);
@@ -793,6 +794,42 @@
         }
       }
       nav.append(box);
+    }
+  }
+
+  // Adjacent ```c and ```python blocks become one panel with C / Python tabs.
+  // The chosen language is remembered for the whole site (localStorage key "gate-code-lang").
+  const CODE_LANGS = { c: 'C', python: 'Python' };
+  function groupCodeTabs(doc) {
+    let pref = 'c';
+    try { pref = localStorage.getItem('gate-code-lang') || 'c'; } catch (e) { /* storage blocked */ }
+    const langOf = (pre) => { const m = pre && pre.tagName === 'PRE' && /language-(c|python)\b/.exec(pre.firstElementChild ? pre.firstElementChild.className : ''); return m ? m[1] : null; };
+    for (const pre of $$('pre', doc)) {
+      if (!pre.isConnected || pre.closest('.code-tabs') || !langOf(pre)) continue;
+      const group = [pre];
+      let next = pre.nextElementSibling;
+      while (next && langOf(next) && !group.some((g) => langOf(g) === langOf(next))) { group.push(next); next = next.nextElementSibling; }
+      if (group.length < 2) continue;
+      const box = h('div', { class: 'code-tabs' });
+      const bar = h('div', { class: 'code-tabs-bar', role: 'tablist', 'aria-label': 'Language' });
+      box.append(bar);
+      pre.before(box);
+      const show = (lang) => {
+        for (const b of bar.children) { const on = b.dataset.lang === lang; b.classList.toggle('active', on); b.setAttribute('aria-selected', String(on)); }
+        for (const p of box.querySelectorAll('pre')) p.hidden = langOf(p) !== lang;
+      };
+      for (const p of group) {
+        const lang = langOf(p);
+        bar.append(h('button', { type: 'button', role: 'tab', 'data-lang': lang, text: CODE_LANGS[lang] }));
+        box.append(p);
+      }
+      bar.addEventListener('click', (e) => {
+        const b = e.target.closest('button[data-lang]'); if (!b) return;
+        try { localStorage.setItem('gate-code-lang', b.dataset.lang); } catch (err) { /* ignore */ }
+        for (const other of $$('.code-tabs', doc)) other.dispatchEvent(new CustomEvent('code-lang', { detail: b.dataset.lang }));
+      });
+      box.addEventListener('code-lang', (e) => show(group.some((p) => langOf(p) === e.detail) ? e.detail : langOf(group[0])));
+      show(group.some((p) => langOf(p) === pref) ? pref : langOf(group[0]));
     }
   }
 

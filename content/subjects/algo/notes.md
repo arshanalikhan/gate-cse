@@ -85,6 +85,32 @@ Recurrences GATE keeps returning to:
 > [!RECALL] Fewest comparisons to find both the maximum and the minimum of 100 numbers?
 > $\lceil 3 \cdot 100/2 \rceil - 2 = 148$.
 
+```c
+int binary_search(const int a[], int n, int key) {   /* a sorted; O(log n) */
+    int lo = 0, hi = n - 1;
+    while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == key) return mid;
+        if (a[mid] < key) lo = mid + 1; else hi = mid - 1;
+    }
+    return -1;
+}
+```
+
+```python
+def binary_search(a, key):       # a sorted; O(log n)
+    lo, hi = 0, len(a) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if a[mid] == key:
+            return mid
+        if a[mid] < key:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+```
+
 ## Sorting
 
 | Algorithm | Best | Average | Worst | Stable | In place |
@@ -115,6 +141,38 @@ Facts GATE checks:
 
 > [!RECALL] Which of merge, quick, heap and insertion sort are stable?
 > Merge and insertion sort.
+
+```c
+/* quicksort, Lomuto partition with the last element as pivot */
+int partition(int a[], int lo, int hi) {
+    int p = a[hi], i = lo - 1;
+    for (int j = lo; j < hi; j++)
+        if (a[j] <= p) { i++; int t = a[i]; a[i] = a[j]; a[j] = t; }
+    int t = a[i + 1]; a[i + 1] = a[hi]; a[hi] = t;
+    return i + 1;
+}
+void quicksort(int a[], int lo, int hi) {
+    if (lo < hi) {
+        int p = partition(a, lo, hi);
+        quicksort(a, lo, p - 1); quicksort(a, p + 1, hi);
+    }
+}
+```
+
+```python
+def merge_sort(a):               # O(n log n), stable
+    if len(a) <= 1:
+        return a
+    mid = len(a) // 2
+    left, right = merge_sort(a[:mid]), merge_sort(a[mid:])
+    out, i, j = [], 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            out.append(left[i]); i += 1
+        else:
+            out.append(right[j]); j += 1
+    return out + left[i:] + right[j:]
+```
 
 ## Hashing
 
@@ -149,6 +207,33 @@ With uniform hashing, expected probes are at most $\frac{1}{1-\alpha}$ for an un
 > [!RECALL] Expected unsuccessful-search probes in open addressing at load factor 0.75?
 > At most $\frac{1}{1 - 0.75} = 4$.
 
+```c
+/* open addressing with linear probing; -1 marks an empty slot */
+#define M 11
+int table[M];
+void init(void) { for (int i = 0; i < M; i++) table[i] = -1; }
+int insert_key(int key) {
+    for (int i = 0; i < M; i++) {
+        int slot = (key % M + i) % M;
+        if (table[slot] == -1) { table[slot] = key; return slot; }
+    }
+    return -1;                   /* table full */
+}
+```
+
+```python
+M = 11
+table = [None] * M
+
+def insert_key(key):             # linear probing: h(k, i) = (k mod M + i) mod M
+    for i in range(M):
+        slot = (key % M + i) % M
+        if table[slot] is None:
+            table[slot] = key
+            return slot
+    return -1
+```
+
 ## Divide and conquer
 
 Split into subproblems, solve recursively, combine.
@@ -167,6 +252,23 @@ Split into subproblems, solve recursively, combine.
 
 > [!RECALL] Why is Strassen's algorithm $O(n^{2.81})$?
 > It multiplies two $n \times n$ matrices with 7 half-size products instead of 8: $T(n) = 7T(n/2) + \Theta(n^2) = \Theta(n^{\log_2 7})$.
+
+```c
+/* fast exponentiation: x^n in O(log n) multiplications */
+long long power(long long x, int n) {
+    if (n == 0) return 1;
+    long long half = power(x, n / 2);
+    return n % 2 ? half * half * x : half * half;
+}
+```
+
+```python
+def power(x, n):                 # x^n in O(log n) multiplications
+    if n == 0:
+        return 1
+    half = power(x, n // 2)
+    return half * half * x if n % 2 else half * half
+```
 
 ## Greedy algorithms
 
@@ -190,6 +292,30 @@ Greedy fails for **0/1 knapsack** (use DP) and for coin change with arbitrary de
 
 > [!RECALL] Which knapsack problem does greedy solve optimally?
 > Fractional knapsack (by value/weight ratio). 0/1 knapsack needs dynamic programming.
+
+```c
+/* activity selection: activities already sorted by finish time */
+int select_activities(const int start[], const int finish[], int n) {
+    int count = 1, last = finish[0];
+    for (int i = 1; i < n; i++)
+        if (start[i] >= last) { count++; last = finish[i]; }
+    return count;
+}
+```
+
+```python
+import heapq
+
+def huffman_cost(freqs):         # total bits = sum of merge costs
+    h = list(freqs)
+    heapq.heapify(h)
+    cost = 0
+    while len(h) > 1:
+        a, b = heapq.heappop(h), heapq.heappop(h)
+        cost += a + b
+        heapq.heappush(h, a + b)
+    return cost
+```
 
 ## Dynamic programming
 
@@ -217,6 +343,29 @@ Number of ways to fully parenthesise a chain of $n$ matrices: Catalan $C_{n-1}$.
 > [!RECALL] LCS of ABCBDAB and BDCABA has what length?
 > 4 (for example BCBA).
 
+```c
+/* length of the longest common subsequence: O(mn) */
+int lcs(const char *x, const char *y) {
+    int m = strlen(x), n = strlen(y);
+    int L[m + 1][n + 1];
+    for (int i = 0; i <= m; i++)
+        for (int j = 0; j <= n; j++)
+            L[i][j] = (i == 0 || j == 0) ? 0
+                    : x[i - 1] == y[j - 1] ? L[i - 1][j - 1] + 1
+                    : (L[i - 1][j] > L[i][j - 1] ? L[i - 1][j] : L[i][j - 1]);
+    return L[m][n];
+}
+```
+
+```python
+def knapsack(weights, values, cap):     # 0/1 knapsack, O(n * cap)
+    best = [0] * (cap + 1)
+    for w, v in zip(weights, values):
+        for c in range(cap, w - 1, -1):  # backwards: each item used once
+            best[c] = max(best[c], best[c - w] + v)
+    return best[cap]
+```
+
 ## Graph traversal
 
 | | BFS | DFS |
@@ -241,6 +390,44 @@ Number of ways to fully parenthesise a chain of $n$ matrices: Catalan $C_{n-1}$.
 > [!RECALL] What does BFS from $s$ compute in an unweighted graph?
 > The minimum number of edges from $s$ to every reachable vertex (and a shortest-path tree).
 
+```c
+/* BFS on an adjacency matrix; dist[v] = edges from s (-1 if unreachable) */
+#define V 6
+void bfs(int adj[V][V], int s, int dist[V]) {
+    int queue[V], head = 0, tail = 0;
+    for (int v = 0; v < V; v++) dist[v] = -1;
+    dist[s] = 0; queue[tail++] = s;
+    while (head < tail) {
+        int u = queue[head++];
+        for (int v = 0; v < V; v++)
+            if (adj[u][v] && dist[v] == -1) { dist[v] = dist[u] + 1; queue[tail++] = v; }
+    }
+}
+```
+
+```python
+from collections import deque
+
+def bfs(graph, s):               # graph: dict vertex -> list of neighbours
+    dist = {s: 0}
+    q = deque([s])
+    while q:
+        u = q.popleft()
+        for v in graph[u]:
+            if v not in dist:
+                dist[v] = dist[u] + 1
+                q.append(v)
+    return dist
+
+def dfs(graph, u, seen=None):    # recursive DFS, returns visit order
+    seen = [] if seen is None else seen
+    seen.append(u)
+    for v in graph[u]:
+        if v not in seen:
+            dfs(graph, v, seen)
+    return seen
+```
+
 ## Minimum spanning trees
 
 A spanning tree of a connected graph has $V - 1$ edges.
@@ -263,6 +450,39 @@ A spanning tree of a connected graph has $V - 1$ edges.
 > [!RECALL] If every edge weight is increased by 5, does the MST change? Do shortest paths?
 > The MST does not change (every spanning tree gains $5(V-1)$). Shortest paths can change, because paths with more edges gain more.
 
+```c
+/* Kruskal: edges sorted by weight, union-find to skip cycles */
+struct edge { int u, v, w; };
+int parent[100];
+int find(int x) { return parent[x] == x ? x : (parent[x] = find(parent[x])); }
+int kruskal(struct edge e[], int m, int n) {   /* e sorted by w */
+    int total = 0;
+    for (int i = 0; i < n; i++) parent[i] = i;
+    for (int i = 0; i < m; i++) {
+        int a = find(e[i].u), b = find(e[i].v);
+        if (a != b) { parent[a] = b; total += e[i].w; }
+    }
+    return total;
+}
+```
+
+```python
+def kruskal(n, edges):           # edges: (w, u, v); returns MST weight
+    parent = list(range(n))
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+    total = 0
+    for w, u, v in sorted(edges):
+        a, b = find(u), find(v)
+        if a != b:
+            parent[a] = b
+            total += w
+    return total
+```
+
 ## Shortest paths
 
 All algorithms rely on **relaxation**: if $d[u] + w(u, v) < d[v]$ then set $d[v] = d[u] + w(u, v)$.
@@ -284,3 +504,40 @@ All algorithms rely on **relaxation**: if $d[u] + w(u, v) < d[v]$ then set $d[v]
 
 > [!RECALL] Which single-source algorithm works with negative edge weights but no negative cycles, and at what cost?
 > Bellman–Ford, $O(VE)$ (or $O(V+E)$ if the graph is a DAG).
+
+```c
+/* Dijkstra with an adjacency matrix: O(V^2); weights must be >= 0 */
+#define V 5
+#define INF 1000000
+void dijkstra(int w[V][V], int s, int dist[V]) {
+    int done[V] = {0};
+    for (int v = 0; v < V; v++) dist[v] = INF;
+    dist[s] = 0;
+    for (int k = 0; k < V; k++) {
+        int u = -1;
+        for (int v = 0; v < V; v++)
+            if (!done[v] && (u == -1 || dist[v] < dist[u])) u = v;
+        done[u] = 1;
+        for (int v = 0; v < V; v++)
+            if (w[u][v] && dist[u] + w[u][v] < dist[v]) dist[v] = dist[u] + w[u][v];
+    }
+}
+```
+
+```python
+import heapq
+
+def dijkstra(graph, s):          # graph: u -> [(v, w)], w >= 0; O((V + E) log V)
+    dist = {s: 0}
+    pq = [(0, s)]
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d > dist.get(u, float('inf')):
+            continue             # stale entry
+        for v, w in graph[u]:
+            if d + w < dist.get(v, float('inf')):
+                dist[v] = d + w
+                heapq.heappush(pq, (d + w, v))
+    return dist
+```
+
