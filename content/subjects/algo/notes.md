@@ -31,9 +31,19 @@ Useful facts:
 > P, NP and NP-completeness are not listed in the 2027 syllabus and have not been asked since 2015.
 
 > [!RECALL] Order these: $n \log n$, $n^{1.01}$, $\sqrt{n}\,\log^2 n$, $2^{\log_2 n}$.
+> - [ ] $2^{\log_2 n} \prec \sqrt{n}\log^2 n \prec n\log n \prec n^{1.01}$
+> - [x] $\sqrt{n}\log^2 n \prec 2^{\log_2 n} \prec n\log n \prec n^{1.01}$
+> - [ ] $\sqrt{n}\log^2 n \prec 2^{\log_2 n} \prec n^{1.01} \prec n\log n$
+> - [ ] $\sqrt{n}\log^2 n \prec n\log n \prec n^{1.01} \prec 2^{\log_2 n}$
+>
 > $\sqrt{n}\log^2 n \prec 2^{\log_2 n} = n \prec n\log n \prec n^{1.01}$.
 
 > [!RECALL] How many times does `for (i = n; i > 1; i = i / 2)` iterate?
+> - [ ] $\Theta(\log \log n)$
+> - [ ] $\Theta(n)$
+> - [x] $\Theta(\log n)$
+> - [ ] $\Theta(\sqrt{n})$
+>
 > About $\log_2 n$ times, so the loop is $\Theta(\log n)$.
 
 ## Recurrence relations
@@ -69,9 +79,19 @@ Recurrences GATE keeps returning to:
 **Methods:** substitution (guess and prove), recursion tree (sum the cost per level), change of variable ($n = 2^m$ turns $\sqrt n$ into $m/2$), and the master theorem. The master theorem does **not** apply to $T(n) = 2T(n/2) + n/\log n$ (the gap is not polynomial; the answer is $\Theta(n \log\log n)$) or to subtract-and-conquer recurrences.
 
 > [!RECALL] Solve $T(n) = 4T(n/2) + n^2$.
+> - [ ] $\Theta(n \log n)$
+> - [ ] $\Theta(n^3)$
+> - [x] $\Theta(n^2 \log n)$
+> - [ ] $\Theta(n^2)$
+>
 > $n^{\log_2 4} = n^2$ matches $f(n)$: case 2, so $T(n) = \Theta(n^2 \log n)$.
 
 > [!RECALL] Solve $T(n) = 2T(n-1) + 1$ with $T(1) = 1$.
+> - [ ] $2^{n-1}$
+> - [ ] $n^2$
+> - [ ] $2^n$
+> - [x] $2^n - 1$
+>
 > $T(n) = 2^n - 1$, i.e. $\Theta(2^n)$.
 
 ## Searching
@@ -89,6 +109,11 @@ Recurrences GATE keeps returning to:
 **Selection:** the $k$-th smallest element can be found in $O(n)$ worst case (median of medians) or $O(n)$ expected (randomised quickselect).
 
 > [!RECALL] Fewest comparisons to find both the maximum and the minimum of 100 numbers?
+> - [ ] 198
+> - [x] 148
+> - [ ] 99
+> - [ ] 150
+>
 > $\lceil 3 \cdot 100/2 \rceil - 2 = 148$.
 
 ```c
@@ -145,9 +170,19 @@ Facts GATE checks:
 > Array 7 2 9 4 5, pivot 5: scan 7 (stay), 2 (swap to front), 9 (stay), 4 (swap) → 2 4 9 7 5 → put the pivot after the small part → 2 4 **5** 7 9. The pivot is now in its final position.
 
 > [!RECALL] How many swaps does insertion sort make on 4 3 2 1?
+> - [ ] 3
+> - [ ] 4
+> - [ ] 10
+> - [x] 6
+>
 > 6, the number of inversions $\binom{4}{2}$.
 
 > [!RECALL] Which of merge, quick, heap and insertion sort are stable?
+> - [ ] Quick and insertion sort
+> - [x] Merge and insertion sort
+> - [ ] Only merge sort
+> - [ ] Merge and heap sort
+>
 > Merge and insertion sort.
 
 ```c
@@ -212,9 +247,19 @@ With uniform hashing, expected probes are at most $\frac{1}{1-\alpha}$ for an un
 > $m = 10$, $h(k) = k \bmod 10$, insert 43, 23, 53, 15, 25: 43 → 3, 23 → 4, 53 → 5, 15 → 6 (5 taken), 25 → 7. Notice how one cluster (3–7) keeps growing.
 
 > [!RECALL] What condition must $h_2$ satisfy in double hashing?
+> - [ ] $h_2(k)$ must be even
+> - [ ] $h_2(k) = h_1(k) + 1$
+> - [ ] $h_2(k)$ must divide $m$
+> - [x] $h_2(k) \ne 0$ and $\gcd(h_2(k), m) = 1$
+>
 > $h_2(k) \ne 0$ and $\gcd(h_2(k), m) = 1$, so the probe sequence visits every slot (easy if $m$ is prime).
 
 > [!RECALL] Expected unsuccessful-search probes in open addressing at load factor 0.75?
+> - [ ] 1.85
+> - [x] 4
+> - [ ] 0.75
+> - [ ] 1.33
+>
 > At most $\frac{1}{1 - 0.75} = 4$.
 
 ```c
@@ -263,6 +308,11 @@ Split into subproblems, solve recursively, combine.
 | Counting inversions (merge-based) | $2T(n/2) + n$ | $\Theta(n \log n)$ |
 
 > [!RECALL] Why is Strassen's algorithm $O(n^{2.81})$?
+> - [x] 7 half-size products instead of 8: $T(n) = 7T(n/2) + \Theta(n^2)$
+> - [ ] It skips the zero blocks of the matrices
+> - [ ] 7 products of one-third-size matrices
+> - [ ] 8 half-size products, but with fewer additions
+>
 > It multiplies two $n \times n$ matrices with 7 half-size products instead of 8: $T(n) = 7T(n/2) + \Theta(n^2) = \Theta(n^{\log_2 7})$.
 
 ```c
@@ -305,6 +355,11 @@ Greedy fails for **0/1 knapsack** (use DP) and for coin change with arbitrary de
 > Frequencies a:45, b:13, c:12, d:16, e:9, f:5. Merges: 5+9=14, 12+13=25, 14+16=30, 25+30=55, 45+55=100. Code lengths: a 1, b 3, c 3, d 3, e 4, f 4. Average $= (45 + 3(13+12+16) + 4(9+5))/100 = 2.24$ bits.
 
 > [!RECALL] Which knapsack problem does greedy solve optimally?
+> - [ ] Neither
+> - [ ] 0/1 knapsack
+> - [x] Fractional knapsack
+> - [ ] Both
+>
 > Fractional knapsack (by value/weight ratio). 0/1 knapsack needs dynamic programming.
 
 ```c
@@ -354,9 +409,19 @@ Number of ways to fully parenthesise a chain of $n$ matrices: Catalan $C_{n-1}$.
 > Dimensions $10 \times 30$, $30 \times 5$, $5 \times 60$. $(AB)C$: $10\cdot30\cdot5 + 10\cdot5\cdot60 = 1500 + 3000 = 4500$. $A(BC)$: $30\cdot5\cdot60 + 10\cdot30\cdot60 = 9000 + 18000 = 27000$. Optimal: 4500 scalar multiplications.
 
 > [!RECALL] Why is the $O(nW)$ knapsack algorithm not polynomial?
+> - [x] $W$ takes only $\log W$ bits to write, so $O(nW)$ is exponential in the input length
+> - [ ] Because it uses backtracking
+> - [ ] Because $n$ can be very large
+> - [ ] Because the table has $n^2$ cells
+>
 > $W$ is a number, not an input size: it takes only $\log W$ bits to write, so $O(nW)$ is exponential in the input length (pseudo-polynomial).
 
 > [!RECALL] LCS of ABCBDAB and BDCABA has what length?
+> - [ ] 6
+> - [x] 4
+> - [ ] 5
+> - [ ] 3
+>
 > 4 (for example BCBA).
 
 ```c
@@ -403,9 +468,19 @@ def knapsack(weights, values, cap):     # 0/1 knapsack, O(n * cap)
 **Articulation points** (undirected): the DFS root if it has at least two children; a non-root $u$ if some child $v$ has $\text{low}[v] \ge \text{disc}[u]$. Edge $(u, v)$ is a **bridge** if $\text{low}[v] > \text{disc}[u]$.
 
 > [!RECALL] Which DFS edge type proves a directed graph has a cycle?
+> - [x] Back edge
+> - [ ] Tree edge
+> - [ ] Forward edge
+> - [ ] Cross edge
+>
 > A back edge.
 
 > [!RECALL] What does BFS from $s$ compute in an unweighted graph?
+> - [ ] A minimum spanning tree
+> - [x] The fewest edges from $s$ to every reachable vertex
+> - [ ] The strongly connected components
+> - [ ] A topological order
+>
 > The minimum number of edges from $s$ to every reachable vertex (and a shortest-path tree).
 
 ```c
@@ -468,6 +543,11 @@ A spanning tree of a connected graph has $V - 1$ edges.
 > A question may ask which edge sequence *could* be produced. Kruskal adds edges in non-decreasing weight order globally; Prim adds edges that are always connected to the current tree. Check both properties.
 
 > [!RECALL] If every edge weight is increased by 5, does the MST change? Do shortest paths?
+> - [ ] The MST can change; shortest paths stay the same
+> - [ ] Both stay the same
+> - [ ] Both can change
+> - [x] The MST stays the same; shortest paths can change
+>
 > The MST does not change (every spanning tree gains $5(V-1)$). Shortest paths can change, because paths with more edges gain more.
 
 ```c
@@ -525,6 +605,11 @@ All algorithms rely on **relaxation**: if $d[u] + w(u, v) < d[v]$ then set $d[v]
 > Edges: s→a 4, s→b 1, b→a 2, a→c 1, b→c 5. Extract s (0): a = 4, b = 1. Extract b (1): a = min(4, 3) = 3, c = 6. Extract a (3): c = min(6, 4) = 4. Extract c (4). Order of extraction: s, b, a, c.
 
 > [!RECALL] Which single-source algorithm works with negative edge weights but no negative cycles, and at what cost?
+> - [ ] Prim, $O(E \log V)$
+> - [ ] Kruskal, $O(E \log E)$
+> - [x] Bellman–Ford, $O(VE)$
+> - [ ] Dijkstra, $O(E \log V)$
+>
 > Bellman–Ford, $O(VE)$ (or $O(V+E)$ if the graph is a DAG).
 
 ```c

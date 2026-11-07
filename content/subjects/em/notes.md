@@ -23,6 +23,11 @@ Exam-focused notes for Linear Algebra, Calculus and Probability & Statistics (GA
 **Rank** = number of linearly independent rows (= columns) = number of non-zero rows in echelon form = size of the largest non-zero minor. $\operatorname{rank}(AB) \le \min(\operatorname{rank} A, \operatorname{rank} B)$; rank + nullity $= n$ (number of columns).
 
 > [!RECALL] $A$ is $3 \times 3$ with $\det A = 2$. What is $\det(2A)$?
+> - [ ] 8
+> - [ ] 64
+> - [x] 16
+> - [ ] 4
+>
 > $2^3 \cdot 2 = 16$.
 
 ## Systems of linear equations
@@ -43,6 +48,11 @@ A homogeneous system $Ax = 0$ always has $x = 0$; it has non-trivial solutions i
 > $x + y + z = 6$, $x + 2y + 3z = 10$, $x + 2y + \lambda z = \mu$. Subtracting the second equation from the third gives $(\lambda - 3)z = \mu - 10$. Unique solution if $\lambda \ne 3$; none if $\lambda = 3, \mu \ne 10$; infinitely many if $\lambda = 3, \mu = 10$.
 
 > [!RECALL] A system has 5 unknowns and $\operatorname{rank}(A) = \operatorname{rank}([A\mid b]) = 3$. How many free variables?
+> - [ ] 3
+> - [x] 2
+> - [ ] 5
+> - [ ] 0
+>
 > $5 - 3 = 2$, so infinitely many solutions.
 
 ## Eigenvalues and eigenvectors
@@ -74,6 +84,11 @@ $Av = \lambda v$ with $v \ne 0$; eigenvalues are roots of $\det(A - \lambda I) =
 > The number of non-zero eigenvalues equals the rank only for diagonalisable matrices. $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has both eigenvalues 0 but rank 1.
 
 > [!RECALL] A $3 \times 3$ matrix has eigenvalues 1, 2, 3. What are $\det A$ and $\operatorname{tr}(A^{-1})$?
+> - [ ] $\det A = \tfrac16$, $\operatorname{tr}(A^{-1}) = \tfrac{11}{6}$
+> - [x] $\det A = 6$, $\operatorname{tr}(A^{-1}) = \tfrac{11}{6}$
+> - [ ] $\det A = 6$, $\operatorname{tr}(A^{-1}) = 6$
+> - [ ] $\det A = 6$, $\operatorname{tr}(A^{-1}) = \tfrac16$
+>
 > $\det A = 6$; $\operatorname{tr}(A^{-1}) = 1 + \tfrac12 + \tfrac13 = \tfrac{11}{6}$.
 
 ## LU decomposition
@@ -86,6 +101,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > $A = \begin{pmatrix} 2 & 3 \\ 4 & 7 \end{pmatrix}$: multiplier $\ell_{21} = 4/2 = 2$; $u_{22} = 7 - 2 \cdot 3 = 1$. So $L = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}$, $U = \begin{pmatrix} 2 & 3 \\ 0 & 1 \end{pmatrix}$.
 
 > [!RECALL] In Doolittle's LU method, which factor has a unit diagonal?
+> - [ ] Both
+> - [ ] Neither
+> - [x] $L$
+> - [ ] $U$
+>
 > $L$.
 
 ## Limits, continuity and differentiability
@@ -105,6 +125,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 - Differentiable ⟹ continuous, not conversely: $\lvert x \rvert$ is continuous but not differentiable at 0.
 
 > [!RECALL] Evaluate $\lim_{x\to0} \frac{e^x - 1 - x}{x^2}$.
+> - [ ] $1$
+> - [ ] $0$
+> - [ ] $\infty$
+> - [x] $\tfrac12$
+>
 > L'Hôpital twice: $\frac{e^x}{2} \to \frac12$.
 
 ## Maxima and minima
@@ -129,6 +154,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > The largest value on a closed interval can sit at an endpoint where $f' \ne 0$.
 
 > [!RECALL] What does $rt - s^2 < 0$ say about a critical point of $f(x, y)$?
+> - [x] A saddle point
+> - [ ] A local maximum
+> - [ ] A local minimum
+> - [ ] The test is inconclusive
+>
 > It is a saddle point.
 
 ## Mean value theorems
@@ -142,6 +172,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 | Cauchy | $f, g$ as above, $g' \ne 0$ | $\dfrac{f'(c)}{g'(c)} = \dfrac{f(b) - f(a)}{g(b) - g(a)}$ |
 
 > [!RECALL] Find $c$ from the mean value theorem for $f(x) = x^2$ on $[1, 3]$.
+> - [x] $c = 2$
+> - [ ] $c = \sqrt{5}$
+> - [ ] $c = 4$
+> - [ ] $c = 1.5$
+>
 > $2c = \frac{9 - 1}{2} = 4$, so $c = 2$.
 
 ## Integration
@@ -162,6 +197,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > $\int_0^{\pi/2} \sin^4 x\,dx = \frac34 \cdot \frac12 \cdot \frac{\pi}{2} = \frac{3\pi}{16}$. And $\int_0^{\pi} x \sin x\,dx = [-x\cos x + \sin x]_0^{\pi} = \pi$.
 
 > [!RECALL] What is $\int_0^{\pi/2} \frac{\sin x}{\sin x + \cos x}\,dx$?
+> - [ ] $1$
+> - [ ] $\tfrac{\pi}{2}$
+> - [x] $\tfrac{\pi}{4}$
+> - [ ] $\tfrac12$
+>
 > $\frac{\pi}{4}$: adding it to the same integral with $x \to \frac{\pi}{2} - x$ gives $\frac{\pi}{2}$.
 
 ## Probability basics
@@ -181,6 +221,11 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > A highly accurate test for a rare condition still gives mostly false positives. Always weight by the prior.
 
 > [!RECALL] Two fair dice are rolled. Given that the sum is 8, what is the probability that one die shows 3?
+> - [ ] $\tfrac13$
+> - [x] $\tfrac25$
+> - [ ] $\tfrac{1}{18}$
+> - [ ] $\tfrac15$
+>
 > Outcomes with sum 8: (2,6), (3,5), (4,4), (5,3), (6,2). Two contain a 3: $\frac25$.
 
 ## Random variables and distributions
@@ -209,9 +254,19 @@ $E[aX + b] = aE[X] + b$; $\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)
 > $E[X] = 3.5$, $E[X^2] = \frac{91}{6}$, so $\operatorname{Var}(X) = \frac{91}{6} - \frac{49}{4} = \frac{35}{12}$.
 
 > [!RECALL] Mean and variance of Poisson($\lambda = 4$)?
+> - [x] Both are 4
+> - [ ] Mean 4, variance 2
+> - [ ] Mean 4, variance 16
+> - [ ] Mean 2, variance 4
+>
 > Both are 4.
 
 > [!RECALL] A bulb's life is exponential with mean 1000 hours. It has worked 500 hours; probability it lasts 1000 more?
+> - [ ] $e^{-1.5} \approx 0.223$
+> - [ ] $0.5$
+> - [x] $e^{-1} \approx 0.368$
+> - [ ] $e^{-0.5} \approx 0.607$
+>
 > Memoryless: $e^{-1000/1000} = e^{-1} \approx 0.368$.
 
 ## Descriptive statistics
@@ -224,4 +279,9 @@ $E[aX + b] = aE[X] + b$; $\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)
 - Empirical relation for moderately skewed data: mode $\approx 3\,$median $- 2\,$mean.
 
 > [!RECALL] Each mark in a test is increased by 5. What happens to the mean and the standard deviation?
+> - [ ] The mean rises by 5; the SD rises by 25
+> - [x] The mean rises by 5; the SD is unchanged
+> - [ ] Both rise by 5
+> - [ ] The mean is unchanged; the SD rises by 5
+>
 > The mean rises by 5; the standard deviation is unchanged.

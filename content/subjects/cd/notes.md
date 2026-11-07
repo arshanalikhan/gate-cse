@@ -18,6 +18,11 @@ Exam-focused notes for GATE 2027 Section 7. Parsing (FIRST/FOLLOW, LL(1) and LR 
 The **symbol table** is used by every phase. The front end (lexing to IR) depends on the source language; the back end depends on the target machine.
 
 > [!RECALL] Which phase detects "variable used but not declared"?
+> - [ ] Lexical analysis
+> - [ ] Code generation
+> - [x] Semantic analysis
+> - [ ] Syntax analysis
+>
 > Semantic analysis.
 
 ## Lexical analysis
@@ -35,6 +40,11 @@ Tokens are described by regular expressions and recognised by a DFA. When severa
 > `a+++b` is lexed as `a ++ + b` (longest match), giving 4 tokens; `x<=y` has 3 tokens, not 4.
 
 > [!RECALL] How many tokens are in `int a = b + 10;`?
+> - [ ] 8
+> - [ ] 6
+> - [x] 7
+> - [ ] 5
+>
 > 7: `int` `a` `=` `b` `+` `10` `;`.
 
 ## Grammars, FIRST and FOLLOW
@@ -59,6 +69,11 @@ Rules for FOLLOW: for $B \to \alpha A \beta$, add FIRST($\beta$) − {ε} to FOL
 > FOLLOW: $E, E'$: { ), \$ }; $T, T'$: { +, ), \$ }; $F$: { *, +, ), \$ }.
 
 > [!RECALL] Remove left recursion from $E \to E + T \mid T$.
+> - [ ] $E \to +TE' \mid T$
+> - [x] $E \to TE'$, $E' \to +TE' \mid \varepsilon$
+> - [ ] $E \to E'T$, $E' \to E' + \mid \varepsilon$
+> - [ ] $E \to TE'$, $E' \to +E' \mid \varepsilon$
+>
 > $E \to TE'$, $E' \to +TE' \mid \varepsilon$.
 
 ## LL(1) parsing
@@ -79,6 +94,11 @@ Left-recursive and ambiguous grammars are never LL(1). Recursive-descent parsers
 > $S \to aSb \mid ab$: both alternatives start with $a$, so $M[S, a]$ has two entries. Left-factoring gives $S \to aS'$, $S' \to Sb \mid b$, which is LL(1).
 
 > [!RECALL] When is the grammar with $A \to \alpha \mid \varepsilon$ LL(1) (other rules fine)?
+> - [ ] Always, because $\varepsilon$ rules never conflict
+> - [x] FIRST($\alpha$) ∩ FOLLOW($A$) = ∅
+> - [ ] FOLLOW($\alpha$) ∩ FOLLOW($A$) = ∅
+> - [ ] FIRST($\alpha$) ∩ FIRST($A$) = ∅
+>
 > When FIRST($\alpha$) ∩ FOLLOW($A$) = ∅.
 
 ## LR parsing
@@ -113,9 +133,19 @@ Bottom-up shift-reduce parsers find the **handle** (the right side to reduce) an
 > Decide "is the grammar SLR(1)?" by building the item sets: a state containing both $A \to \alpha\cdot$ and $B \to \beta \cdot a\gamma$ has an SLR shift–reduce conflict only if $a \in$ FOLLOW($A$).
 
 > [!RECALL] Which conflicts can merging LR(1) states into LALR(1) introduce?
+> - [ ] Only shift–reduce conflicts
+> - [ ] Both kinds
+> - [x] Only reduce–reduce conflicts
+> - [ ] Neither
+>
 > Only reduce–reduce conflicts.
 
 > [!RECALL] Order LR(0), SLR(1), LALR(1) and CLR(1) by power.
+> - [ ] LR(0) ⊂ SLR(1) ⊂ CLR(1) ⊂ LALR(1)
+> - [ ] LR(0) ⊂ LALR(1) ⊂ SLR(1) ⊂ CLR(1)
+> - [x] LR(0) ⊂ SLR(1) ⊂ LALR(1) ⊂ CLR(1)
+> - [ ] SLR(1) ⊂ LR(0) ⊂ LALR(1) ⊂ CLR(1)
+>
 > LR(0) ⊂ SLR(1) ⊂ LALR(1) ⊂ CLR(1).
 
 ## Syntax-directed translation
@@ -136,6 +166,11 @@ An SDD attaches attributes to grammar symbols and semantic rules to productions.
 > With actions at the ends of productions, the output order is the order in which the bottom-up parser **reduces**, which is the postorder of the parse tree, not the left-to-right order of the input.
 
 > [!RECALL] Can an L-attributed SDD use an attribute of a right sibling?
+> - [ ] Yes, if the attribute is synthesized
+> - [ ] Yes, any sibling
+> - [ ] Only in bottom-up parsing
+> - [x] No; only the parent's inherited and left siblings' attributes
+>
 > No; only the parent's inherited attributes and left siblings' attributes.
 
 ## Intermediate code and basic blocks
@@ -168,6 +203,11 @@ An SDD attaches attributes to grammar symbols and semantic rules to productions.
 > Leaders: 1, 2 (jump target), 4 (after a jump), 7 (jump target). Basic blocks: {1}, {2, 3}, {4, 5, 6}, {7}: four blocks.
 
 > [!RECALL] How many nodes does the DAG for `t1 = a + b; t2 = a + b; t3 = t1 * t2` have?
+> - [ ] 3
+> - [x] 4
+> - [ ] 6
+> - [ ] 5
+>
 > 4: leaves a and b, one shared + node, and the * node.
 
 ## Runtime environments
@@ -190,6 +230,11 @@ An **activation record** (stack frame) holds: actual parameters, returned value,
 > `void f(int x, int y) { x = x + 1; y = y + 1; }` called as `f(a, a)` with `a = 1`: by reference `a` becomes 3; by value–result each copy becomes 2 and `a` ends as 2.
 
 > [!RECALL] Which allocation strategy cannot support recursive procedures?
+> - [ ] Stack allocation
+> - [ ] None of them
+> - [x] Static allocation
+> - [ ] Heap allocation
+>
 > Static allocation.
 
 ## Code optimisation
@@ -212,6 +257,11 @@ An **activation record** (stack frame) holds: actual parameters, returned value,
 **Local** optimisation works inside one basic block (DAGs make it easy); **global** optimisation works across the CFG using data-flow analysis.
 
 > [!RECALL] Which optimisation turns `x * 8` into `x << 3`?
+> - [x] Strength reduction
+> - [ ] Loop-invariant code motion
+> - [ ] Copy propagation
+> - [ ] Constant folding
+>
 > Strength reduction.
 
 ## Data-flow analysis
@@ -241,4 +291,9 @@ Each analysis has a direction, a meet operator, and a transfer function per bloc
 > "May" analyses (reaching definitions, liveness) use union; "must" analyses (available expressions) use intersection, so the initial value of IN/OUT for available expressions is the full set (except at entry).
 
 > [!RECALL] Is liveness a forward or backward analysis, and what is its meet?
+> - [ ] Forward, with intersection
+> - [x] Backward, with union
+> - [ ] Forward, with union
+> - [ ] Backward, with intersection
+>
 > Backward, with union.

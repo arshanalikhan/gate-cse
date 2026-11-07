@@ -49,9 +49,19 @@ Precedence, high to low (associativity in brackets):
 **Scope rules:** C uses static (lexical) scoping; an inner declaration hides an outer one of the same name within its block. Questions sometimes ask what the output would be under *dynamic* scoping: then a free variable refers to the most recent active binding on the call stack.
 
 > [!RECALL] What are `-7 / 2` and `-7 % 2` in C?
+> - [ ] `-3` and `1`
+> - [x] `-3` and `-1`
+> - [ ] `-4` and `-1`
+> - [ ] `-4` and `1`
+>
 > `-3` and `-1`.
 
 > [!RECALL] Default value and lifetime of a `static` local variable?
+> - [ ] Garbage; it is re-created on every call
+> - [x] 0; it lives for the whole run and is initialised once
+> - [ ] 0; it is re-created on every call
+> - [ ] Garbage; it lives for the whole run
+>
 > 0; it lives for the whole run and is initialised only once.
 
 ## Pointers and arrays
@@ -79,6 +89,11 @@ Precedence, high to low (associativity in brackets):
 > `void swap(int *a, int *b) { int *t = a; a = b; b = t; }` swaps only the local copies of the pointers; the caller sees no change. Swapping requires `int t = *a; *a = *b; *b = t;`.
 
 > [!RECALL] What is the difference between `int *p[10]` and `int (*p)[10]`?
+> - [ ] A pointer to an array of 10 ints vs an array of 10 pointers
+> - [ ] Both are pointers to an array of 10 ints
+> - [ ] Both are arrays of 10 pointers
+> - [x] An array of 10 pointers vs a pointer to an array of 10 ints
+>
 > The first is an array of 10 pointers to int; the second is a single pointer to an array of 10 ints.
 
 ## Recursion
@@ -101,6 +116,11 @@ Trace recursion with a **call tree** (or an explicit stack, one frame per line).
 > `p(6)` prints `110`, the binary form of 6: the remainders are printed as the calls return.
 
 > [!RECALL] How many calls does naive `fib(5)` make, with `fib(0)` and `fib(1)` as base cases?
+> - [x] 15
+> - [ ] 8
+> - [ ] 16
+> - [ ] 9
+>
 > $2F_6 - 1 = 2 \times 8 - 1 = 15$.
 
 ```c
@@ -139,6 +159,11 @@ C uses row-major order. For 3-D `A[p][q][r]` in row-major order, element `[i][j]
 **Lower-triangular matrix** of order $n$ stored row-wise: element $(i, j)$ with $i \ge j$ (1-indexed) is at position $\frac{i(i-1)}{2} + j$; total elements $\frac{n(n+1)}{2}$.
 
 > [!RECALL] Address of `A[2][3]` in `int A[5][6]`, row-major, base 1000, 4-byte int, 0-based?
+> - [ ] 1072
+> - [ ] 1052
+> - [ ] 1015
+> - [x] 1060
+>
 > $1000 + (2 \times 6 + 3) \times 4 = 1060$.
 
 ```c
@@ -176,6 +201,11 @@ LIFO; `push`, `pop`, `top` are $O(1)$. Applications: function calls, expression 
 **Stack permutations:** the number of output orders obtainable by pushing $1, 2, \dots, n$ in order (popping at any time) is the Catalan number $C_n = \frac{1}{n+1}\binom{2n}{n}$. An output is impossible exactly when it contains a pattern $\dots c \dots a \dots b \dots$ with $a < b < c$ (e.g. 3, 1, 2).
 
 > [!RECALL] Can a stack turn input 1 2 3 into output 3 1 2?
+> - [ ] Only if 3 is pushed first
+> - [ ] Yes, by pushing all three first
+> - [x] No
+> - [ ] Yes
+>
 > No. After 3 is popped, 2 sits above 1 on the stack, so 1 cannot come out before 2.
 
 ```c
@@ -226,6 +256,11 @@ FIFO; `enqueue` at the rear, `dequeue` at the front.
 | Stack with two queues | One of push/pop becomes $O(n)$ |
 
 > [!RECALL] When is a circular queue in an array of size $n$ full?
+> - [x] `(rear + 1) % n == front`
+> - [ ] `rear == n - 1`
+> - [ ] `(front + 1) % n == rear`
+> - [ ] `rear == front`
+>
 > When `(rear + 1) % n == front`; it holds at most $n - 1$ elements.
 
 ```c
@@ -284,6 +319,11 @@ def reverse(head):
 ```
 
 > [!RECALL] Cost of deleting a node of a singly linked list when you only have a pointer to it?
+> - [ ] Always $O(n)$
+> - [x] $O(1)$ by copying the next node into it (not for the last node)
+> - [ ] $O(\log n)$
+> - [ ] Always $O(1)$, even for the last node
+>
 > $O(1)$ by copying the next node into it and deleting the next node (impossible for the last node); otherwise $O(n)$ to find the predecessor.
 
 ## Binary trees
@@ -309,9 +349,19 @@ Height of a single node is 0 (edges on the longest root-to-leaf path).
 **Expression trees:** inorder gives infix (needs parentheses), preorder gives prefix, postorder gives postfix.
 
 > [!RECALL] A binary tree has 20 leaves. How many nodes have two children?
+> - [x] 19
+> - [ ] 10
+> - [ ] 20
+> - [ ] 21
+>
 > 19, since $n_0 = n_2 + 1$.
 
 > [!RECALL] Which pairs of traversals determine a binary tree uniquely?
+> - [x] Inorder with preorder, or inorder with postorder
+> - [ ] Preorder with postorder
+> - [ ] Inorder alone
+> - [ ] Any two of the three
+>
 > Inorder with preorder, or inorder with postorder.
 
 ```c
@@ -360,9 +410,19 @@ $$N(h) = N(h-1) + N(h-2) + 1, \quad N(0) = 1,\; N(1) = 2$$
 giving 1, 2, 4, 7, 12, 20, 33, …; the height is at most about $1.44 \log_2 n$.
 
 > [!RECALL] Minimum number of nodes in an AVL tree of height 4?
+> - [ ] 15
+> - [ ] 20
+> - [ ] 7
+> - [x] 12
+>
 > 12 (sequence 1, 2, 4, 7, 12).
 
 > [!RECALL] How many BSTs can be built from the keys 1–4?
+> - [ ] 5
+> - [ ] 24
+> - [ ] 16
+> - [x] 14
+>
 > $C_4 = 14$.
 
 ```c
@@ -423,9 +483,19 @@ A **complete** binary tree with the heap property (min-heap: parent ≤ children
 > An array like `[10, 8, 9, 7, 3, 6, 5]` must be checked at **every** parent: 10 ≥ 8, 9; 8 ≥ 7, 3; 9 ≥ 6, 5, so it is a max-heap. A single violation anywhere disqualifies it.
 
 > [!RECALL] Time to build a binary heap bottom-up from $n$ unsorted keys?
+> - [ ] $O(n \log n)$
+> - [ ] $O(n^2)$
+> - [x] $O(n)$
+> - [ ] $O(\log n)$
+>
 > $O(n)$.
 
 > [!RECALL] Where is the maximum of a min-heap?
+> - [ ] At the last index, so $O(1)$
+> - [x] In one of the leaves; finding it takes $O(n)$
+> - [ ] At the root
+> - [ ] In one of the root's children, so $O(1)$
+>
 > In one of the leaves (indices $\lfloor n/2 \rfloor + 1 \ldots n$), so finding it takes $O(n)$.
 
 ```c
@@ -471,6 +541,11 @@ largest = -mx[0]
 Handshake lemma: $\sum_v \deg(v) = 2|E|$. Traversals (BFS, DFS) and graph algorithms are in [Algorithms](#/subjects/algo/notes?h=graph-traversal).
 
 > [!RECALL] Space used by an adjacency list vs an adjacency matrix?
+> - [ ] $\Theta(E)$ vs $\Theta(E^2)$
+> - [x] $\Theta(V + E)$ vs $\Theta(V^2)$
+> - [ ] $\Theta(VE)$ vs $\Theta(V^2)$
+> - [ ] $\Theta(V^2)$ vs $\Theta(V + E)$
+>
 > $\Theta(V + E)$ vs $\Theta(V^2)$.
 
 ```c

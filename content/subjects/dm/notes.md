@@ -33,9 +33,19 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 > "$p$ only if $q$" is $p \to q$. "$p$ unless $q$" is $\lnot q \to p$, i.e. $p \lor q$. "$p$ is necessary for $q$" is $q \to p$.
 
 > [!RECALL] What is $p \to q$ equivalent to, using only $\lnot$ and $\lor$?
+> - [ ] $\lnot (p \lor q)$
+> - [x] $\lnot p \lor q$
+> - [ ] $p \lor \lnot q$
+> - [ ] $\lnot p \lor \lnot q$
+>
 > $\lnot p \lor q$.
 
 > [!RECALL] How many distinct Boolean functions of 3 variables exist?
+> - [x] 256
+> - [ ] 64
+> - [ ] 8
+> - [ ] 16
+>
 > $2^{2^3} = 256$.
 
 ## First-order logic
@@ -63,9 +73,19 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 > To show an FOL statement is **not** valid, build a small counter-model: a domain of one or two elements with the predicates chosen to make the premise true and the conclusion false.
 
 > [!RECALL] Write "no student failed" in FOL.
+> - [ ] $\exists x\,(S(x) \land \lnot F(x))$
+> - [x] $\lnot \exists x\,(S(x) \land F(x))$
+> - [ ] $\lnot \exists x\,(S(x) \to F(x))$
+> - [ ] $\forall x\,(S(x) \land \lnot F(x))$
+>
 > $\lnot \exists x\,(S(x) \land F(x))$, equivalently $\forall x\,(S(x) \to \lnot F(x))$.
 
 > [!RECALL] Is $\forall x\,(P(x) \lor Q(x)) \to \forall x\,P(x) \lor \forall x\,Q(x)$ valid?
+> - [ ] Only when the domain has one element
+> - [ ] Only over finite domains
+> - [ ] Yes
+> - [x] No
+>
 > No. Domain {a, b} with $P(a), Q(b)$ true and $P(b), Q(a)$ false is a counter-model.
 
 ## Sets
@@ -82,6 +102,11 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 **Countability:** $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, finite strings over a finite alphabet, and the set of all programs (Turing machines) are countable. $\mathbb{R}$, $\mathcal{P}(\mathbb{N})$ and the set of all functions $\mathbb{N} \to \{0, 1\}$ (all languages over an alphabet) are uncountable. That gap is why some languages are not recognised by any Turing machine.
 
 > [!RECALL] Is the set of all languages over {0, 1} countable?
+> - [x] No, it is uncountable
+> - [ ] Yes, it is finite
+> - [ ] Yes, it is countably infinite
+> - [ ] Yes, like the set of Turing machines
+>
 > No. It is $\mathcal{P}(\Sigma^*)$, uncountable, while the set of Turing machines is countable.
 
 ## Relations
@@ -109,9 +134,19 @@ A relation $R$ on a set $A$ with $n$ elements is a subset of $A \times A$.
 > $R = \{(1,2), (2,3), (1,3), (3,3)\}$ on {1, 2, 3}: every pair $(a,b), (b,c)$ has $(a,c)$: $(1,2),(2,3) \to (1,3)$ ✓, $(2,3),(3,3) \to (2,3)$ ✓, $(1,3),(3,3) \to (1,3)$ ✓. Transitive, not reflexive.
 
 > [!RECALL] How many symmetric relations are there on a 3-element set?
+> - [ ] 27
+> - [ ] 8
+> - [x] 64
+> - [ ] 512
+>
 > $2^{3 \cdot 4 / 2} = 2^6 = 64$.
 
 > [!RECALL] How many equivalence relations are there on a 4-element set?
+> - [x] 15
+> - [ ] 24
+> - [ ] 16
+> - [ ] 14
+>
 > The Bell number $B_4 = 15$.
 
 ## Functions
@@ -133,6 +168,11 @@ A relation $R$ on a set $A$ with $n$ elements is a subset of $A \times A$.
 > From a 4-set onto a 3-set: $3^4 - \binom31 2^4 + \binom32 1^4 = 81 - 48 + 3 = 36$.
 
 > [!RECALL] Number of one-to-one functions from a 3-set to a 5-set?
+> - [x] 60
+> - [ ] 10
+> - [ ] 125
+> - [ ] 243
+>
 > $5 \cdot 4 \cdot 3 = 60$.
 
 ## Partial orders and lattices
@@ -154,6 +194,11 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > In the poset {2, 3, 6, 9} under divisibility, 6 and 9 are both maximal, so there is no greatest element.
 
 > [!RECALL] Is the divisor lattice $D_{36}$ complemented?
+> - [x] No
+> - [ ] Yes, every divisor lattice is complemented
+> - [ ] Yes, because it is distributive
+> - [ ] Yes
+>
 > No: 36 is not square-free (6 has no complement).
 
 ## Groups and algebraic structures
@@ -177,9 +222,19 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > In $(\mathbb{Z}_{12}, +)$ the element 8 has order $12/\gcd(8, 12) = 3$: $8, 16 \equiv 4, 24 \equiv 0$.
 
 > [!RECALL] How many generators does a cyclic group of order 10 have?
+> - [ ] 10
+> - [ ] 9
+> - [x] 4
+> - [ ] 2
+>
 > $\varphi(10) = 4$.
 
 > [!RECALL] Can a group of order 15 have a subgroup of order 4?
+> - [ ] Yes
+> - [x] No
+> - [ ] Only if the group is abelian
+> - [ ] Only if the group is cyclic
+>
 > No: 4 does not divide 15 (Lagrange).
 
 ## Graph theory
@@ -227,12 +282,27 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > A sequence is a valid simple-graph degree sequence only if its sum is even **and** it passes Havel–Hakimi (repeatedly remove the largest $d$, subtract 1 from the next $d$ entries). (3, 3, 3, 1) has an even sum but fails.
 
 > [!RECALL] When does a connected graph have an Euler circuit?
+> - [ ] When the graph is complete
+> - [ ] When exactly two vertices have odd degree
+> - [ ] When every vertex has degree at least 2
+> - [x] When every vertex has even degree
+>
 > When every vertex has even degree.
 
 > [!RECALL] Maximum edges in a simple planar graph with 8 vertices?
+> - [x] 18
+> - [ ] 12
+> - [ ] 24
+> - [ ] 28
+>
 > $3 \cdot 8 - 6 = 18$.
 
 > [!RECALL] Number of proper 3-colourings of a path with 4 vertices?
+> - [ ] 12
+> - [x] 24
+> - [ ] 48
+> - [ ] 81
+>
 > A path is a tree: $3 \cdot 2^3 = 24$.
 
 ## Combinatorics and counting
@@ -260,9 +330,19 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > Decide first whether the objects and the boxes are distinguishable. Identical balls into distinct boxes is stars and bars; distinct balls into distinct boxes is $k^n$; distinct balls into identical boxes uses Stirling numbers.
 
 > [!RECALL] In how many ways can 5 letters go into 5 envelopes with none in the right one?
+> - [x] 44
+> - [ ] 53
+> - [ ] 24
+> - [ ] 120
+>
 > $D_5 = 44$.
 
 > [!RECALL] How many ways to choose 3 scoops from 5 ice-cream flavours, repeats allowed?
+> - [x] 35
+> - [ ] 10
+> - [ ] 125
+> - [ ] 60
+>
 > $\binom{5 + 3 - 1}{3} = \binom{7}{3} = 35$.
 
 ## Recurrences and generating functions
@@ -289,7 +369,17 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > Let $a_n$ count length-$n$ strings with no two adjacent 1s. A string ends in 0 (any valid string of length $n-1$ before it) or in 01: $a_n = a_{n-1} + a_{n-2}$, $a_1 = 2$, $a_2 = 3$. So $a_n = F_{n+2}$; $a_5 = 13$.
 
 > [!RECALL] Solve $a_n = 4a_{n-1} - 4a_{n-2}$.
+> - [ ] $a_n = \alpha 2^n + \beta 2^n$
+> - [ ] $a_n = \alpha 4^n + \beta$
+> - [ ] $a_n = \alpha 2^n + \beta (-2)^n$
+> - [x] $a_n = (\alpha + \beta n)\,2^n$
+>
 > Root 2 is repeated: $a_n = (\alpha + \beta n)\,2^n$.
 
 > [!RECALL] What is the coefficient of $x^n$ in $\frac{1}{(1-x)^2}$?
+> - [ ] $n$
+> - [x] $n + 1$
+> - [ ] $1$
+> - [ ] $2^n$
+>
 > $n + 1$.

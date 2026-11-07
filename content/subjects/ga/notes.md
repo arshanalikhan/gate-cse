@@ -21,6 +21,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > Options with "always", "never", "only" or "all" are usually too strong for inference questions.
 
 > [!RECALL] "The number of errors ___ decreasing." Is or are?
+> - [ ] are
+> - [ ] Either is correct
+> - [x] is
+> - [ ] be
+>
 > "is": "the number" is singular ("a number of errors are…").
 
 ## Percentages, ratios and averages
@@ -40,6 +45,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > A price rises 20% and then falls 20%: net change $20 - 20 - \frac{400}{100} = -4\%$. A car covers equal distances at 60 and 40 km/h: average $\frac{2 \cdot 60 \cdot 40}{100} = 48$ km/h, not 50.
 
 > [!RECALL] A does a job in 10 days, B in 15. How long together?
+> - [ ] 12.5 days
+> - [x] 6 days
+> - [ ] 25 days
+> - [ ] 5 days
+>
 > $\frac{10 \cdot 15}{25} = 6$ days.
 
 ## Powers, logarithms and series
@@ -58,6 +68,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > Unit digit of $7^{2026}$: $2026 \bmod 4 = 2$, so the second entry of the cycle: **9**.
 
 > [!RECALL] What is $\log_4 8$?
+> - [ ] $\tfrac12$
+> - [ ] $2$
+> - [x] $\tfrac32$
+> - [ ] $\tfrac23$
+>
 > $\frac{\log_2 8}{\log_2 4} = \frac32$.
 
 ## Counting and probability
@@ -70,6 +85,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > Three fair coins: $P(\text{at least one head}) = 1 - \frac18 = \frac78$.
 
 > [!RECALL] In how many ways can 5 people sit around a round table?
+> - [ ] 60
+> - [x] 24
+> - [ ] 120
+> - [ ] 12
+>
 > $4! = 24$.
 
 ## Data interpretation
@@ -83,6 +103,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > A rise from 20% to 25% is 5 percentage points, but a 25% relative increase.
 
 > [!RECALL] A pie-chart sector is 72°. What share of the total is it?
+> - [ ] 18%
+> - [ ] 72%
+> - [ ] 25%
+> - [x] 20%
+>
 > $72 / 360 = 20\%$.
 
 ## Mensuration and geometry
@@ -101,6 +126,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 - Similar figures: lengths scale by $k$, areas by $k^2$, volumes by $k^3$.
 
 > [!RECALL] If every side of a cube is doubled, by what factor does its volume grow?
+> - [ ] 6
+> - [ ] 2
+> - [x] 8
+> - [ ] 4
+>
 > $2^3 = 8$.
 
 ## Analytical reasoning
@@ -116,6 +146,11 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > At 3:40 the hands are $\lvert 90 - 220 \rvert = 130^\circ$ apart.
 
 > [!RECALL] "No A is B; all C are A." Does "no C is B" follow?
+> - [x] Yes
+> - [ ] No
+> - [ ] Cannot be determined
+> - [ ] Only if some C exist
+>
 > Yes: every C lies inside A, which does not meet B.
 
 ## Spatial aptitude
@@ -136,4 +171,9 @@ Exam-focused notes for the GA section: 10 questions, 15 marks (five 1-mark, five
 > A $4 \times 4 \times 4$ painted cube: 8 with three painted faces, 24 with two, 24 with one, 8 with none (total 64).
 
 > [!RECALL] A square sheet is folded in half twice and one hole is punched. How many holes after unfolding?
+> - [x] 4
+> - [ ] 8
+> - [ ] 3
+> - [ ] 2
+>
 > 4.

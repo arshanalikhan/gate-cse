@@ -175,11 +175,56 @@
       const rate = el('div', { class: 'recall-rate', role: 'group', 'aria-label': 'How well did you recall it?', hidden: true },
         el('span', { class: 'recall-ask', text: 'How did it go?' }),
         RATINGS.map(([v, t]) => el('button', { type: 'button', class: `recall-btn rate-${v}`, 'data-rate': v, text: t })));
-      const hint = el('span', { class: 'recall-hint', text: 'Answer it in your head, or on paper, first.' });
+      // Multiple-choice options: a GFM task list in the card ("- [x] right", "- [ ] wrong").
+      // Picking one marks it, shows the right one and opens the worked answer (user request).
+      const list = Array.from(answer.querySelectorAll(':scope > ul')).find((ul) =>
+        ul.children.length > 1 && Array.from(ul.children).every((li) => li.querySelector(':scope > input[type="checkbox"]')));
+      let choices = null;
+      if (list) {
+        choices = el('div', { class: 'recall-options', role: 'group', 'aria-label': 'Choose an answer' });
+        Array.from(list.children).forEach((li, k) => {
+          const box = li.querySelector(':scope > input[type="checkbox"]');
+          const correct = box.checked;
+          box.remove();
+          const opt = el('button', { type: 'button', class: 'recall-opt', 'data-correct': correct ? '1' : '0' },
+            el('span', { class: 'recall-opt-key', 'aria-hidden': 'true', text: 'ABCDEFGH'[k] }), el('span', { class: 'recall-opt-text' }));
+          opt.lastChild.append(...Array.from(li.childNodes));
+          choices.append(opt);
+        });
+        list.remove();
+      }
+
+      const hint = el('span', { class: 'recall-hint', text: choices ? 'Work it out first, then pick an option.' : 'Answer it in your head, or on paper, first.' });
       const bar = el('div', { class: 'recall-bar' }, show, rate, hint);
 
       if (title) title.before(label); else bq.prepend(label);
+      if (choices) bq.append(choices);
       bq.append(answer, bar);
+
+      const openAnswer = () => { if (answer.hidden) show.click(); };
+      if (choices) choices.addEventListener('click', (e) => {
+        const pick = e.target.closest('.recall-opt');
+        if (!pick || choices.dataset.done) return;
+        choices.dataset.done = '1';
+        const right = pick.dataset.correct === '1';
+        for (const o of choices.children) {
+          o.disabled = true;
+          if (o.dataset.correct === '1') o.classList.add('is-correct');
+        }
+        if (!right) pick.classList.add('is-wrong');
+        pick.setAttribute('aria-pressed', 'true');
+        openAnswer();
+        hint.hidden = false;
+        hint.textContent = right ? 'Correct. Rate how easy it was.' : 'Not quite: the right option is marked green.';
+        hint.classList.toggle('recall-hint-good', right);
+        hint.classList.toggle('recall-hint-bad', !right);
+      });
+      // Showing the answer without picking also reveals the right option.
+      if (choices) show.addEventListener('click', () => {
+        if (answer.hidden || choices.dataset.done) return;
+        choices.dataset.done = '1';
+        for (const o of choices.children) { o.disabled = true; if (o.dataset.correct === '1') o.classList.add('is-correct'); }
+      });
 
       const paint = () => {
         const st = cardStatus(loadStudy().cards[key]);

@@ -20,6 +20,11 @@ Exam-focused notes for GATE 2027 Section 10, which was trimmed this year: UDP, A
 - Flow and error control can exist at several layers (link and transport); routing exists only at the network layer.
 
 > [!RECALL] Which layer's header contains the port numbers, and which contains the TTL?
+> - [x] Transport for ports; network for TTL
+> - [ ] Data link for ports; network for TTL
+> - [ ] Both in the network layer
+> - [ ] Network for ports; transport for TTL
+>
 > Transport (TCP) for ports; network (IP) for TTL.
 
 ## Switching and performance metrics
@@ -46,6 +51,11 @@ $$d_{trans} = \frac{L}{R}, \qquad d_{prop} = \frac{d}{s}, \qquad d_{nodal} = d_{
 > A 3 Mb message crosses 3 links of 1 Mbps (2 routers). Sent whole: $3 \times 3 = 9$ s. Split into 3 packets of 1 Mb: $(3 + 3 - 1) \times 1 = 5$ s. Pipelining across links is why packet switching wins.
 
 > [!RECALL] What limits the end-to-end throughput of a path of links?
+> - [ ] The average of the link rates
+> - [ ] The fastest link
+> - [x] The slowest (bottleneck) link
+> - [ ] The sum of the link rates
+>
 > The slowest (bottleneck) link.
 
 ## Flow control and sliding window
@@ -66,6 +76,11 @@ Full utilisation needs $N \ge 1 + 2a$. Throughput $= \eta \times R$. On an error
 > 1 Mbps link, 1000-bit frames, 10 ms propagation: $T_t = 1$ ms, $a = 10$. Stop-and-wait efficiency $= 1/21 \approx 4.8\%$. Full utilisation needs a window of 21: GBN needs $2^k - 1 \ge 21$, so $k = 5$ bits; SR needs $2^{k-1} \ge 21$, so $k = 6$ bits.
 
 > [!RECALL] Why must the Selective Repeat window be at most half the sequence space?
+> - [ ] To keep utilisation at 50%
+> - [ ] Because the sender buffer is half the size
+> - [x] Otherwise retransmitted old frames could be accepted as new ones
+> - [ ] To halve the number of ACKs
+>
 > Otherwise, if all ACKs are lost, retransmitted old frames carry numbers the receiver now expects as new frames and wrongly accepts them.
 
 ## Error detection
@@ -87,6 +102,11 @@ Full utilisation needs $N \ge 1 + 2a$. Throughput $= \eta \times R$. On an error
 > Data 1101011011, generator 10011 ($x^4 + x + 1$). Divide 1101011011**0000** by 10011: remainder 1110. Transmit 11010110111110.
 
 > [!RECALL] How many check bits does a Hamming code need for 8 data bits?
+> - [ ] 8
+> - [ ] 3
+> - [x] 4
+> - [ ] 5
+>
 > 4, since $2^4 = 16 \ge 8 + 4 + 1$.
 
 ## Medium access control and Ethernet
@@ -116,6 +136,11 @@ Efficiency falls as $a = T_p/T_t$ grows (long cables, fast links, short frames).
 > 10 Mbps, 2.5 km cable, signal speed $2 \times 10^8$ m/s: $T_p = 12.5\,\mu$s, so $L_{min} = 2 \times 12.5 \times 10^{-6} \times 10^7 = 250$ bits.
 
 > [!RECALL] Maximum throughput of slotted ALOHA, and at what load?
+> - [ ] $1/e$ at $G = 0.5$
+> - [ ] $1/(2e) \approx 0.184$ at $G = 0.5$
+> - [x] $1/e \approx 0.368$ at $G = 1$
+> - [ ] $0.5$ at $G = 1$
+>
 > $1/e \approx 0.368$ at $G = 1$ frame per slot.
 
 ## Routing
@@ -136,6 +161,11 @@ Efficiency falls as $a = T_p/T_t$ grows (long cables, fast links, short frames).
 > Router A has neighbours B (cost 2) and C (cost 5). B reports $D_B(X) = 4$, C reports $D_C(X) = 1$. Then $D_A(X) = \min(2 + 4, 5 + 1) = 6$, via either neighbour.
 
 > [!RECALL] Which routing approach suffers from count-to-infinity?
+> - [ ] Link state
+> - [x] Distance vector
+> - [ ] Flooding
+> - [ ] Path vector (BGP)
+>
 > Distance vector.
 
 ## IPv4 addressing and CIDR
@@ -166,6 +196,11 @@ Old classes for reference: A 0.0.0.0–127.255.255.255 (/8), B 128–191 (/16), 
 > With /20 the third octet moves in blocks of 16, so 172.16.40.255/20 lies in the block 172.16.32.0 – 172.16.47.255. It is an ordinary host address; the block's broadcast address is 172.16.47.255. Always find the block boundaries first.
 
 > [!RECALL] How many usable host addresses does a /27 have?
+> - [ ] 32
+> - [ ] 62
+> - [x] 30
+> - [ ] 14
+>
 > $2^5 - 2 = 30$.
 
 ## IPv4 fragmentation
@@ -184,6 +219,11 @@ Fragmenting a datagram for a link with MTU $M$ and header $h$:
 > Data = 3980 bytes, header 20. Each fragment carries at most 1480 data bytes: fragments of 1480, 1480 and 1020 bytes of data; total lengths 1500, 1500, 1040; offsets 0, 185, 370; MF = 1, 1, 0.
 
 > [!RECALL] A fragment has offset 100 and MF = 0. What do you know?
+> - [ ] It is the first fragment and more follow
+> - [x] It is the last fragment; 800 bytes of data came before it
+> - [ ] It is the last fragment; 100 bytes came before it
+> - [ ] It is a middle fragment; 800 bytes came before it
+>
 > It is the last fragment, and 800 bytes of data came before it.
 
 ## Network address translation
@@ -193,6 +233,11 @@ Fragmenting a datagram for a link with MTU $M$ and header $h$:
 A NAT router lets many hosts with private addresses share one public address. Outgoing packets get their (private IP, port) replaced by (public IP, new port); the NAT table maps replies back. Consequences: hosts behind NAT cannot be reached unless a mapping exists (port forwarding), and NAT violates the end-to-end principle because the router rewrites transport-layer ports.
 
 > [!RECALL] Which header fields does a NAT router rewrite on an outgoing TCP segment?
+> - [ ] Only the MAC addresses
+> - [x] Source IP address and source port
+> - [ ] Destination IP address and destination port
+> - [ ] Source IP address only
+>
 > The source IP address and source port (and therefore the IP and TCP checksums).
 
 ## TCP
@@ -225,9 +270,19 @@ The sender's effective window is $\min(\text{cwnd}, \text{rwnd})$; throughput $\
 > Read whether windows and thresholds are in bytes or in MSS, and whether the question counts the RTT in which the window *reaches* a value or the one in which it is *used*.
 
 > [!RECALL] What happens to cwnd and ssthresh on a timeout?
+> - [x] ssthresh = cwnd/2, cwnd = 1 MSS
+> - [ ] ssthresh unchanged, cwnd = 1 MSS
+> - [ ] cwnd halves, ssthresh unchanged
+> - [ ] ssthresh = cwnd/2, cwnd = ssthresh
+>
 > ssthresh becomes half the current cwnd, and cwnd drops to 1 MSS (slow start restarts).
 
 > [!RECALL] Maximum throughput with a 64 KB window and a 100 ms RTT?
+> - [ ] 320 KB/s ≈ 2.6 Mbps
+> - [ ] 6.4 MB/s ≈ 52 Mbps
+> - [ ] 64 KB/s ≈ 0.52 Mbps
+> - [x] 640 KB/s ≈ 5.2 Mbps
+>
 > $64 \text{ KB} / 0.1 \text{ s} = 640$ KB/s ≈ 5.2 Mbps.
 
 ## Socket API
@@ -246,6 +301,11 @@ The sender's effective window is $\min(\text{cwnd}, \text{rwnd})$; throughput $\
 - A TCP connection is identified by the 4-tuple (source IP, source port, destination IP, destination port).
 
 > [!RECALL] Which socket call returns a new socket descriptor on the server side?
+> - [x] `accept()`
+> - [ ] `listen()`
+> - [ ] `connect()`
+> - [ ] `bind()`
+>
 > `accept()`.
 
 ## DNS and HTTP
@@ -270,4 +330,9 @@ Fetching a page with a base HTML file and $n$ small objects (transmission time i
 > Base page plus 10 images, RTT 50 ms: non-persistent serial $22 \times 50 = 1100$ ms; persistent without pipelining $12 \times 50 = 600$ ms; with pipelining $3 \times 50 = 150$ ms.
 
 > [!RECALL] Why does each object cost 2 RTTs with non-persistent HTTP?
+> - [ ] Two RTTs for the TCP handshake
+> - [x] One RTT to open the TCP connection, one for request and response
+> - [ ] One RTT for the request, one for the ACK
+> - [ ] One RTT for DNS, one for the request
+>
 > One RTT to open the TCP connection, one for the request and response.

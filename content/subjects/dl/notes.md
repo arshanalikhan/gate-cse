@@ -23,9 +23,19 @@ Exam-focused notes for GATE 2027 Section 2. The 2027 wording names three minimis
 > $F = AB + A'C + BC = AB + A'C$ (consensus: $BC$ is covered by the other two terms).
 
 > [!RECALL] Simplify $x + x'y$.
+> - [ ] $xy$
+> - [ ] $y$
+> - [ ] $x'y$
+> - [x] $x + y$
+>
 > $x + y$.
 
 > [!RECALL] How many self-dual functions of 3 variables exist?
+> - [x] 16
+> - [ ] 8
+> - [ ] 256
+> - [ ] 4
+>
 > $2^{2^{2}} = 16$.
 
 ## Karnaugh-map minimisation
@@ -46,6 +56,11 @@ Cells are ordered in Gray code so neighbours differ in one variable (the map wra
 > Count **all** prime implicants, not just the ones in your minimal cover; essential PIs are those forced by a minterm with only one covering PI.
 
 > [!RECALL] A group of 8 cells in a 4-variable K-map leaves how many literals?
+> - [x] One
+> - [ ] Two
+> - [ ] Zero
+> - [ ] Three
+>
 > One ($8 = 2^3$ eliminates 3 of the 4 variables).
 
 ## Tabular (Quine–McCluskey) method
@@ -63,6 +78,11 @@ A systematic version of the K-map that works for any number of variables:
 > $F(A,B,C) = \Sigma m(0, 1, 2, 5, 6, 7)$. Pairs: 0-1 = 00–, 0-2 = 0–0, 1-5 = –01, 2-6 = –10, 5-7 = 1–1, 6-7 = 11–. Nothing combines further, so there are 6 PIs and none is essential. Two minimal covers of 3 terms: $A'B' + BC' + AC$ or $A'C' + B'C + AB$.
 
 > [!RECALL] In Quine–McCluskey, which two terms can be combined?
+> - [ ] Terms that differ in two bit positions
+> - [ ] Any two terms with the same number of 1s
+> - [x] Terms from adjacent groups differing in exactly one bit, dashes aligned
+> - [ ] Terms from the same group with dashes aligned
+>
 > Terms from adjacent groups (one more 1) that differ in exactly one bit position, with dashes in the same places.
 
 ## Combinational circuits
@@ -88,6 +108,11 @@ A systematic version of the K-map that works for any number of variables:
 > "Minimum number of 2-input NAND gates" questions require rewriting the whole circuit in NAND form; an XOR alone needs 4 NAND gates.
 
 > [!RECALL] What size of multiplexer implements any 4-variable function if the inputs may be $D$, $D'$, 0 or 1?
+> - [ ] 16:1
+> - [ ] 2:1
+> - [ ] 4:1
+> - [x] 8:1
+>
 > 8:1 (three select lines).
 
 ## Sequential circuits
@@ -112,9 +137,19 @@ A **latch** is level-triggered; a **flip-flop** is edge-triggered.
 > Two T flip-flops with $T_0 = 1$ and $T_1 = Q_0$, starting at $Q_1Q_0 = 00$: 00 → 01 → 10 → 11 → 00. A 2-bit up counter.
 
 > [!RECALL] How many states does a 4-flip-flop Johnson counter have?
+> - [ ] 15
+> - [ ] 16
+> - [ ] 4
+> - [x] 8
+>
 > 8.
 
 > [!RECALL] Write the characteristic equation of a JK flip-flop.
+> - [ ] $Q^+ = JQ + K'Q'$
+> - [ ] $Q^+ = J'Q + KQ'$
+> - [ ] $Q^+ = J + K'Q$
+> - [x] $Q^+ = JQ' + K'Q$
+>
 > $Q^+ = JQ' + K'Q$.
 
 ## Number representation
@@ -139,9 +174,19 @@ A **latch** is level-triggered; a **flip-flop** is edge-triggered.
 > 8-bit: $100 + 50 = 150 > 127$. In binary 01100100 + 00110010 = 10010110, which reads as −106: two positives gave a negative, so overflow.
 
 > [!RECALL] Range of 8-bit 2's complement numbers?
+> - [ ] −127 to 127
+> - [ ] 0 to 255
+> - [x] −128 to 127
+> - [ ] −127 to 128
+>
 > −128 to 127.
 
 > [!RECALL] Gray code of binary 1011?
+> - [ ] 1001
+> - [ ] 1101
+> - [x] 1110
+> - [ ] 0111
+>
 > $1011 \oplus 0101 = 1110$.
 
 ## Floating point (IEEE 754)
@@ -172,4 +217,9 @@ Single precision: smallest positive normal $2^{-126}$, smallest denormal $2^{-14
 > Normalised numbers have an implicit leading 1 that is not stored; subtract the bias from the stored exponent. Denormals use $2^{1 - \text{bias}}$, not $2^{0 - \text{bias}}$.
 
 > [!RECALL] What does an all-ones exponent with a zero fraction represent?
+> - [ ] A denormal number
+> - [ ] NaN
+> - [x] Infinity
+> - [ ] Zero
+>
 > Infinity (sign gives +∞ or −∞).

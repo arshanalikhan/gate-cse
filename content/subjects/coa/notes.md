@@ -35,6 +35,11 @@ $$\text{MIPS} = \frac{f}{\text{CPI} \times 10^6}, \qquad \text{CPI}_{avg} = \sum
 $$\text{Speed-up} = \frac{1}{(1-f) + \dfrac{f}{s}}$$
 
 > [!RECALL] 40% of a program's time is sped up 4×. What is the overall speed-up?
+> - [x] $\approx 1.43$
+> - [ ] $4$
+> - [ ] $1.6$
+> - [ ] $1.3$
+>
 > $\dfrac{1}{0.6 + 0.4/4} = \dfrac{1}{0.7} \approx 1.43$.
 
 ## Addressing modes
@@ -59,9 +64,19 @@ Typical uses: arrays → indexed; pointers → register indirect; position-indep
 > The offset is added to the address of the *next* instruction (PC has already been incremented), unless the question states otherwise. For a 2-word instruction at address 1000 with 2-byte words, the PC is 1004 when the offset is added.
 
 > [!RECALL] Which addressing mode suits array elements, and which suits position-independent branches?
+> - [ ] PC-relative for arrays; indexed for branches
+> - [x] Indexed for arrays; PC-relative for branches
+> - [ ] Direct for arrays; indirect for branches
+> - [ ] Immediate for arrays; register indirect for branches
+>
 > Indexed for arrays; PC-relative for branches.
 
 > [!RECALL] How many memory accesses does an indirect-mode operand need, excluding the instruction fetch?
+> - [ ] Zero
+> - [x] Two
+> - [ ] One
+> - [ ] Three
+>
 > Two: one to read the pointer, one to read the operand.
 
 ## ALU design and arithmetic
@@ -83,6 +98,11 @@ Every carry is a two-level sum-of-products of $G$, $P$ and $C_0$, so delay is co
 **ALU control:** function-select lines choose the operation; status flags (Z, N, C, V) feed the control unit for conditional branches.
 
 > [!RECALL] How is two's-complement overflow detected from the carries?
+> - [ ] $V = C_n \land C_{n-1}$
+> - [x] $V = C_n \oplus C_{n-1}$
+> - [ ] $V = C_n$
+> - [ ] $V = C_{n-1}$
+>
 > $V = C_n \oplus C_{n-1}$: the carry into the sign bit differs from the carry out of it.
 
 ## Control unit design
@@ -111,9 +131,19 @@ $$\text{next-address bits} = \log_2(\text{control-memory words}), \qquad \text{c
 > 48 control signals, 16 status conditions to test, 512 microinstructions in a horizontal format: control field 48 bits, condition select $\lceil \log_2 16 \rceil = 4$ bits, next address $\log_2 512 = 9$ bits. Word = 61 bits; control memory = $512 \times 61$ bits.
 
 > [!RECALL] Horizontal vs vertical microcode: which is wider, and which needs decoders?
+> - [ ] They are the same width; only vertical needs decoders
+> - [ ] Vertical is wider; horizontal needs decoders
+> - [x] Horizontal is wider; vertical needs decoders
+> - [ ] Horizontal is wider and needs decoders
+>
 > Horizontal is wider (one bit per control signal); vertical encodes groups of signals and needs decoders.
 
 > [!RECALL] Which control unit is faster, and which is easier to modify?
+> - [ ] Hardwired is both faster and easier to modify
+> - [ ] Microprogrammed is faster; hardwired is easier to modify
+> - [ ] Microprogrammed is both faster and easier to modify
+> - [x] Hardwired is faster; microprogrammed is easier to modify
+>
 > Hardwired is faster; microprogrammed is easier to modify.
 
 ## Memory interfacing
@@ -134,6 +164,11 @@ $$\#\text{chips} = \frac{W}{w} \times \frac{b}{c}$$
 **Interleaving:** with $k$ modules, low-order interleaving puts consecutive words in consecutive modules, so a block of $k$ words can be fetched in about one access time; high-order interleaving puts consecutive words in the same module.
 
 > [!RECALL] How many 32K × 8 chips build a 256K × 32 memory, and what selects the rows?
+> - [ ] 16 chips; a 4-to-16 decoder picks the row
+> - [ ] 32 chips; a 2-to-4 decoder picks the row
+> - [x] 32 chips; a 3-to-8 decoder picks the row
+> - [ ] 8 chips; a 3-to-8 decoder picks the row
+>
 > $\frac{256}{32} \times \frac{32}{8} = 8 \times 4 = 32$ chips; a 3-to-8 decoder selects one of the 8 rows.
 
 ## Memory hierarchy performance
@@ -163,6 +198,11 @@ $$T = t_1 + (1-h_1)\bigl[t_2 + (1-h_2)\,t_m\bigr]$$
 > Read whether the question says "on a miss the word is first brought to the cache" (hierarchical) or "accessed simultaneously". Also check whether the hit ratio for L2 is local (of L1 misses) or global.
 
 > [!RECALL] Cache 10 ns, memory 100 ns, hit ratio 0.9, hierarchical access. Average access time?
+> - [ ] 11 ns
+> - [x] 20 ns
+> - [ ] 100 ns
+> - [ ] 19 ns
+>
 > $10 + 0.1 \times 100 = 20$ ns.
 
 ## Cache memory mapping
@@ -206,9 +246,19 @@ $$\text{tag bits} = \text{address bits} - \text{index bits} - \text{offset bits}
 > Tag/index/offset bit counts; number of misses for an access sequence (simulate per set); AMAT with given miss penalty; hit ratio for a loop over an array (spatial locality: one miss per block).
 
 > [!RECALL] 16 KB direct-mapped cache, 32-byte blocks, 32-bit addresses: tag, index and offset bits?
+> - [ ] Tag 22, index 5, offset 5
+> - [ ] Tag 18, index 5, offset 9
+> - [ ] Tag 17, index 10, offset 5
+> - [x] Tag 18, index 9, offset 5
+>
 > 512 lines: index 9, offset 5, tag 18.
 
 > [!RECALL] Which kind of miss never occurs in a fully associative cache?
+> - [ ] Coherence misses
+> - [ ] Compulsory misses
+> - [x] Conflict misses
+> - [ ] Capacity misses
+>
 > Conflict misses.
 
 ## Instruction pipelining
@@ -233,6 +283,11 @@ $$\text{Speed-up} = \frac{\text{CPI}_{unpipelined} \times T_{unpipelined\ clock}
 > Stages of 5, 8, 6 and 7 ns with a 1 ns latch: the slowest stage sets the clock, $t_p = 8 + 1 = 9$ ns. Without pipelining an instruction takes $5 + 8 + 6 + 7 = 26$ ns. For 100 instructions: $(4 + 99) \times 9 = 927$ ns against $100 \times 26 = 2600$ ns, a speed-up of about 2.8. As $n$ grows it approaches $26/9 \approx 2.89$, well short of 4.
 
 > [!RECALL] A 5-stage pipeline runs 100 instructions with no stalls. How many cycles?
+> - [ ] 100
+> - [ ] 500
+> - [ ] 105
+> - [x] 104
+>
 > $5 + 100 - 1 = 104$.
 
 ## Pipeline hazards
@@ -263,9 +318,19 @@ $$\text{CPI} = 1 + b \cdot p \quad (\text{if all branches stall}), \qquad \text{
 > 5-stage pipeline (IF ID EX MEM WB), full forwarding. `LW R1, 0(R2)` then `ADD R3, R1, R4`: the ADD needs R1 at the start of its EX, but the load has it only at the end of MEM → 1 stall. Without forwarding (write in the first half of WB, read in the second half of ID) the ADD stalls 2 cycles.
 
 > [!RECALL] Which data hazard stalls a simple in-order pipeline?
+> - [ ] WAR
+> - [ ] WAW
+> - [ ] RAR
+> - [x] RAW
+>
 > RAW (true dependence). WAR and WAW matter only with out-of-order execution.
 
 > [!RECALL] With full forwarding, how many stalls follow a load whose result the next instruction uses (classic 5-stage pipeline)?
+> - [ ] Three
+> - [ ] Two
+> - [ ] Zero
+> - [x] One
+>
 > One.
 
 ## I/O interface, interrupts and DMA
@@ -292,6 +357,11 @@ If the device needs time $X$ to prepare data and the bus transfer takes $Y$, the
 > A device raises 2,000 interrupts per second and each service routine takes 50 µs. Fraction of CPU time spent: $2000 \times 50 \times 10^{-6} = 0.1$, i.e. 10%.
 
 > [!RECALL] In which DMA mode does the controller hold the bus for a whole block?
+> - [ ] Interrupt-driven I/O
+> - [ ] Cycle-stealing mode
+> - [ ] Transparent mode
+> - [x] Burst (block) mode
+>
 > Burst (block) mode.
 
 ## Secondary storage

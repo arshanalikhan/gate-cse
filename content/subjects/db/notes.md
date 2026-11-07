@@ -27,6 +27,11 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 > Entities Student and Course (M:N "enrols"), and Department (1:N "has" Student). Minimum tables: Student (with dept FK), Course, Department, Enrols = 4.
 
 > [!RECALL] How is an M:N relationship represented in the relational model?
+> - [ ] Merging both entities into one table
+> - [ ] A foreign key on the N side
+> - [x] A separate table keyed by both entities' keys
+> - [ ] A foreign key on the M side
+>
 > As a separate table whose key combines the keys of both participating entities.
 
 ## Relational model and integrity constraints
@@ -45,6 +50,11 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 - Number of superkeys of $R$ with $n$ attributes and a single candidate key of $k$ attributes: $2^{n-k}$. With several candidate keys, use inclusion–exclusion.
 
 > [!RECALL] $R(A, B, C, D)$ has candidate keys $A$ and $BC$. How many superkeys?
+> - [ ] 11
+> - [ ] 12
+> - [ ] 8
+> - [x] 10
+>
 > Supersets of $A$: $2^3 = 8$; of $BC$: $2^2 = 4$; of both ($ABC$): $2^1 = 2$. Total $8 + 4 - 2 = 10$.
 
 ## Relational algebra
@@ -70,6 +80,11 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 > $R \bowtie S$ can have anywhere from 0 to $\lvert R\rvert \cdot \lvert S\rvert$ tuples. If the common attribute is a key of $S$ and a foreign key in $R$ (not NULL), the join has exactly $\lvert R\rvert$ tuples.
 
 > [!RECALL] Which relational-algebra operator expresses "for every"?
+> - [ ] Cartesian product ($\times$)
+> - [ ] Natural join ($\bowtie$)
+> - [ ] Projection ($\pi$)
+> - [x] Division ($\div$)
+>
 > Division ($\div$).
 
 ## Tuple relational calculus
@@ -83,6 +98,11 @@ Queries have the form $\{t \mid P(t)\}$, e.g. employees earning over 50000: $\{t
 - Safe TRC, safe domain calculus and relational algebra have exactly the same expressive power (relational completeness).
 
 > [!RECALL] Why is $\{t \mid \lnot(t \in R)\}$ not allowed?
+> - [ ] $R$ might be empty
+> - [ ] Tuple calculus does not allow negation
+> - [x] It is unsafe: it describes infinitely many tuples not from the database
+> - [ ] It returns exactly the tuples of $R$
+>
 > It is unsafe: it describes infinitely many tuples not drawn from the database.
 
 ## SQL
@@ -105,6 +125,11 @@ Evaluation order of a query: `FROM` → `WHERE` → `GROUP BY` → `HAVING` → 
 > In a table with 10 rows where 3 have NULL `bonus`: `COUNT(*) = 10`, `COUNT(bonus) = 7`, and `AVG(bonus)` averages over 7 values.
 
 > [!RECALL] What does `SELECT COUNT(*) FROM R WHERE x <> 5` count when some `x` are NULL?
+> - [ ] All rows, NULLs included
+> - [ ] Only the NULL rows
+> - [ ] All rows except those with `x = 5`
+> - [x] Rows with a non-NULL `x` other than 5
+>
 > Rows with a non-NULL `x` different from 5; NULL rows evaluate to unknown and are excluded.
 
 ## Functional dependencies and keys
@@ -125,6 +150,11 @@ $X \to Y$: tuples that agree on $X$ agree on $Y$.
 > $R(A, B, C, D)$, $F = \{AB \to C,\; C \to D,\; D \to A\}$. $B$ is on no right-hand side, so it is in every key. $(AB)^+ = ABCD$, $(BC)^+ = BCDA$, $(BD)^+ = BDAC$; $B^+ = B$. Candidate keys: $AB$, $BC$, $BD$.
 
 > [!RECALL] What is $X^+$ used for?
+> - [x] Testing superkeys and whether an FD follows from $F$
+> - [ ] Checking a schedule for conflicts
+> - [ ] Counting the tuples of $R$
+> - [ ] Choosing the primary index
+>
 > Testing whether $X$ is a superkey and whether an FD $X \to Y$ follows from $F$ ($Y \subseteq X^+$).
 
 ## Normal forms and decomposition
@@ -162,9 +192,19 @@ BCNF ⊂ 3NF ⊂ 2NF ⊂ 1NF. A relation with only two attributes is always in B
 > A partial dependency of a **prime** attribute on part of a key does not violate 2NF or 3NF.
 
 > [!RECALL] When is the decomposition of $R$ into $R_1$ and $R_2$ lossless?
+> - [ ] Whenever $R_1 \cup R_2 = R$
+> - [ ] When both $R_1$ and $R_2$ are in BCNF
+> - [x] When $R_1 \cap R_2$ is a key of $R_1$ or of $R_2$
+> - [ ] When $R_1 \cap R_2 = \emptyset$
+>
 > When $R_1 \cap R_2 \to R_1$ or $R_1 \cap R_2 \to R_2$ holds (the common attributes are a key of one side).
 
 > [!RECALL] Which is guaranteed by BCNF decomposition but not dependency preservation?
+> - [ ] Neither
+> - [ ] Dependency preservation
+> - [x] Lossless join
+> - [ ] Both
+>
 > Lossless join.
 
 ## File organisation and indexing
@@ -191,6 +231,11 @@ $$\text{internal: } p \cdot P + (p - 1)\,K \le B, \qquad \text{leaf: } p_{leaf}\
 > $B = 512$, $K = 9$, $P = 6$, $P_r = 7$: internal $6p + 9(p - 1) \le 512 \Rightarrow p = 34$; leaf $16\,p_{leaf} + 6 \le 512 \Rightarrow p_{leaf} = 31$.
 
 > [!RECALL] Why are B+ trees preferred over B-trees for range queries?
+> - [x] Keys sit in linked leaves: one descent, then a sequential leaf scan
+> - [ ] B+ trees keep records in internal nodes
+> - [ ] B+ trees are always one level shorter
+> - [ ] B-trees cannot store duplicate keys
+>
 > All keys sit in linked leaves, so a range is one descent followed by a sequential leaf scan; internal nodes also hold more keys (higher fan-out, fewer levels).
 
 ## Transactions and schedules
@@ -224,6 +269,11 @@ Strict ⊂ cascadeless ⊂ recoverable. Conflict serialisable ⊂ view serialisa
 > A schedule where $T_2$ reads $T_1$'s uncommitted write and then **commits before $T_1$** is not recoverable, even if it is serialisable.
 
 > [!RECALL] What does a cycle in the precedence graph tell you?
+> - [x] The schedule is not conflict serialisable
+> - [ ] The schedule is not recoverable
+> - [ ] The schedule is deadlocked
+> - [ ] The schedule is not view serialisable
+>
 > The schedule is not conflict serialisable (it might still be view serialisable if there are blind writes).
 
 ## Concurrency control
@@ -246,7 +296,17 @@ Strict ⊂ cascadeless ⊂ recoverable. Conflict serialisable ⊂ view serialisa
 | Wound–wait | older wounds (aborts) the younger | younger waits |
 
 > [!RECALL] Does basic 2PL prevent deadlocks?
+> - [ ] Yes, always
+> - [ ] Only for shared locks
+> - [ ] Yes, if locks are released only at commit
+> - [x] No
+>
 > No. It guarantees conflict serialisability; deadlocks can still occur.
 
 > [!RECALL] In wound–wait, what happens when a younger transaction requests a lock held by an older one?
+> - [ ] The younger transaction is rolled back
+> - [ ] Both are rolled back
+> - [ ] The older transaction is rolled back (wounded)
+> - [x] The younger transaction waits
+>
 > The younger transaction waits.

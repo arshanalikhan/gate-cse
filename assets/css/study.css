@@ -108,6 +108,32 @@
 .rate-2 { border-color: var(--good); color: var(--good); }
 .rate-2:hover { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 .recall-hint, .recall-ask { font-size: .8em; color: var(--text-muted); }
+.recall-hint-good { color: var(--good); font-weight: 600; }
+.recall-hint-bad { color: var(--bad); font-weight: 600; }
+
+/* multiple-choice options on recall cards (user request): pick one, then the card marks it */
+.recall-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: .7em; }
+.recall-opt {
+  display: flex; align-items: center; gap: 10px; text-align: left; cursor: pointer;
+  font: inherit; font-size: .92em; line-height: 1.35; color: var(--text);
+  min-height: 44px; padding: 8px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong); background: var(--bg);
+}
+.recall-opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.recall-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.recall-opt:disabled { cursor: default; }
+.recall-opt-key {
+  flex: none; display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%;
+  font-size: .82em; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-strong);
+}
+.recall-opt-text { min-width: 0; overflow-wrap: anywhere; }
+.recall-opt-text > p { margin: 0; }
+.recall-opt.is-correct { border-color: var(--good); background: var(--good-soft); }
+.recall-opt.is-correct .recall-opt-key { background: var(--good); border-color: var(--good); color: var(--bg); }
+.recall-opt.is-wrong { border-color: var(--bad); background: var(--bad-soft); }
+.recall-opt.is-wrong .recall-opt-key { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+.recall-options[data-done] .recall-opt:not(.is-correct):not(.is-wrong) { opacity: .6; }
+@media (max-width: 640px) { .recall-options { grid-template-columns: 1fr; } }
 
 /* ---------- self-test mode ---------- */
 .study-bar {

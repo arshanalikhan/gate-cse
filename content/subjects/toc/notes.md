@@ -32,9 +32,19 @@ Minimal DFA sizes worth memorising (alphabet $\{a, b\}$ unless stated):
 > GATE asks for the number of states of the *minimal DFA*, which is complete, so include the dead (trap) state whenever some input must be rejected forever.
 
 > [!RECALL] Minimal DFA states for strings over {a, b} whose 3rd symbol from the end is a?
+> - [ ] 3
+> - [ ] 4
+> - [ ] 16
+> - [x] 8
+>
 > $2^3 = 8$.
 
 > [!RECALL] Minimal DFA states for strings over {a, b} containing "aba"?
+> - [ ] 8
+> - [ ] 3
+> - [ ] 5
+> - [x] 4
+>
 > 4.
 
 ## Regular expressions
@@ -60,6 +70,11 @@ Operators: union $+$, concatenation, Kleene star $^*$ (and $r^+ = rr^*$).
 > $(a + b)^*$ and $a^* + b^*$ differ ($ab$ is only in the first). $(a^*b)^*$ cannot end in $a$ unless empty, so it is not $(a + b)^*$.
 
 > [!RECALL] Solve $R = Q + RP$ (with $\varepsilon \notin P$).
+> - [ ] $R = Q^*P$
+> - [ ] $R = (Q + P)^*$
+> - [ ] $R = P^*Q$
+> - [x] $R = QP^*$
+>
 > $R = QP^*$.
 
 ## Regular languages and their properties
@@ -91,9 +106,19 @@ Operators: union $+$, concatenation, Kleene star $^*$ (and $r^+ = rr^*$).
 > Languages defined with variables can collapse to something simple: $\{w x w^R\}$ with non-empty $w$ and $x$ only requires the first and last symbols to match.
 
 > [!RECALL] Is $\{a^m b^n : m \ge n\}$ regular?
+> - [x] No
+> - [ ] Yes, because $a^*b^*$ is regular
+> - [ ] Yes
+> - [ ] Only if $n$ is bounded
+>
 > No (pump the a's down in $a^pb^p$).
 
 > [!RECALL] Is the intersection of two regular languages always regular? Of a regular and a non-regular one?
+> - [x] Yes; not necessarily
+> - [ ] Yes; it is never regular
+> - [ ] Yes; yes
+> - [ ] Not necessarily; yes
+>
 > Yes; not necessarily (it may or may not be regular).
 
 ## Context-free grammars
@@ -117,6 +142,11 @@ Standard grammars:
 **Membership:** the CYK algorithm decides $w \in L(G)$ for a CNF grammar in $O(n^3)$.
 
 > [!RECALL] How many steps derive a string of length 6 in a CNF grammar?
+> - [ ] 12
+> - [x] 11
+> - [ ] 5
+> - [ ] 6
+>
 > $2 \cdot 6 - 1 = 11$.
 
 ## Pushdown automata
@@ -136,6 +166,11 @@ A PDA is an NFA with a stack. Nondeterministic PDAs accept exactly the CFLs; acc
 | $a^nb^nc^n$ | not context-free |
 
 > [!RECALL] Are DPDAs as powerful as NPDAs?
+> - [ ] Yes, for finite languages
+> - [x] No
+> - [ ] Yes
+> - [ ] Only over a one-letter alphabet
+>
 > No. $ww^R$ is context-free but not deterministic context-free.
 
 ## Context-free languages and closure
@@ -171,6 +206,11 @@ A PDA is an NFA with a stack. Nondeterministic PDAs accept exactly the CFLs; acc
 > $a^nb^n$ and $a^nb^{2n}$ are both DCFLs, but their union is not: DCFLs are closed under complement, not under union or intersection.
 
 > [!RECALL] Which classes are closed under complement: CFL, DCFL, recursive, RE?
+> - [ ] Recursive and RE
+> - [ ] CFL and RE
+> - [x] DCFL and recursive
+> - [ ] All four
+>
 > DCFL and recursive. CFL and RE are not.
 
 ## Turing machines
@@ -186,6 +226,11 @@ A Turing machine has an infinite tape and a read/write head. Multi-tape, multi-h
 - There are only countably many TMs but uncountably many languages, so most languages are not even RE.
 
 > [!RECALL] If $L$ and its complement are both recursively enumerable, what is $L$?
+> - [ ] Context-free
+> - [ ] Regular
+> - [x] Recursive (decidable)
+> - [ ] Not recursively enumerable
+>
 > Recursive (decidable).
 
 ## Undecidability
@@ -228,7 +273,17 @@ Also undecidable for CFGs: ambiguity of a grammar, whether $L(G)$ is regular, wh
 > "Does $M$ ever write a 1?" or "does $M$ halt on all inputs?" are about behaviour, not only the language, but they are still undecidable (reduce from HALT). Rice's theorem is only a shortcut for language properties; argue by reduction otherwise.
 
 > [!RECALL] Is "$L(M)$ is regular" decidable for a Turing machine $M$?
+> - [ ] Only for machines that always halt
+> - [ ] Yes
+> - [ ] Yes, by simulating $M$
+> - [x] No, by Rice's theorem
+>
 > No, by Rice's theorem (it is a non-trivial property of the language).
 
 > [!RECALL] Is equivalence of two context-free grammars decidable?
+> - [ ] Only for unambiguous grammars
+> - [ ] Yes
+> - [x] No
+> - [ ] Yes, by converting both to CNF
+>
 > No. (It is decidable for DFAs and, remarkably, for DPDAs.)

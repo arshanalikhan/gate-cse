@@ -43,9 +43,19 @@ int main() {
 | Pipes | Unidirectional byte stream between related processes |
 
 > [!RECALL] What does `fork()` return in the parent and in the child?
+> - [ ] The parent's PID in the child, 0 in the parent
+> - [ ] 0 in the parent, the child's PID in the child
+> - [x] The child's PID in the parent, 0 in the child
+> - [ ] 1 in both
+>
 > The child's PID (> 0) in the parent, 0 in the child, and −1 if the call fails.
 
 > [!RECALL] How many processes exist after $n$ sequential `fork()` calls?
+> - [ ] $2^n - 1$
+> - [x] $2^n$
+> - [ ] $2n$
+> - [ ] $n + 1$
+>
 > $2^n$ in total, of which $2^n - 1$ were created by the forks.
 
 ## Threads
@@ -67,6 +77,11 @@ Mapping models: many-to-one, one-to-one (Linux, Windows), many-to-many.
 > Which resources are shared among threads (stack is **not**); which of a set of operations needs a kernel trap; why a blocking call in a user-level thread blocks the process.
 
 > [!RECALL] Which of these do threads of one process **not** share: heap, global variables, stack, open files?
+> - [ ] Open files
+> - [x] The stack
+> - [ ] Global variables
+> - [ ] The heap
+>
 > The stack (each thread also has its own registers and program counter).
 
 ## CPU scheduling
@@ -101,9 +116,19 @@ $$\tau_{n+1} = \alpha\, t_n + (1 - \alpha)\, \tau_n, \qquad 0 \le \alpha \le 1$$
 > Questions state how ties are broken (lower PID first) and whether context-switch time counts. With overhead $s$ per switch and $n$ switches, CPU utilisation is $\frac{\text{useful time}}{\text{useful time} + n s}$.
 
 > [!RECALL] Which algorithm gives the minimum average waiting time, and what is its drawback?
+> - [ ] Round Robin; high context-switch overhead
+> - [ ] FCFS; the convoy effect
+> - [ ] Priority scheduling; it needs aging
+> - [x] SRTF; it needs burst lengths in advance and can starve long jobs
+>
 > SRTF (SJF among non-preemptive algorithms). It needs burst lengths in advance and can starve long jobs.
 
 > [!RECALL] What does Round Robin turn into when the time quantum is very large?
+> - [ ] Priority scheduling
+> - [x] FCFS
+> - [ ] SJF
+> - [ ] SRTF
+>
 > FCFS.
 
 ## Process synchronisation
@@ -190,9 +215,19 @@ One counter-schedule disproves a property. To prove one, argue from the variable
 > Which of these code snippets guarantees mutual exclusion / progress / deadlock freedom; the minimum or maximum final value of a shared variable when two processes run `x = x + 1` with no lock (load, add, store interleavings); counting semaphore final values.
 
 > [!RECALL] Name the three requirements of a critical-section solution.
+> - [ ] Mutual exclusion, no preemption, circular wait
+> - [ ] Mutual exclusion, hold and wait, bounded waiting
+> - [ ] Progress, fairness, deadlock freedom
+> - [x] Mutual exclusion, progress, bounded waiting
+>
 > Mutual exclusion, progress, bounded waiting.
 
 > [!RECALL] Which requirement does a plain test-and-set spin lock fail?
+> - [ ] Progress
+> - [x] Bounded waiting
+> - [ ] Mutual exclusion
+> - [ ] None of them
+>
 > Bounded waiting: a process can lose the race for the lock indefinitely.
 
 ## Deadlock
@@ -227,9 +262,19 @@ $$R \ge \sum_{i=1}^{n} (m_i - 1) + 1$$
 For identical needs $m$: $R \ge n(m-1) + 1$. Conversely, the maximum number of processes that can deadlock-free share $R$ instances when each needs $m$ is $\left\lfloor \frac{R-1}{m-1} \right\rfloor$.
 
 > [!RECALL] Minimum instances of a resource so that 3 processes, each needing up to 4, can never deadlock?
+> - [ ] 4
+> - [x] 10
+> - [ ] 9
+> - [ ] 12
+>
 > $3 \times (4 - 1) + 1 = 10$.
 
 > [!RECALL] Does an unsafe state mean the system is deadlocked?
+> - [ ] No; an unsafe state can never deadlock
+> - [ ] Yes, always
+> - [ ] Yes, if any process is waiting
+> - [x] No; deadlock is possible but not certain
+>
 > No. Deadlock is possible from an unsafe state; a safe state guarantees it can be avoided.
 
 ## Memory management and paging
@@ -273,9 +318,19 @@ With a $k$-level page table, a TLB miss costs $k$ memory accesses for the walk: 
 Logical address = (segment, offset). Segment table entry has base and limit; offset ≥ limit → trap. Segmentation has external fragmentation; **segmented paging** pages each segment.
 
 > [!RECALL] Effective memory access time with TLB hit ratio $h$, TLB time $t$, memory time $m$ and a single-level page table?
+> - [x] $h(t + m) + (1 - h)(t + 2m)$
+> - [ ] $h(t + m) + (1 - h) \cdot 2m$
+> - [ ] $ht + (1 - h)(t + m)$
+> - [ ] $h(t + m) + (1 - h)(2t + 2m)$
+>
 > $h(t + m) + (1 - h)(t + 2m)$.
 
 > [!RECALL] Page-table size for a 32-bit virtual address, 4 KB pages and 4-byte entries?
+> - [ ] 4 KB
+> - [ ] 1 MB
+> - [ ] 16 MB
+> - [x] 4 MB
+>
 > $2^{20}$ entries × 4 B = 4 MB.
 
 ## Virtual memory
@@ -308,9 +363,19 @@ $p$ = page-fault rate, $m$ = memory access time, $s$ = page-fault service time (
 > The first reference to each page is always a fault (compulsory miss) unless the question says the frames are pre-loaded.
 
 > [!RECALL] Which page-replacement algorithm can show Belady's anomaly?
+> - [ ] LRU
+> - [ ] OPT
+> - [ ] All three
+> - [x] FIFO
+>
 > FIFO. LRU and OPT are stack algorithms and cannot.
 
 > [!RECALL] What causes thrashing?
+> - [ ] The TLB is too small
+> - [ ] The page size is too large
+> - [x] Processes hold fewer frames than their working sets
+> - [ ] Too many processes are CPU-bound
+>
 > Processes hold fewer frames than their working sets, so they fault continuously and the CPU sits idle waiting for paging.
 
 ## File systems
@@ -334,6 +399,11 @@ $$\text{max file size} = \bigl(d + k + k^2 + k^3\bigr) \times B$$
 **Directory structures:** single-level, two-level, tree, acyclic graph (shared files via links), general graph.
 
 > [!RECALL] Max file size with 10 direct, one single-indirect and one double-indirect pointer, 1 KB blocks and 4-byte pointers?
+> - [ ] ≈ 64 KB
+> - [x] ≈ 64.3 MB
+> - [ ] ≈ 16 GB
+> - [ ] ≈ 266 KB
+>
 > Each index block holds 256 pointers: $(10 + 256 + 256^2) \times 1$ KB = 65,802 KB ≈ 64.3 MB.
 
 ## Disk and I/O scheduling
@@ -356,4 +426,9 @@ Disk access time $=$ seek time $+$ rotational latency $+$ transfer time. Average
 **I/O techniques:** programmed I/O (CPU polls), interrupt-driven I/O, DMA (device transfers blocks directly to memory; CPU is interrupted once per block). Buffering, spooling and caching hide device latency.
 
 > [!RECALL] Average rotational latency of a 7200 RPM disk?
+> - [ ] ≈ 8.33 ms
+> - [x] ≈ 4.17 ms
+> - [ ] ≈ 0.14 ms
+> - [ ] ≈ 2.08 ms
+>
 > Half a revolution: $\tfrac12 \times \tfrac{60}{7200}$ s ≈ 4.17 ms.
