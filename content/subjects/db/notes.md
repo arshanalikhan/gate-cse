@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 
 ## ER model
 
+**Priority B** · last 10 papers: 5 marks, asked in 5 (for ER Model & Relational Basics as a whole) · learn by solving + recall cards · practise: [13 questions from 2007–2023 →](#/subjects/db/pyq?topic=er&years=pre2024)
+
 **Key idea:** an ER diagram describes entity sets, their attributes and the relationship sets between them; GATE asks how it maps to tables.
 
 - Attributes: simple or composite, single- or multi-valued, stored or derived.
@@ -29,6 +31,8 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 
 ## Relational model and integrity constraints
 
+**Priority B** · last 10 papers: 5 marks, asked in 5 (for ER Model & Relational Basics as a whole) · learn by solving + recall cards · practise: [13 questions from 2007–2023 →](#/subjects/db/pyq?topic=er&years=pre2024)
+
 | Key | Definition |
 |---|---|
 | Superkey | set of attributes that uniquely identifies a tuple |
@@ -44,6 +48,8 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 > Supersets of $A$: $2^3 = 8$; of $BC$: $2^2 = 4$; of both ($ABC$): $2^1 = 2$. Total $8 + 4 - 2 = 10$.
 
 ## Relational algebra
+
+**Priority B** · last 10 papers: 7 marks, asked in 4 · learn by solving · practise: [13 questions from 2007–2023 →](#/subjects/db/pyq?topic=ra&years=pre2024)
 
 | Operator | Meaning |
 |---|---|
@@ -68,6 +74,8 @@ Exam-focused notes for GATE 2027 Section 9. Functional dependencies with normal 
 
 ## Tuple relational calculus
 
+**Priority B** · last 10 papers: 4 marks, asked in 2 · learn by solving · practise: [2 questions from 2007–2023 →](#/subjects/db/pyq?topic=trc&years=pre2024)
+
 Queries have the form $\{t \mid P(t)\}$, e.g. employees earning over 50000: $\{t \mid t \in \text{Emp} \land t.\text{salary} > 50000\}$.
 
 - "For all" is written with $\forall$ or as $\lnot\exists \dots \lnot$.
@@ -78,6 +86,8 @@ Queries have the form $\{t \mid P(t)\}$, e.g. employees earning over 50000: $\{t
 > It is unsafe: it describes infinitely many tuples not drawn from the database.
 
 ## SQL
+
+**Priority A** · last 10 papers: 10 marks, asked in 5 · learn by solving · practise: [19 questions from 2007–2023 →](#/subjects/db/pyq?topic=sql&years=pre2024)
 
 Evaluation order of a query: `FROM` → `WHERE` → `GROUP BY` → `HAVING` → `SELECT` → `DISTINCT` → `ORDER BY`.
 
@@ -99,6 +109,8 @@ Evaluation order of a query: `FROM` → `WHERE` → `GROUP BY` → `HAVING` → 
 
 ## Functional dependencies and keys
 
+**Priority A** · last 10 papers: 21 marks, asked in 9 (for FDs, Keys & Normalization as a whole) · learn by solving · practise: [21 questions from 2007–2023 →](#/subjects/db/pyq?topic=fd&years=pre2024)
+
 $X \to Y$: tuples that agree on $X$ agree on $Y$.
 
 **Armstrong's axioms:** reflexivity ($Y \subseteq X \Rightarrow X \to Y$), augmentation ($X \to Y \Rightarrow XZ \to YZ$), transitivity. Derived: union, decomposition, pseudo-transitivity.
@@ -117,6 +129,8 @@ $X \to Y$: tuples that agree on $X$ agree on $Y$.
 
 ## Normal forms and decomposition
 
+**Priority A** · last 10 papers: 21 marks, asked in 9 (for FDs, Keys & Normalization as a whole) · learn by solving · practise: [21 questions from 2007–2023 →](#/subjects/db/pyq?topic=fd&years=pre2024)
+
 A **prime** attribute belongs to some candidate key.
 
 | Normal form | Condition (for every non-trivial FD $X \to A$) |
@@ -128,6 +142,12 @@ A **prime** attribute belongs to some candidate key.
 | 4NF | for every non-trivial MVD $X \twoheadrightarrow Y$, $X$ is a superkey |
 
 BCNF ⊂ 3NF ⊂ 2NF ⊂ 1NF. A relation with only two attributes is always in BCNF.
+
+> [!TIP] Method: the highest normal form in four steps
+> 1. Find every candidate key: start from the attributes that appear on no right-hand side and grow them with closures.
+> 2. Mark the **prime** attributes (those in some candidate key).
+> 3. Split right-hand sides into single attributes. For each non-trivial FD $X \to A$: if $X$ is a superkey, it breaks nothing. Otherwise, if $A$ is prime, it breaks only BCNF. Otherwise, if $X$ is a proper subset of a candidate key, it breaks 2NF. Otherwise it breaks 3NF ($X$ is neither a key nor part of one, and $A$ is non-prime).
+> 4. The relation is in the highest form that no FD breaks.
 
 **Decomposition properties**
 
@@ -148,6 +168,8 @@ BCNF ⊂ 3NF ⊂ 2NF ⊂ 1NF. A relation with only two attributes is always in B
 > Lossless join.
 
 ## File organisation and indexing
+
+**Priority A** · last 10 papers: 10 marks, asked in 7 · learn by solving · practise: [17 questions from 2007–2023 →](#/subjects/db/pyq?topic=idx&years=pre2024)
 
 **Blocking factor** $bfr = \lfloor B / R \rfloor$ records per block ($B$ = block size, $R$ = record size); a file of $r$ records needs $\lceil r / bfr \rceil$ blocks.
 
@@ -173,6 +195,8 @@ $$\text{internal: } p \cdot P + (p - 1)\,K \le B, \qquad \text{leaf: } p_{leaf}\
 
 ## Transactions and schedules
 
+**Priority A** · last 10 papers: 16 marks, asked in 8 (for Transactions & Concurrency Control as a whole) · learn by solving · practise: [22 questions from 2007–2023 →](#/subjects/db/pyq?topic=txn&years=pre2024)
+
 **ACID:** atomicity (all or nothing, via logging/undo), consistency, isolation (concurrency control), durability (redo log).
 
 Two operations **conflict** if they belong to different transactions, access the same item, and at least one is a write.
@@ -187,6 +211,12 @@ Two operations **conflict** if they belong to different transactions, access the
 
 Strict ⊂ cascadeless ⊂ recoverable. Conflict serialisable ⊂ view serialisable.
 
+> [!TIP] Method: classify a schedule in one pass
+> 1. List the conflicting pairs in order and draw the precedence graph. Acyclic means conflict serialisable; a topological order gives the serial schedule.
+> 2. If there is a cycle, look for blind writes. Only then can the schedule still be view serialisable.
+> 3. For every "$T_j$ reads an item that $T_i$ wrote": if $T_j$ commits before $T_i$, the schedule is not recoverable; if the read comes before $T_i$ commits, it is not cascadeless.
+> 4. Strict also forbids overwriting an item whose writer has not yet committed.
+
 > [!EXAMPLE] View but not conflict serialisable
 > $r_1(A)\; w_2(A)\; w_1(A)\; w_3(A)$. Conflicts give $T_1 \to T_2$ and $T_2 \to T_1$, a cycle, so it is not conflict serialisable. It is view equivalent to $T_1 T_2 T_3$: $T_1$ reads the initial $A$ and $T_3$ writes last ($T_2$ and $T_3$ are blind writes).
 
@@ -197,6 +227,8 @@ Strict ⊂ cascadeless ⊂ recoverable. Conflict serialisable ⊂ view serialisa
 > The schedule is not conflict serialisable (it might still be view serialisable if there are blind writes).
 
 ## Concurrency control
+
+**Priority A** · last 10 papers: 16 marks, asked in 8 (for Transactions & Concurrency Control as a whole) · learn by solving · practise: [22 questions from 2007–2023 →](#/subjects/db/pyq?topic=txn&years=pre2024)
 
 | Lock held \ requested | S | X |
 |---|---|---|

@@ -45,6 +45,7 @@ Optimal average waiting time: SJF among non-preemptive, SRTF overall.
 |---|---|
 | TLB hit $h$, TLB $t$, memory $m$, 1-level table | $h(t+m) + (1-h)(t+2m)$ |
 | $k$-level page table | $h(t+m) + (1-h)(t+(k+1)m)$ |
+| $k$-level page table, no TLB | $(k+1)\,m$ per reference |
 | Page-fault rate $p$, service time $s$ | $(1-p)\,m + p\,s$ |
 | Dirty-victim fraction $d$ | service time $= s_{\text{read}} + d \cdot s_{\text{write}}$ |
 

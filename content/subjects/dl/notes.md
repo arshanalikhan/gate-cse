@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 2. The 2027 wording names three minimis
 
 ## Boolean algebra
 
+**Priority A** · last 10 papers: 22 marks, asked in 8 (for Boolean Algebra & Minimization as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/dl/pyq?topic=bool&years=pre2024)
+
 | Law | Form |
 |---|---|
 | Absorption | $x + xy = x$, $x(x + y) = x$ |
@@ -28,6 +30,8 @@ Exam-focused notes for GATE 2027 Section 2. The 2027 wording names three minimis
 
 ## Karnaugh-map minimisation
 
+**Priority A** · last 10 papers: 22 marks, asked in 8 (for Boolean Algebra & Minimization as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/dl/pyq?topic=bool&years=pre2024)
+
 Cells are ordered in Gray code so neighbours differ in one variable (the map wraps around its edges). Group 1s in rectangles of size $2^k$; each group of $2^k$ cells eliminates $k$ variables.
 
 - **Prime implicant (PI):** a group that cannot be enlarged.
@@ -46,6 +50,8 @@ Cells are ordered in Gray code so neighbours differ in one variable (the map wra
 
 ## Tabular (Quine–McCluskey) method
 
+**Priority A** · last 10 papers: 22 marks, asked in 8 (for Boolean Algebra & Minimization as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/dl/pyq?topic=bool&years=pre2024)
+
 A systematic version of the K-map that works for any number of variables:
 
 1. List the minterms (and don't-cares) in binary, grouped by the number of 1s.
@@ -60,6 +66,8 @@ A systematic version of the K-map that works for any number of variables:
 > Terms from adjacent groups (one more 1) that differ in exactly one bit position, with dashes in the same places.
 
 ## Combinational circuits
+
+**Priority A** · last 10 papers: 11 marks, asked in 6 · learn by solving · practise: [18 questions from 2007–2023 →](#/subjects/dl/pyq?topic=comb&years=pre2024)
 
 | Circuit | Equations / facts |
 |---|---|
@@ -83,6 +91,8 @@ A systematic version of the K-map that works for any number of variables:
 > 8:1 (three select lines).
 
 ## Sequential circuits
+
+**Priority A** · last 10 papers: 14 marks, asked in 6 · learn by solving · practise: [15 questions from 2007–2023 →](#/subjects/dl/pyq?topic=seq&years=pre2024)
 
 A **latch** is level-triggered; a **flip-flop** is edge-triggered.
 
@@ -109,6 +119,8 @@ A **latch** is level-triggered; a **flip-flop** is edge-triggered.
 
 ## Number representation
 
+**Priority A** · last 10 papers: 11 marks, asked in 10 · learn by solving · practise: [18 questions from 2007–2023 →](#/subjects/dl/pyq?topic=numsys&years=pre2024)
+
 **Base conversion:** repeated division (integer part) and repeated multiplication (fraction part). Groups of 3 or 4 bits convert directly to octal or hexadecimal.
 
 | Representation ($n$ bits) | Range | Zeros |
@@ -133,6 +145,8 @@ A **latch** is level-triggered; a **flip-flop** is edge-triggered.
 > $1011 \oplus 0101 = 1110$.
 
 ## Floating point (IEEE 754)
+
+**Priority A** · last 10 papers: 12 marks, asked in 8 · learn by solving · practise: [9 questions from 2007–2023 →](#/subjects/dl/pyq?topic=fp&years=pre2024)
 
 | Format | Sign | Exponent (bias) | Fraction |
 |---|---|---|---|

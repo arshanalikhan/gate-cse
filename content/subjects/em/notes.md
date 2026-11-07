@@ -4,6 +4,8 @@ Exam-focused notes for Linear Algebra, Calculus and Probability & Statistics (GA
 
 ## Matrices and determinants
 
+**Priority A** · last 10 papers: 29 marks, asked in 10 (for Linear Algebra as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=la&years=pre2024)
+
 **Key idea:** most matrix questions reduce to rank, determinant or eigenvalues; know the shortcuts below.
 
 | Property | Value |
@@ -25,6 +27,8 @@ Exam-focused notes for Linear Algebra, Calculus and Probability & Statistics (GA
 
 ## Systems of linear equations
 
+**Priority A** · last 10 papers: 29 marks, asked in 10 (for Linear Algebra as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=la&years=pre2024)
+
 For $Ax = b$ with $n$ unknowns, compare $r = \operatorname{rank}(A)$ and $r' = \operatorname{rank}([A \mid b])$:
 
 | Condition | Solutions |
@@ -42,6 +46,8 @@ A homogeneous system $Ax = 0$ always has $x = 0$; it has non-trivial solutions i
 > $5 - 3 = 2$, so infinitely many solutions.
 
 ## Eigenvalues and eigenvectors
+
+**Priority A** · last 10 papers: 29 marks, asked in 10 (for Linear Algebra as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=la&years=pre2024)
 
 $Av = \lambda v$ with $v \ne 0$; eigenvalues are roots of $\det(A - \lambda I) = 0$.
 
@@ -72,6 +78,8 @@ $Av = \lambda v$ with $v \ne 0$; eigenvalues are roots of $\det(A - \lambda I) =
 
 ## LU decomposition
 
+**Priority A** · last 10 papers: 29 marks, asked in 10 (for Linear Algebra as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=la&years=pre2024)
+
 Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (forward substitution) and $Ux = y$ (back substitution). **Doolittle** puts 1s on the diagonal of $L$; **Crout** puts them on $U$. Without row exchanges the factorisation exists when all leading principal minors are non-zero.
 
 > [!EXAMPLE]
@@ -81,6 +89,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > $L$.
 
 ## Limits, continuity and differentiability
+
+**Priority A** · last 10 papers: 15 marks, asked in 10 (for Calculus as a whole) · learn by solving · practise: [30 questions from 2007–2023 →](#/subjects/em/pyq?topic=calc&years=pre2024)
 
 | Standard limit | Value |
 |---|---|
@@ -98,6 +108,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > L'Hôpital twice: $\frac{e^x}{2} \to \frac12$.
 
 ## Maxima and minima
+
+**Priority A** · last 10 papers: 15 marks, asked in 10 (for Calculus as a whole) · learn by solving · practise: [30 questions from 2007–2023 →](#/subjects/em/pyq?topic=calc&years=pre2024)
 
 **One variable:** critical points where $f'(x) = 0$ or $f'$ does not exist; $f'' < 0$ means a local maximum, $f'' > 0$ a local minimum. On a closed interval also check the **endpoints**.
 
@@ -121,6 +133,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 
 ## Mean value theorems
 
+**Priority A** · last 10 papers: 15 marks, asked in 10 (for Calculus as a whole) · learn by solving · practise: [30 questions from 2007–2023 →](#/subjects/em/pyq?topic=calc&years=pre2024)
+
 | Theorem | Hypothesis | Conclusion |
 |---|---|---|
 | Rolle | $f$ continuous on $[a,b]$, differentiable on $(a,b)$, $f(a) = f(b)$ | some $c \in (a,b)$ has $f'(c) = 0$ |
@@ -131,6 +145,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > $2c = \frac{9 - 1}{2} = 4$, so $c = 2$.
 
 ## Integration
+
+**Priority A** · last 10 papers: 15 marks, asked in 10 (for Calculus as a whole) · learn by solving · practise: [30 questions from 2007–2023 →](#/subjects/em/pyq?topic=calc&years=pre2024)
 
 | Property | Statement |
 |---|---|
@@ -150,6 +166,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 
 ## Probability basics
 
+**Priority A** · last 10 papers: 34 marks, asked in 9 (for Probability & Statistics as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=prob&years=pre2024)
+
 - $P(A \cup B) = P(A) + P(B) - P(A \cap B)$; $P(A^c) = 1 - P(A)$.
 - **Conditional:** $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$.
 - **Independent:** $P(A \cap B) = P(A)P(B)$. Mutually exclusive events with non-zero probabilities are **never** independent.
@@ -166,6 +184,8 @@ Write $A = LU$ with $L$ lower and $U$ upper triangular, then solve $Ly = b$ (for
 > Outcomes with sum 8: (2,6), (3,5), (4,4), (5,3), (6,2). Two contain a 3: $\frac25$.
 
 ## Random variables and distributions
+
+**Priority A** · last 10 papers: 34 marks, asked in 9 (for Probability & Statistics as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=prob&years=pre2024)
 
 $E[aX + b] = aE[X] + b$; $\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)$; $\operatorname{Var}(X) = E[X^2] - (E[X])^2$. Expectation is always linear: $E[X + Y] = E[X] + E[Y]$ even for dependent variables. $\operatorname{Var}(X + Y) = \operatorname{Var}X + \operatorname{Var}Y$ needs independence (or zero covariance).
 
@@ -195,6 +215,8 @@ $E[aX + b] = aE[X] + b$; $\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)
 > Memoryless: $e^{-1000/1000} = e^{-1} \approx 0.368$.
 
 ## Descriptive statistics
+
+**Priority A** · last 10 papers: 34 marks, asked in 9 (for Probability & Statistics as a whole) · learn by solving · practise: [37 questions from 2007–2023 →](#/subjects/em/pyq?topic=prob&years=pre2024)
 
 - **Mean** $\bar x = \frac{1}{n}\sum x_i$; **median** is the middle value of the sorted data (average of the two middle values for even $n$); **mode** is the most frequent value.
 - **Standard deviation** $\sigma = \sqrt{\frac1n \sum (x_i - \bar x)^2}$ (population). Sample s.d. divides by $n - 1$.

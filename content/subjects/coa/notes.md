@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 3. The 2027 syllabus names ALU design, 
 
 ## Instruction set architecture
 
+**Priority A** · last 10 papers: 21 marks, asked in 9 (Instruction Set & Addressing Modes 17, CPU Performance (CPI, Amdahl) 4) · learn by solving + recall cards · practise: [Instruction Set & Addressing Modes: 14 questions from 2007–2023 →](#/subjects/coa/pyq?topic=isa&years=pre2024) · [CPU Performance (CPI, Amdahl): 1 question from 2007–2023 →](#/subjects/coa/pyq?topic=perf&years=pre2024)
+
 An **instruction** = opcode + operand fields (addresses, registers, immediates).
 
 | Format | Example | Note |
@@ -37,6 +39,8 @@ $$\text{Speed-up} = \frac{1}{(1-f) + \dfrac{f}{s}}$$
 
 ## Addressing modes
 
+**Priority A** · last 10 papers: 17 marks, asked in 8 (for Instruction Set & Addressing Modes as a whole) · learn by solving + recall cards · practise: [14 questions from 2007–2023 →](#/subjects/coa/pyq?topic=isa&years=pre2024)
+
 | Mode | Effective address / operand | Memory references to get operand |
 |---|---|---|
 | Immediate | operand is in the instruction | 0 |
@@ -62,6 +66,8 @@ Typical uses: arrays → indexed; pointers → register indirect; position-indep
 
 ## ALU design and arithmetic
 
+**Priority B** · last 10 papers: 1 mark, asked in 1 (for ALU and control-unit design (new 2027 wording) as a whole) · learn by solving + recall cards · practise: [2 questions from 2007–2023 →](#/subjects/coa/pyq?topic=datapath&years=pre2024)
+
 **Ripple-carry adder:** each full adder waits for the previous carry. For $n$ bits with carry delay $t_c$, delay $\approx n\,t_c$ (plus the last sum).
 
 **Carry-lookahead adder (CLA):** generate $G_i = A_iB_i$, propagate $P_i = A_i \oplus B_i$:
@@ -80,6 +86,8 @@ Every carry is a two-level sum-of-products of $G$, $P$ and $C_0$, so delay is co
 > $V = C_n \oplus C_{n-1}$: the carry into the sign bit differs from the carry out of it.
 
 ## Control unit design
+
+**Priority B** · last 10 papers: 1 mark, asked in 1 (for ALU and control-unit design (new 2027 wording) as a whole) · learn by solving + recall cards · practise: [2 questions from 2007–2023 →](#/subjects/coa/pyq?topic=datapath&years=pre2024)
 
 The control unit issues the control signals for each step (micro-operation) of the fetch–decode–execute cycle, e.g. fetch: `MAR ← PC`; `MDR ← M[MAR], PC ← PC + 1`; `IR ← MDR`.
 
@@ -110,6 +118,8 @@ $$\text{next-address bits} = \log_2(\text{control-memory words}), \qquad \text{c
 
 ## Memory interfacing
 
+**Priority B** · last 10 papers: 2 marks, asked in 1 · learn by solving · practise: [10 questions from 2007–2023 →](#/subjects/coa/pyq?topic=mem&years=pre2024)
+
 Building a memory of $W$ words × $b$ bits from chips of $w$ words × $c$ bits:
 
 $$\#\text{chips} = \frac{W}{w} \times \frac{b}{c}$$
@@ -127,6 +137,8 @@ $$\#\text{chips} = \frac{W}{w} \times \frac{b}{c}$$
 > $\frac{256}{32} \times \frac{32}{8} = 8 \times 4 = 32$ chips; a 3-to-8 decoder selects one of the 8 rows.
 
 ## Memory hierarchy performance
+
+**Priority A** · last 10 papers: 28 marks, asked in 9 (for Cache Memory as a whole) · learn by solving · practise: [36 questions from 2007–2023 →](#/subjects/coa/pyq?topic=cache&years=pre2024)
 
 Registers → cache → main memory → (disk). Works because of **temporal** and **spatial locality**.
 
@@ -154,6 +166,8 @@ $$T = t_1 + (1-h_1)\bigl[t_2 + (1-h_2)\,t_m\bigr]$$
 > $10 + 0.1 \times 100 = 20$ ns.
 
 ## Cache memory mapping
+
+**Priority A** · last 10 papers: 28 marks, asked in 9 (for Cache Memory as a whole) · learn by solving · practise: [36 questions from 2007–2023 →](#/subjects/coa/pyq?topic=cache&years=pre2024)
 
 Physical address split (byte-addressable, block size $B$ bytes, $L$ lines, $k$-way):
 
@@ -183,6 +197,11 @@ $$\text{tag bits} = \text{address bits} - \text{index bits} - \text{offset bits}
 
 **Miss types (3 Cs):** compulsory (first access), capacity (cache too small), conflict (too many blocks map to one set; zero in fully associative).
 
+> [!EXAMPLE] Counting misses
+> A cache of 4 blocks; the CPU accesses memory blocks 0, 4, 0, 8, 0, 4. **Direct-mapped** (line = block mod 4): all four map to line 0, so every access evicts the previous block: 6 misses. **2-way set associative with LRU** (2 sets, set = block mod 2): all go to set 0. 0 miss, 4 miss, 0 hit, 8 miss (evicts 4), 0 hit, 4 miss (evicts 8): 4 misses. **Fully associative:** only the first access to each block misses: 3 misses. The 3 extra misses of direct mapping are conflict misses.
+>
+> Loops over arrays: summing `int a[1024]` (4-byte ints) once, in order, through an empty cache with 64-byte blocks misses only on the first element of each block: $1024/16 = 64$ misses, so the hit ratio is 960/1024 = 93.75%. Summing a row-major 2-D array column by column jumps a whole row between accesses; if the cache cannot hold one block per row, every access misses.
+
 > [!PYQ] Typical questions
 > Tag/index/offset bit counts; number of misses for an access sequence (simulate per set); AMAT with given miss penalty; hit ratio for a loop over an array (spatial locality: one miss per block).
 
@@ -193,6 +212,8 @@ $$\text{tag bits} = \text{address bits} - \text{index bits} - \text{offset bits}
 > Conflict misses.
 
 ## Instruction pipelining
+
+**Priority A** · last 10 papers: 18 marks, asked in 9 (for Pipelining & Hazards as a whole) · learn by solving · practise: [25 questions from 2007–2023 →](#/subjects/coa/pyq?topic=pipe&years=pre2024)
 
 A $k$-stage pipeline with cycle time $t_p$ (= slowest stage + latch delay) executing $n$ instructions:
 
@@ -208,10 +229,15 @@ With stalls, average CPI $= 1 + \text{stall cycles per instruction}$ and
 
 $$\text{Speed-up} = \frac{\text{CPI}_{unpipelined} \times T_{unpipelined\ clock}}{\text{CPI}_{pipelined} \times T_{pipelined\ clock}}$$
 
+> [!EXAMPLE] Unequal stages and a latch delay
+> Stages of 5, 8, 6 and 7 ns with a 1 ns latch: the slowest stage sets the clock, $t_p = 8 + 1 = 9$ ns. Without pipelining an instruction takes $5 + 8 + 6 + 7 = 26$ ns. For 100 instructions: $(4 + 99) \times 9 = 927$ ns against $100 \times 26 = 2600$ ns, a speed-up of about 2.8. As $n$ grows it approaches $26/9 \approx 2.89$, well short of 4.
+
 > [!RECALL] A 5-stage pipeline runs 100 instructions with no stalls. How many cycles?
 > $5 + 100 - 1 = 104$.
 
 ## Pipeline hazards
+
+**Priority A** · last 10 papers: 18 marks, asked in 9 (for Pipelining & Hazards as a whole) · learn by solving · practise: [25 questions from 2007–2023 →](#/subjects/coa/pyq?topic=pipe&years=pre2024)
 
 | Hazard | Cause | Remedies |
 |---|---|---|
@@ -244,6 +270,8 @@ $$\text{CPI} = 1 + b \cdot p \quad (\text{if all branches stall}), \qquad \text{
 
 ## I/O interface, interrupts and DMA
 
+**Priority A** · last 10 papers: 7 marks, asked in 7 · learn by solving + recall cards · practise: [11 questions from 2007–2023 →](#/subjects/coa/pyq?topic=io&years=pre2024)
+
 | Technique | CPU involvement |
 |---|---|
 | Programmed I/O | CPU busy-waits (polls) the device status |
@@ -267,6 +295,8 @@ If the device needs time $X$ to prepare data and the bus transfer takes $Y$, the
 > Burst (block) mode.
 
 ## Secondary storage
+
+**Priority B** · last 10 papers: 6 marks, asked in 3 · learn by solving · practise: [8 questions from 2007–2023 →](#/subjects/coa/pyq?topic=disk&years=pre2024)
 
 The 2027 syllabus no longer names secondary storage under COA, but disk timing still appears through OS file-system and I/O questions:
 

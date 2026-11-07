@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 7. Parsing (FIRST/FOLLOW, LL(1) and LR 
 
 ## Phases of a compiler
 
+**Priority B** · last 10 papers: 6 marks, asked in 5 (for Lexical Analysis & Compiler Phases as a whole) · learn by solving · practise: [11 questions from 2007–2023 →](#/subjects/cd/pyq?topic=lex&years=pre2024)
+
 | Phase | Input → output | Typical errors caught |
 |---|---|---|
 | Lexical analysis | characters → tokens | illegal characters, malformed literals |
@@ -20,6 +22,8 @@ The **symbol table** is used by every phase. The front end (lexing to IR) depend
 
 ## Lexical analysis
 
+**Priority B** · last 10 papers: 6 marks, asked in 5 (for Lexical Analysis & Compiler Phases as a whole) · learn by solving · practise: [11 questions from 2007–2023 →](#/subjects/cd/pyq?topic=lex&years=pre2024)
+
 Tokens are described by regular expressions and recognised by a DFA. When several patterns match, the lexer takes the **longest match**; among equal-length matches, the pattern listed first wins (that is how keywords beat identifiers).
 
 **Counting tokens:** keywords, identifiers, constants, string literals, operators and punctuation each count as one token; whitespace and comments count as none.
@@ -34,6 +38,8 @@ Tokens are described by regular expressions and recognised by a DFA. When severa
 > 7: `int` `a` `=` `b` `+` `10` `;`.
 
 ## Grammars, FIRST and FOLLOW
+
+**Priority A** · last 10 papers: 24 marks, asked in 9 (for Parsing (LL/LR) as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/cd/pyq?topic=parse&years=pre2024)
 
 **Left recursion** $A \to A\alpha \mid \beta$ breaks top-down parsers. Remove it:
 
@@ -57,6 +63,8 @@ Rules for FOLLOW: for $B \to \alpha A \beta$, add FIRST($\beta$) − {ε} to FOL
 
 ## LL(1) parsing
 
+**Priority A** · last 10 papers: 24 marks, asked in 9 (for Parsing (LL/LR) as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/cd/pyq?topic=parse&years=pre2024)
+
 Predictive parsing table $M[A, a]$: for each production $A \to \alpha$, put it in $M[A, a]$ for every $a \in$ FIRST($\alpha$); if ε ∈ FIRST($\alpha$), also for every $a \in$ FOLLOW($A$).
 
 A grammar is **LL(1)** iff the table has no multiply-defined entry, i.e. for every pair of alternatives $A \to \alpha \mid \beta$:
@@ -75,6 +83,8 @@ Left-recursive and ambiguous grammars are never LL(1). Recursive-descent parsers
 
 ## LR parsing
 
+**Priority A** · last 10 papers: 24 marks, asked in 9 (for Parsing (LL/LR) as a whole) · learn by solving · practise: [31 questions from 2007–2023 →](#/subjects/cd/pyq?topic=parse&years=pre2024)
+
 Bottom-up shift-reduce parsers find the **handle** (the right side to reduce) and trace a rightmost derivation in reverse. Conflicts are **shift–reduce** or **reduce–reduce**.
 
 | Parser | Items | Reduce $A \to \alpha\cdot$ on |
@@ -89,6 +99,13 @@ Bottom-up shift-reduce parsers find the **handle** (the right side to reduce) an
 - Merging LR(1) states into LALR(1) can create **reduce–reduce** conflicts but never shift–reduce conflicts that were not already there.
 - **Operator-precedence** parsing handles grammars with no ε-productions and no two adjacent non-terminals.
 
+> [!TIP] Method: which parsers accept this grammar?
+> 1. Ambiguous? Then no LL or LR parser does; stop.
+> 2. Left-recursive, or two alternatives sharing a FIRST symbol? Then not LL(1). Otherwise check the three LL(1) conditions above.
+> 3. Build the LR(0) item sets. If no state holds a completed item together with a terminal shift or a second completed item, the grammar is LR(0).
+> 4. For the remaining conflicts, reduce $A \to \alpha\cdot$ only on FOLLOW($A$). None left: SLR(1).
+> 5. Still conflicts: build the LR(1) items. None: CLR(1). None after merging states with the same core: LALR(1).
+
 > [!EXAMPLE] Building LR(0) items
 > For $S' \to S$, $S \to (S) \mid a$: $I_0 = \text{closure}(\{S' \to \cdot S\}) = \{S' \to \cdot S,\ S \to \cdot(S),\ S \to \cdot a\}$. goto($I_0$, a) = $\{S \to a\cdot\}$; goto($I_0$, ( ) = $\{S \to (\cdot S),\ S \to \cdot(S),\ S \to \cdot a\}$.
 
@@ -102,6 +119,8 @@ Bottom-up shift-reduce parsers find the **handle** (the right side to reduce) an
 > LR(0) ⊂ SLR(1) ⊂ LALR(1) ⊂ CLR(1).
 
 ## Syntax-directed translation
+
+**Priority A** · last 10 papers: 12 marks, asked in 7 · learn by solving · practise: [6 questions from 2007–2023 →](#/subjects/cd/pyq?topic=sdt&years=pre2024)
 
 An SDD attaches attributes to grammar symbols and semantic rules to productions.
 
@@ -120,6 +139,8 @@ An SDD attaches attributes to grammar symbols and semantic rules to productions.
 > No; only the parent's inherited attributes and left siblings' attributes.
 
 ## Intermediate code and basic blocks
+
+**Priority A** · last 10 papers: 10 marks, asked in 6 · learn by solving · practise: [8 questions from 2007–2023 →](#/subjects/cd/pyq?topic=icg&years=pre2024)
 
 **Three-address code** has at most one operator on the right: `x = y op z`, `x = op y`, `goto L`, `if x relop y goto L`, `param x`, `call p, n`.
 
@@ -151,6 +172,8 @@ An SDD attaches attributes to grammar symbols and semantic rules to productions.
 
 ## Runtime environments
 
+**Priority B** · last 10 papers: 4 marks, asked in 3 · learn by solving + recall cards · practise: [8 questions from 2007–2023 →](#/subjects/cd/pyq?topic=runtime&years=pre2024)
+
 An **activation record** (stack frame) holds: actual parameters, returned value, control link (caller's frame), access link (frame of the lexically enclosing procedure), saved machine status (return address, registers), local data and temporaries.
 
 - **Static allocation** cannot support recursion; **stack allocation** handles recursion; **heap allocation** serves data that outlives its procedure.
@@ -171,6 +194,8 @@ An **activation record** (stack frame) holds: actual parameters, returned value,
 
 ## Code optimisation
 
+**Priority A** · last 10 papers: 11 marks, asked in 5 (for Code Optimization & Data-Flow Analysis as a whole) · learn by solving + recall cards · practise: [11 questions from 2007–2023 →](#/subjects/cd/pyq?topic=opt&years=pre2024)
+
 | Technique | Example |
 |---|---|
 | Constant folding | `x = 3 * 4` → `x = 12` |
@@ -190,6 +215,8 @@ An **activation record** (stack frame) holds: actual parameters, returned value,
 > Strength reduction.
 
 ## Data-flow analysis
+
+**Priority A** · last 10 papers: 11 marks, asked in 5 (for Code Optimization & Data-Flow Analysis as a whole) · learn by solving + recall cards · practise: [11 questions from 2007–2023 →](#/subjects/cd/pyq?topic=opt&years=pre2024)
 
 Each analysis has a direction, a meet operator, and a transfer function per block. Iterate the equations until nothing changes (fixed point).
 

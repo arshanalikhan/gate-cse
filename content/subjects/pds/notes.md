@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 4. Most marks here come from **tracing 
 
 ## C essentials
 
+**Priority A** · last 10 papers: 29 marks, asked in 9 (for C Programming as a whole) · learn by solving · practise: [43 questions from 2007–2023 →](#/subjects/pds/pyq?topic=c&years=pre2024)
+
 ### Operators and evaluation
 
 Precedence, high to low (associativity in brackets):
@@ -54,6 +56,8 @@ Precedence, high to low (associativity in brackets):
 
 ## Pointers and arrays
 
+**Priority A** · last 10 papers: 29 marks, asked in 9 (for C Programming as a whole) · learn by solving · practise: [43 questions from 2007–2023 →](#/subjects/pds/pyq?topic=c&years=pre2024)
+
 - `a[i]` is `*(a + i)`; an array name decays to a pointer to its first element (except with `sizeof` and `&`).
 - Pointer arithmetic scales by the pointee size: if `int *p = 1000`, then `p + 1 == 1004`.
 - `*p++` means `*(p++)`: use the value, then move the pointer. `++*p` and `(*p)++` increment the pointee.
@@ -79,11 +83,16 @@ Precedence, high to low (associativity in brackets):
 
 ## Recursion
 
+**Priority A** · last 10 papers: 10 marks, asked in 5 · learn by solving · practise: [16 questions from 2007–2023 →](#/subjects/pds/pyq?topic=recursion&years=pre2024)
+
 Trace recursion with a **call tree** (or an explicit stack, one frame per line). For each call record the parameters, local variables, and the value returned.
 
 - Number of calls for naive Fibonacci with `fib(0)`, `fib(1)` as base cases: $C(n) = C(n-1) + C(n-2) + 1$, which solves to $C(n) = 2F_{n+1} - 1$.
 - **Tail recursion** (the recursive call is the last action) can be turned into a loop.
 - Output order: statements **before** the recursive call print on the way down, statements **after** it print on the way back up.
+
+> [!TIP] Method: trace C with a frame table
+> Write one row per call, in call order: arguments, locals, the line where the call paused, and the value returned. Keep `static` and global variables in a separate box shared by every row. Fill a row's return value only when that call finishes, then go back up one row. Output before the recursive call appears in call order; output after it appears in return order.
 
 > [!EXAMPLE] Printing on the way up
 > ```c
@@ -116,6 +125,8 @@ def hanoi(n, src="A", dst="C", via="B", moves=None):
 ```
 
 ## Arrays
+
+**Priority B** · last 10 papers: 5 marks, asked in 3 · learn by solving · practise: [9 questions from 2007–2023 →](#/subjects/pds/pyq?topic=array&years=pre2024)
 
 **Address calculation** for `A[lr..ur][lc..uc]` with element size $w$, $m$ rows and $n$ columns:
 
@@ -151,6 +162,8 @@ def sum2d(a):
 ```
 
 ## Stacks
+
+**Priority A** · last 10 papers: 11 marks, asked in 6 (for Stacks & Queues as a whole) · learn by solving · practise: [12 questions from 2007–2023 →](#/subjects/pds/pyq?topic=stackq&years=pre2024)
 
 LIFO; `push`, `pop`, `top` are $O(1)$. Applications: function calls, expression conversion and evaluation, parenthesis matching, undo, DFS.
 
@@ -199,6 +212,8 @@ def eval_postfix(expr):
 
 ## Queues
 
+**Priority A** · last 10 papers: 11 marks, asked in 6 (for Stacks & Queues as a whole) · learn by solving · practise: [12 questions from 2007–2023 →](#/subjects/pds/pyq?topic=stackq&years=pre2024)
+
 FIFO; `enqueue` at the rear, `dequeue` at the front.
 
 **Circular queue** in an array of size $n$ (one slot kept empty): empty when `front == rear`; full when `(rear + 1) % n == front`; capacity $n - 1$; number of elements `(rear - front + n) % n`.
@@ -237,6 +252,8 @@ first = q.popleft()             # dequeue -> 10
 
 ## Linked lists
 
+**Priority B** · last 10 papers: 8 marks, asked in 5 · learn by solving · practise: [7 questions from 2007–2023 →](#/subjects/pds/pyq?topic=ll&years=pre2024)
+
 | Operation | Singly linked | Doubly linked |
 |---|---|---|
 | Insert/delete at head | $O(1)$ | $O(1)$ |
@@ -270,6 +287,8 @@ def reverse(head):
 > $O(1)$ by copying the next node into it and deleting the next node (impossible for the last node); otherwise $O(n)$ to find the predecessor.
 
 ## Binary trees
+
+**Priority B** · last 10 papers: 6 marks, asked in 5 · learn by solving · practise: [19 questions from 2007–2023 →](#/subjects/pds/pyq?topic=tree&years=pre2024)
 
 Height of a single node is 0 (edges on the longest root-to-leaf path).
 
@@ -323,6 +342,8 @@ def height(t):                           # edges on the longest root-leaf path
 
 ## Binary search trees and AVL trees
 
+**Priority A** · last 10 papers: 12 marks, asked in 7 · learn by solving · practise: [16 questions from 2007–2023 →](#/subjects/pds/pyq?topic=bst&years=pre2024)
+
 **BST property:** left subtree keys < node < right subtree keys. Inorder traversal is sorted. Search, insert and delete are $O(h)$: $O(\log n)$ when balanced, $O(n)$ in the worst case (sorted insertions build a chain).
 
 **Deletion:** leaf → remove; one child → splice; two children → replace with the inorder successor (minimum of the right subtree) or predecessor, then delete that node.
@@ -375,6 +396,8 @@ def search(t, key):
 ```
 
 ## Binary heaps
+
+**Priority A** · last 10 papers: 12 marks, asked in 6 · learn by solving · practise: [17 questions from 2007–2023 →](#/subjects/pds/pyq?topic=heap&years=pre2024)
 
 A **complete** binary tree with the heap property (min-heap: parent ≤ children). Stored in an array:
 
@@ -435,6 +458,8 @@ largest = -mx[0]
 ```
 
 ## Graph representation
+
+**Priority C** (skim) · not asked in the last 10 papers · learn by recall cards · practise: [1 question from 2007–2023 →](#/subjects/pds/pyq?topic=graphds&years=pre2024)
 
 | | Adjacency matrix | Adjacency list |
 |---|---|---|

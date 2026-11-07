@@ -4,6 +4,8 @@ Exam-focused notes for the Discrete Mathematics part of GATE 2027 Section 1. Gra
 
 ## Propositional logic
 
+**Priority B** · last 10 papers: 3 marks, asked in 3 · learn by solving · practise: [15 questions from 2007–2023 →](#/subjects/dm/pyq?topic=plog&years=pre2024)
+
 **Key idea:** a formula is a **tautology** (true in every row), a **contradiction** (false in every row) or a **contingency**. It is **satisfiable** if some row makes it true; **valid** means tautology.
 
 Equivalences to know by heart:
@@ -38,6 +40,8 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 
 ## First-order logic
 
+**Priority B** · last 10 papers: 5 marks, asked in 4 · learn by solving · practise: [16 questions from 2007–2023 →](#/subjects/dm/pyq?topic=fol&years=pre2024)
+
 **Key idea:** quantifiers range over a domain; negation flips them: $\lnot \forall x\,P(x) \equiv \exists x\,\lnot P(x)$ and $\lnot \exists x\,P(x) \equiv \forall x\,\lnot P(x)$.
 
 **Translating English:** "every $S$ is $P$" is $\forall x\,(S(x) \to P(x))$; "some $S$ is $P$" is $\exists x\,(S(x) \land P(x))$. Writing $\forall x\,(S(x) \land P(x))$ or $\exists x\,(S(x) \to P(x))$ is the classic mistake.
@@ -66,6 +70,8 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 
 ## Sets
 
+**Priority C** (skim) · not asked in the last 10 papers · learn by recall cards · practise: [5 questions from 2007–2023 →](#/subjects/dm/pyq?topic=sets&years=pre2024)
+
 | Fact | Value |
 |---|---|
 | $\lvert \mathcal{P}(A) \rvert$ | $2^{\lvert A \rvert}$ |
@@ -79,6 +85,8 @@ The converse $q \to p$ and the inverse $\lnot p \to \lnot q$ are equivalent to e
 > No. It is $\mathcal{P}(\Sigma^*)$, uncountable, while the set of Turing machines is countable.
 
 ## Relations
+
+**Priority B** · last 10 papers: 5 marks, asked in 3 · learn by solving · practise: [11 questions from 2007–2023 →](#/subjects/dm/pyq?topic=rel&years=pre2024)
 
 A relation $R$ on a set $A$ with $n$ elements is a subset of $A \times A$.
 
@@ -108,6 +116,8 @@ A relation $R$ on a set $A$ with $n$ elements is a subset of $A \times A$.
 
 ## Functions
 
+**Priority B** · last 10 papers: 3 marks, asked in 3 · learn by solving · practise: [4 questions from 2007–2023 →](#/subjects/dm/pyq?topic=func&years=pre2024)
+
 | Kind | Count from an $n$-set to an $m$-set |
 |---|---|
 | All functions | $m^n$ |
@@ -127,6 +137,8 @@ A relation $R$ on a set $A$ with $n$ elements is a subset of $A \times A$.
 
 ## Partial orders and lattices
 
+**Priority C** (skim) · last 10 papers: 3 marks, asked in 2 · learn by solving + recall cards · practise: [3 questions from 2007–2023 →](#/subjects/dm/pyq?topic=poset&years=pre2024)
+
 A **partial order** is reflexive, antisymmetric and transitive; draw it as a **Hasse diagram** (omit loops and transitive edges, larger elements higher).
 
 - **Maximal** element: nothing above it. **Greatest** element: above everything (unique if it exists). Same for minimal/least.
@@ -145,6 +157,8 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > No: 36 is not square-free (6 has no complement).
 
 ## Groups and algebraic structures
+
+**Priority A** · last 10 papers: 11 marks, asked in 6 · learn by solving · practise: [13 questions from 2007–2023 →](#/subjects/dm/pyq?topic=group&years=pre2024)
 
 | Structure | Axioms |
 |---|---|
@@ -169,6 +183,8 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > No: 4 does not divide 15 (Lagrange).
 
 ## Graph theory
+
+**Priority A** · last 10 papers: 30 marks, asked in 7 · learn by solving + recall cards · practise: [38 questions from 2007–2023 →](#/subjects/dm/pyq?topic=graph&years=pre2024)
 
 **Basics:** $\sum \deg(v) = 2E$, so the number of odd-degree vertices is even. A simple graph on $n$ labelled vertices: $2^{\binom n2}$ possibilities. A tree has $n - 1$ edges; there are $n^{n-2}$ labelled trees.
 
@@ -199,6 +215,11 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 - bipartite graphs: maximum matching = minimum vertex cover (König); Hall's condition for a perfect matching;
 - $K_{2m}$ has $(2m-1)!! = \frac{(2m)!}{2^m m!}$ perfect matchings.
 
+> [!TIP] Method: a graph question in three moves
+> 1. **Count first.** The handshake lemma, $E = V - 1$ for trees, $V - E + F = 2$ and $E \le 3V - 6$ for planar graphs settle most numericals.
+> 2. **Test small graphs.** For "always true?" options try $K_4$, $K_{3,3}$, $C_5$, a star, a path and the Petersen graph; one counterexample removes an option.
+> 3. **Bound both sides** for colouring and matching. A clique of size $k$ forces $\chi \ge k$ and an odd cycle forces $\chi \ge 3$; any colouring you can draw is an upper bound.
+
 > [!EXAMPLE] Euler's formula
 > A connected planar graph with 10 vertices, each of degree 3, has $E = 15$ edges, so $F = 2 - V + E = 7$ faces.
 
@@ -215,6 +236,8 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > A path is a tree: $3 \cdot 2^3 = 24$.
 
 ## Combinatorics and counting
+
+**Priority B** · last 10 papers: 8 marks, asked in 6 · learn by solving · practise: [21 questions from 2007–2023 →](#/subjects/dm/pyq?topic=comb&years=pre2024)
 
 | Count | Formula |
 |---|---|
@@ -243,6 +266,8 @@ A **partial order** is reflexive, antisymmetric and transitive; draw it as a **H
 > $\binom{5 + 3 - 1}{3} = \binom{7}{3} = 35$.
 
 ## Recurrences and generating functions
+
+**Priority B** · last 10 papers: 6 marks, asked in 3 · learn by solving · practise: [12 questions from 2007–2023 →](#/subjects/dm/pyq?topic=recur&years=pre2024)
 
 **Linear homogeneous recurrences** $a_n = c_1 a_{n-1} + c_2 a_{n-2}$: solve the characteristic equation $r^2 = c_1 r + c_2$.
 

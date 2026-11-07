@@ -181,10 +181,11 @@
     if (m && subjectBySlug(m[1])) {
       const subject = subjectBySlug(m[1]);
       const tab = m[2] || 'overview';
-      return { path, anchor, subject, tab, file: tab === 'pyq' ? null : `content/subjects/${subject.slug}/${m[2] || 'index'}.md` };
+      // query is kept for the PYQ tab, which reads ?topic=&type=&years=&status=&sort= from it
+      return { path, anchor, query, subject, tab, file: tab === 'pyq' ? null : `content/subjects/${subject.slug}/${m[2] || 'index'}.md` };
     }
-    if (!/^[a-z0-9][a-z0-9-]*$/.test(path)) return { path, anchor, file: null };
-    return { path, anchor, file: `content/${path}.md` };
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(path)) return { path, anchor, query, file: null };
+    return { path, anchor, query, file: `content/${path}.md` };
   }
 
   function routeHref(path, anchor) {
@@ -216,7 +217,8 @@
     S.route = r;
     updateNav(r);
     closeNav();
-    if (prev && prev.path === r.path) { scrollToAnchor(r.anchor, true); return; }
+    // Same page: just scroll. Exception: a PYQ link with different filters re-renders the list.
+    if (prev && prev.path === r.path && !(r.tab === 'pyq' && prev.query !== r.query)) { scrollToAnchor(r.anchor, true); return; }
 
     const seq = ++S.seq;
     const doc = $('#doc');
@@ -523,36 +525,99 @@
     };
 
     doc.append(h('p', { class: 'lead', text: `${mine.length} ${s.name} questions from ${Object.keys(meta).length || 'past'} GATE CSE papers, tagged by topic. Questions from 2021 onwards carry a one-line paraphrase; open the paper for the full text and figures.` }));
+    doc.append(h('p', { class: 'muted', style: 'font-size:13px' },
+      'Topics are listed by marks in the last 10 papers. Practise by topic on 2007–2023 and keep the 2024–2026 papers unseen for full timed mocks (',
+      h('a', { href: '#/strategy?h=the-13-week-plan', text: 'the 13-week plan' }), ').'));
 
-    const topics = Array.from(new Set(mine.map((q) => q.topic))).sort((a, b) => topicName(a).localeCompare(topicName(b)));
+    // Topics in order of marks in the 10 papers of 2021-26 (from weightage.json), then by name.
+    const recentMarks = (code) => (topicMeta[code] && +topicMeta[code].marks_recent) || 0;
+    const topics = Array.from(new Set(mine.map((q) => q.topic)))
+      .sort((a, b) => recentMarks(b) - recentMarks(a) || topicName(a).localeCompare(topicName(b)));
     const types = Array.from(new Set(mine.map((q) => q.type).filter(Boolean))).sort();
     const selTopic = h('select', { 'aria-label': 'Filter by topic' }, h('option', { value: '', text: 'All topics' }),
-      topics.map((t) => h('option', { value: t, text: `${topicName(t)} (${mine.filter((q) => q.topic === t).length})` })));
+      topics.map((t) => {
+        const n = mine.filter((q) => q.topic === t).length;
+        const mk = recentMarks(t);
+        return h('option', { value: t, text: `${topicName(t)} (${n}${mk ? `; ${mk} marks in 2021–26` : ''})` });
+      }));
     const selType = h('select', { 'aria-label': 'Filter by question type' }, h('option', { value: '', text: 'All types' }), types.map((t) => h('option', { value: t, text: t })));
     const selYears = h('select', { 'aria-label': 'Filter by years' },
-      h('option', { value: '', text: 'All years' }), h('option', { value: 'recent', text: '2021–2026 (MSQ era)' }), h('option', { value: 'old', text: 'Before 2021' }));
+      h('option', { value: '', text: 'All years' }),
+      h('option', { value: 'pre2024', text: 'Before 2024 (topic practice)' }),
+      h('option', { value: 'mock', text: '2024–2026 (keep for full mocks)' }),
+      h('option', { value: 'recent', text: '2021–2026 (MSQ era)' }),
+      h('option', { value: 'old', text: 'Before 2021' }));
     const selSort = h('select', { 'aria-label': 'Sort order' }, h('option', { value: 'new', text: 'Newest first' }), h('option', { value: 'old', text: 'Oldest first' }));
     const selStatus = h('select', { 'aria-label': 'Filter by your result' },
       h('option', { value: '', text: 'All' }), h('option', { value: 'todo', text: 'Not tried yet' }),
       h('option', { value: 'r', text: 'Got right' }), h('option', { value: 'w', text: 'Got wrong' }));
+
+    // Filters can be preset from the link (#/subjects/os/pyq?topic=paging&years=pre2024).
+    // Years default to "Before 2024" so the mock papers stay unseen; years=all shows everything.
+    const params = new URLSearchParams(r.query || '');
+    const preset = (sel, key, fallback) => {
+      let v = params.has(key) ? params.get(key) : fallback;
+      if (key === 'years' && v === 'all') v = '';
+      if (Array.from(sel.options).some((o) => o.value === v)) sel.value = v;
+    };
+    preset(selTopic, 'topic', '');
+    preset(selType, 'type', '');
+    preset(selYears, 'years', 'pre2024');
+    preset(selStatus, 'status', '');
+    preset(selSort, 'sort', 'new');
+    // Keep the address in step with the filters, so a reload or a shared link shows the same list.
+    const syncUrl = () => {
+      if (S.route !== r) return;
+      const p = new URLSearchParams();
+      if (selTopic.value) p.set('topic', selTopic.value);
+      if (selType.value) p.set('type', selType.value);
+      if (selYears.value !== 'pre2024') p.set('years', selYears.value || 'all');
+      if (selStatus.value) p.set('status', selStatus.value);
+      if (selSort.value !== 'new') p.set('sort', selSort.value);
+      const q = p.toString();
+      const hash = `#/subjects/${s.slug}/pyq${q ? `?${q}` : ''}`;
+      if (location.hash !== hash) history.replaceState(null, '', hash);
+      r.query = q;
+    };
+    const yearOk = (y) => {
+      switch (selYears.value) {
+        case 'pre2024': return y <= 2023;
+        case 'mock': return y >= 2024;
+        case 'recent': return y >= 2021;
+        case 'old': return y < 2021;
+        default: return true;
+      }
+    };
+    // A plain web search for the question on GATE Overflow: paper year, set and number only.
+    const solutionUrl = (q) => {
+      const m = meta[q.paper] || {};
+      const year = q.year || m.year;
+      const set = q.set != null ? q.set : m.set;
+      return `https://www.google.com/search?q=${encodeURIComponent(`site:gateoverflow.in GATE CSE ${year}${set ? ` Set ${set}` : ''} Question ${q.qno}`)}`;
+    };
     const count = h('span', { class: 'muted', style: 'font-size:13px' });
+    // Long topic names must not widen the page on phones: let each select shrink inside its label.
+    for (const sel of [selTopic, selType, selYears, selStatus, selSort]) sel.style.cssText = 'min-width:0;max-width:100%';
+    const fit = { style: 'max-width:100%' };
     doc.append(h('div', { class: 'filters' },
-      h('label', {}, 'Topic', selTopic), h('label', {}, 'Type', selType), h('label', {}, 'Years', selYears),
-      h('label', {}, 'My result', selStatus), h('label', {}, 'Sort', selSort), count));
+      h('label', fit, 'Topic', selTopic), h('label', fit, 'Type', selType), h('label', fit, 'Years', selYears),
+      h('label', fit, 'My result', selStatus), h('label', fit, 'Sort', selSort), count));
     doc.append(h('p', { class: 'muted', style: 'font-size:13px;margin-top:0' },
       'Solve a question, check the official key, then mark it right or wrong. Your results feed the progress report for this subject (saved in this browser only).'));
     const list = h('ol', { class: 'pyq-list' });
-    doc.append(list);
+    const empty = h('p', { class: 'muted', text: 'No questions match these filters. Try "All years" or another topic.' });
+    doc.append(list, empty);
 
     const paint = () => {
       const marks = getPyqMarks();
       const sorted = mine
         .filter((q) => (!selTopic.value || q.topic === selTopic.value)
           && (!selType.value || q.type === selType.value)
-          && (!selYears.value || (selYears.value === 'recent' ? yearOf(q) >= 2021 : yearOf(q) < 2021))
+          && yearOk(yearOf(q))
           && (!selStatus.value || (selStatus.value === 'todo' ? !marks[pyqKey(q)] : marks[pyqKey(q)] === selStatus.value)))
         .sort((a, b) => (selSort.value === 'old' ? 1 : -1) * (yearOf(a) - yearOf(b) || String(a.paper).localeCompare(String(b.paper)) || ((+a.qno || 0) - (+b.qno || 0))));
       count.textContent = `${sorted.length} shown`;
+      empty.hidden = sorted.length > 0;
       list.replaceChildren(...sorted.map((q) => {
         const m = meta[q.paper] || {};
         const pdf = q.pdf || m.file || null;
@@ -568,18 +633,19 @@
             h('span', { class: 'pill', text: topicName(q.topic) })),
           q.text ? h('div', { text: q.text }) : h('div', { class: 'muted', text: 'Open the paper to read this question.' }),
           h('details', {},
-            h('summary', { text: hasKey ? 'Answer key and paper' : 'Paper' }),
+            h('summary', { text: hasKey ? 'Answer key, paper and solution' : 'Paper and solution' }),
             hasKey ? h('p', {}, h('b', { text: 'Official key: ' }), String(q.key)) : null,
             h('p', {},
               pdf ? h('a', { href: pdf, target: '_blank', rel: 'noopener', text: 'Question paper (PDF)' }) : null,
               pdf && official ? ' · ' : null,
               official ? h('a', { href: official, target: '_blank', rel: 'noopener', text: 'official copy' }) : null,
               keyUrl ? ' · ' : null,
-              keyUrl ? h('a', { href: keyUrl, target: '_blank', rel: 'noopener', text: 'answer key' }) : null)),
+              keyUrl ? h('a', { href: keyUrl, target: '_blank', rel: 'noopener', text: 'answer key' }) : null),
+            h('p', {}, h('a', { href: solutionUrl(q), target: '_blank', rel: 'noopener', text: 'Search for a worked solution on GATE Overflow' }))),
           pyqMarkButtons(q));
       }));
     };
-    [selTopic, selType, selYears, selStatus, selSort].forEach((x) => x.addEventListener('change', paint));
+    [selTopic, selType, selYears, selStatus, selSort].forEach((x) => x.addEventListener('change', () => { paint(); syncUrl(); }));
     paint();
   }
 

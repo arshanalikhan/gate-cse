@@ -62,6 +62,8 @@ Revision sheet. Explanations and worked examples are in the [notes](#/subjects/c
 | Simultaneous access | $h\,t_c + (1-h)\,t_m$ |
 | Two-level (hierarchical) | $t_1 + (1-h_1)\,[\,t_2 + (1-h_2)\,t_m\,]$ |
 | Miss penalty (block of $B$ words, one word per access) | $B \times t_m$ |
+| Misses for one in-order scan of $N$ bytes (block $b$ bytes, cold cache) | $N / b$ |
+| CPI with cache misses | $\text{CPI}_{base} + (\text{memory refs per instruction}) \times \text{miss rate} \times \text{miss penalty}$ |
 
 ## Pipelining
 

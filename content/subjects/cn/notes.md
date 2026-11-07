@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 10, which was trimmed this year: UDP, A
 
 ## Principles of layering
 
+**Priority C** (skim) · last 10 papers: 2 marks, asked in 2 · learn by recall cards · practise: [5 questions from 2007–2023 →](#/subjects/cn/pyq?topic=layer&years=pre2024)
+
 **Key idea:** each layer offers a service to the layer above using only the service of the layer below; each adds its own header (**encapsulation**) and talks to its peer layer on the other host through a protocol.
 
 | TCP/IP layer | OSI equivalent | Unit | Example protocols | Device |
@@ -21,6 +23,8 @@ Exam-focused notes for GATE 2027 Section 10, which was trimmed this year: UDP, A
 > Transport (TCP) for ports; network (IP) for TTL.
 
 ## Switching and performance metrics
+
+**Priority B** · last 10 papers: 5 marks, asked in 3 · learn by solving · practise: [5 questions from 2007–2023 →](#/subjects/cn/pyq?topic=delay&years=pre2024)
 
 | | Circuit switching | Packet switching (datagram) | Virtual circuit |
 |---|---|---|---|
@@ -46,6 +50,8 @@ $$d_{trans} = \frac{L}{R}, \qquad d_{prop} = \frac{d}{s}, \qquad d_{nodal} = d_{
 
 ## Flow control and sliding window
 
+**Priority B** · last 10 papers: 9 marks, asked in 5 · learn by solving · practise: [11 questions from 2007–2023 →](#/subjects/cn/pyq?topic=sw&years=pre2024)
+
 Let $T_t = L/R$ (frame transmission time), $T_p$ = propagation delay, $a = T_p / T_t$. Ignore ACK transmission time unless given.
 
 | Protocol | Sender window | Receiver window | Efficiency | Sequence numbers with $k$ bits |
@@ -63,6 +69,8 @@ Full utilisation needs $N \ge 1 + 2a$. Throughput $= \eta \times R$. On an error
 > Otherwise, if all ACKs are lost, retransmitted old frames carry numbers the receiver now expects as new frames and wrongly accepts them.
 
 ## Error detection
+
+**Priority B** · last 10 papers: 6 marks, asked in 3 · learn by solving · practise: [6 questions from 2007–2023 →](#/subjects/cn/pyq?topic=dll&years=pre2024)
 
 | Method | Detects |
 |---|---|
@@ -82,6 +90,8 @@ Full utilisation needs $N \ge 1 + 2a$. Throughput $= \eta \times R$. On an error
 > 4, since $2^4 = 16 \ge 8 + 4 + 1$.
 
 ## Medium access control and Ethernet
+
+**Priority B** · last 10 papers: 4 marks, asked in 2 · learn by solving + recall cards · practise: [13 questions from 2007–2023 →](#/subjects/cn/pyq?topic=mac&years=pre2024)
 
 **Random access**
 
@@ -110,6 +120,8 @@ Efficiency falls as $a = T_p/T_t$ grows (long cables, fast links, short frames).
 
 ## Routing
 
+**Priority B** · last 10 papers: 6 marks, asked in 4 · learn by solving + recall cards · practise: [8 questions from 2007–2023 →](#/subjects/cn/pyq?topic=routing&years=pre2024)
+
 | | Distance vector | Link state |
 |---|---|---|
 | Knowledge | Each router knows only its neighbours' distance vectors | Each router learns the full topology (flooded link-state packets) |
@@ -127,6 +139,8 @@ Efficiency falls as $a = T_p/T_t$ grows (long cables, fast links, short frames).
 > Distance vector.
 
 ## IPv4 addressing and CIDR
+
+**Priority A** · last 10 papers: 16 marks, asked in 8 · learn by solving · practise: [21 questions from 2007–2023 →](#/subjects/cn/pyq?topic=ip&years=pre2024)
 
 An IPv4 address is 32 bits. In CIDR notation $a.b.c.d/n$, the first $n$ bits are the network prefix.
 
@@ -156,6 +170,8 @@ Old classes for reference: A 0.0.0.0–127.255.255.255 (/8), B 128–191 (/16), 
 
 ## IPv4 fragmentation
 
+**Priority B** · last 10 papers: 8 marks, asked in 5 · learn by solving · practise: [6 questions from 2007–2023 →](#/subjects/cn/pyq?topic=frag&years=pre2024)
+
 The IPv4 header is 20 bytes (up to 60 with options). Relevant fields: identification, flags (**DF** don't fragment, **MF** more fragments), **fragment offset** in units of 8 bytes, TTL, protocol, header checksum.
 
 Fragmenting a datagram for a link with MTU $M$ and header $h$:
@@ -172,12 +188,16 @@ Fragmenting a datagram for a link with MTU $M$ and header $h$:
 
 ## Network address translation
 
+**Priority C** (skim) · last 10 papers: 4 marks, asked in 4 · learn by recall cards · practise: [3 questions from 2007–2023 →](#/subjects/cn/pyq?topic=support&years=pre2024)
+
 A NAT router lets many hosts with private addresses share one public address. Outgoing packets get their (private IP, port) replaced by (public IP, new port); the NAT table maps replies back. Consequences: hosts behind NAT cannot be reached unless a mapping exists (port forwarding), and NAT violates the end-to-end principle because the router rewrites transport-layer ports.
 
 > [!RECALL] Which header fields does a NAT router rewrite on an outgoing TCP segment?
 > The source IP address and source port (and therefore the IP and TCP checksums).
 
 ## TCP
+
+**Priority A** · last 10 papers: 16 marks, asked in 9 · learn by solving + recall cards · practise: [21 questions from 2007–2023 →](#/subjects/cn/pyq?topic=tcp&years=pre2024)
 
 **Connection management:** three-way handshake SYN → SYN-ACK → ACK. SYN and FIN each consume one sequence number. Sequence numbers count **bytes**; an ACK carries the next byte expected (cumulative).
 
@@ -212,6 +232,8 @@ The sender's effective window is $\min(\text{cwnd}, \text{rwnd})$; throughput $\
 
 ## Socket API
 
+**Priority B** · not asked in the last 10 papers · learn by recall cards · practise: [3 questions from 2007–2023 →](#/subjects/cn/pyq?topic=udp&years=pre2024)
+
 | Server (TCP) | Client (TCP) |
 |---|---|
 | `socket()` → `bind()` to a port → `listen()` → `accept()` | `socket()` → `connect()` |
@@ -227,6 +249,8 @@ The sender's effective window is $\min(\text{cwnd}, \text{rwnd})$; throughput $\
 > `accept()`.
 
 ## DNS and HTTP
+
+**Priority B** · last 10 papers: 5 marks, asked in 4 · learn by recall cards · practise: [13 questions from 2007–2023 →](#/subjects/cn/pyq?topic=app&years=pre2024)
 
 **DNS** maps names to addresses through a hierarchy: root → top-level domain (TLD) → authoritative servers, with a local resolver that caches answers for their TTL. A **recursive** query asks a server to find the full answer; an **iterative** query returns a referral to the next server. Common records: A (IPv4 address), AAAA (IPv6), NS (name server), CNAME (alias), MX (mail server). DNS normally runs over UDP port 53.
 

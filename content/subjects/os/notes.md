@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 8. Each topic ends with the question pa
 
 ## Processes and system calls
 
+**Priority B** · last 10 papers: 11 marks, asked in 6 (System Calls & fork() 6, Processes & Threads 5) · learn by solving + recall cards · practise: [System Calls & fork(): 5 questions from 2007–2023 →](#/subjects/os/pyq?topic=fork&years=pre2024) · [Processes & Threads: 7 questions from 2007–2023 →](#/subjects/os/pyq?topic=proc&years=pre2024)
+
 A **process** is a program in execution: code, data, heap, stack, plus its **process control block (PCB)** (state, program counter, registers, scheduling info, memory-management info, open files).
 
 **States:** new → ready → running → (waiting ↔ ready) → terminated. *Running → waiting* (I/O or event wait) and *running → terminated* (exit) are caused by the process itself; *running → ready* comes from a timer interrupt or preemption.
@@ -48,6 +50,8 @@ int main() {
 
 ## Threads
 
+**Priority B** · last 10 papers: 5 marks, asked in 4 (for Processes & Threads as a whole) · learn by recall cards · practise: [7 questions from 2007–2023 →](#/subjects/os/pyq?topic=proc&years=pre2024)
+
 A **thread** is a unit of CPU scheduling inside a process. Threads of a process **share** code, data (globals), heap and open files; each has its **own** stack, registers and program counter.
 
 | | User-level threads | Kernel-level threads |
@@ -66,6 +70,8 @@ Mapping models: many-to-one, one-to-one (Linux, Windows), many-to-many.
 > The stack (each thread also has its own registers and program counter).
 
 ## CPU scheduling
+
+**Priority A** · last 10 papers: 13 marks, asked in 9 · learn by solving · practise: [19 questions from 2007–2023 →](#/subjects/os/pyq?topic=sched&years=pre2024)
 
 Definitions for each process:
 
@@ -101,6 +107,8 @@ $$\tau_{n+1} = \alpha\, t_n + (1 - \alpha)\, \tau_n, \qquad 0 \le \alpha \le 1$$
 > FCFS.
 
 ## Process synchronisation
+
+**Priority A** · last 10 papers: 13 marks, asked in 7 · learn by solving · practise: [22 questions from 2007–2023 →](#/subjects/os/pyq?topic=sync&years=pre2024)
 
 A **race condition** occurs when the result depends on the interleaving of operations on shared data. A **critical section (CS)** solution must give:
 
@@ -164,6 +172,20 @@ Swapping `wait(empty)` and `wait(mutex)` in the producer can deadlock (producer 
 
 **Dining philosophers:** each philosopher grabbing left then right fork can deadlock. Fixes: at most $n-1$ philosophers at the table, pick up both forks atomically, or one philosopher picks right first (break circular wait).
 
+### Checking a synchronisation question
+
+Test each property on its own, by trying to break it with one schedule:
+
+1. **Mutual exclusion:** find an interleaving that puts both processes in the critical section. Look for a check-then-set that is not atomic.
+2. **Progress:** with only one process trying to enter, can it be kept out? Strict alternation on a shared `turn` fails here.
+3. **Bounded waiting:** can one process re-enter again and again while the other waits?
+4. **Deadlock:** can both wait for each other forever, for example both set their flag and both spin?
+
+One counter-schedule disproves a property. To prove one, argue from the variable that breaks the tie (`turn` in Peterson's solution).
+
+> [!EXAMPLE] Smallest and largest final value of a shared counter
+> `x = 0`; P1 and P2 each run `for (i = 0; i < 5; i++) x = x + 1;`, and each increment is load, add, store. **Largest:** 10, with no overlap. **Smallest:** 2. P1 loads 0 and stalls; P2 runs four iterations (x = 4); P1 stores 1; P2 loads 1 and stalls; P1 runs its other four iterations; P2 stores 2. It cannot be 1: every store writes at least 1, and the last store comes from a process's last iteration, whose load follows that process's own earlier store, so it reads at least 1.
+
 > [!PYQ] Typical questions
 > Which of these code snippets guarantees mutual exclusion / progress / deadlock freedom; the minimum or maximum final value of a shared variable when two processes run `x = x + 1` with no lock (load, add, store interleavings); counting semaphore final values.
 
@@ -174,6 +196,8 @@ Swapping `wait(empty)` and `wait(mutex)` in the producer can deadlock (producer 
 > Bounded waiting: a process can lose the race for the lock indefinitely.
 
 ## Deadlock
+
+**Priority B** · last 10 papers: 7 marks, asked in 4 · learn by solving · practise: [14 questions from 2007–2023 →](#/subjects/os/pyq?topic=deadlock&years=pre2024)
 
 **Necessary conditions** (all four must hold): mutual exclusion, hold and wait, no preemption, circular wait.
 
@@ -210,6 +234,8 @@ For identical needs $m$: $R \ge n(m-1) + 1$. Conversely, the maximum number of p
 
 ## Memory management and paging
 
+**Priority A** · last 10 papers: 21 marks, asked in 10 (Paging, TLB & Page Tables 19, Contiguous Memory Allocation 2) · learn by solving · practise: [Paging, TLB & Page Tables: 15 questions from 2007–2023 →](#/subjects/os/pyq?topic=paging&years=pre2024) · [Contiguous Memory Allocation: 2 questions from 2007–2023 →](#/subjects/os/pyq?topic=mem&years=pre2024)
+
 **Contiguous allocation:** first-fit, best-fit, worst-fit. External fragmentation (free memory split into holes) is solved by compaction or paging. **Internal fragmentation** is wasted space inside an allocated unit (last page of a process wastes on average half a page).
 
 ### Paging
@@ -228,6 +254,9 @@ Logical address = page number $p$ + offset $d$. Physical address = frame number 
 > 32-bit virtual address, 4 KB pages, 4-byte PTE. Offset = 12 bits, pages = $2^{20}$, page table = $2^{20} \times 4$ B = 4 MB per process.
 
 **Multilevel paging** keeps each table level within one page: entries per page $= \frac{\text{page size}}{\text{PTE size}}$, so each level resolves $\log_2$ of that many bits. Number of levels $= \left\lceil \frac{\text{page-number bits}}{\text{bits per level}} \right\rceil$.
+
+> [!EXAMPLE] How many levels?
+> 46-bit virtual addresses, 8 KB pages, 4-byte entries. The offset takes 13 bits, so the page number has 33 bits. One page holds $2^{13}/4 = 2^{11}$ entries, so each level resolves 11 bits: $\lceil 33/11 \rceil = 3$ levels. Without a TLB every reference then costs 3 page-table accesses plus 1 for the data.
 
 **Inverted page table:** one entry per physical frame (not per virtual page); size independent of virtual space; lookup by hashing on (PID, page).
 
@@ -250,6 +279,8 @@ Logical address = (segment, offset). Segment table entry has base and limit; off
 > $2^{20}$ entries × 4 B = 4 MB.
 
 ## Virtual memory
+
+**Priority B** · last 10 papers: 8 marks, asked in 4 · learn by solving · practise: [15 questions from 2007–2023 →](#/subjects/os/pyq?topic=vm&years=pre2024)
 
 **Demand paging** loads a page only when referenced. On a **page fault**: trap, find a free frame (or evict one), read the page from disk, update the table, restart the instruction.
 
@@ -284,6 +315,8 @@ $p$ = page-fault rate, $m$ = memory access time, $s$ = page-fault service time (
 
 ## File systems
 
+**Priority B** · last 10 papers: 7 marks, asked in 4 · learn by solving · practise: [8 questions from 2007–2023 →](#/subjects/os/pyq?topic=fs&years=pre2024)
+
 **Allocation methods**
 
 | Method | Random access | Problems |
@@ -304,6 +337,8 @@ $$\text{max file size} = \bigl(d + k + k^2 + k^3\bigr) \times B$$
 > Each index block holds 256 pointers: $(10 + 256 + 256^2) \times 1$ KB = 65,802 KB ≈ 64.3 MB.
 
 ## Disk and I/O scheduling
+
+**Priority C** (skim) · not asked in the last 10 papers · learn by solving · practise: [5 questions from 2007–2023 →](#/subjects/os/pyq?topic=disk&years=pre2024)
 
 Disk access time $=$ seek time $+$ rotational latency $+$ transfer time. Average rotational latency is half a revolution: $\frac{1}{2} \cdot \frac{60}{\text{RPM}}$ s.
 

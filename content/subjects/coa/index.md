@@ -2,6 +2,31 @@
 
 Instruction sets and addressing, ALU and control-unit design, memory interfacing, the memory hierarchy and cache mapping, I/O with interrupts and DMA, and pipelining. Typically 5–10 marks per paper, mostly numerical.
 
+<!-- plan:start -->
+## Battle plan
+
+Expected **8.3 marks** per paper (5–10 across the 10 papers of 2021–26) · default budget **22 hours** · week 2 of the [13-week plan](#/strategy?h=the-13-week-plan).
+
+| Priority | Topic | Last 10 papers | Learn by | Study, then practise |
+|---|---|---|---|---|
+| **A** | Cache Memory | 28 marks · 9 papers | Solving | [Memory hierarchy performance](#/subjects/coa/notes?h=memory-hierarchy-performance) · [Cache memory mapping](#/subjects/coa/notes?h=cache-memory-mapping) → [36 questions](#/subjects/coa/pyq?topic=cache&years=pre2024) |
+| **A** | Pipelining & Hazards | 18 marks · 9 papers | Solving | [Instruction pipelining](#/subjects/coa/notes?h=instruction-pipelining) · [Pipeline hazards](#/subjects/coa/notes?h=pipeline-hazards) → [25 questions](#/subjects/coa/pyq?topic=pipe&years=pre2024) |
+| **A** | Instruction Set & Addressing Modes | 17 marks · 8 papers | Both | [Instruction set architecture](#/subjects/coa/notes?h=instruction-set-architecture) · [Addressing modes](#/subjects/coa/notes?h=addressing-modes) → [14 questions](#/subjects/coa/pyq?topic=isa&years=pre2024) |
+| **A** | I/O, Interrupts & DMA | 7 marks · 7 papers | Both | [I/O interface, interrupts and DMA](#/subjects/coa/notes?h=i-o-interface-interrupts-and-dma) → [11 questions](#/subjects/coa/pyq?topic=io&years=pre2024) |
+| **B** | Disk access time (asked via OS now) | 6 marks · 3 papers | Solving | [Secondary storage](#/subjects/coa/notes?h=secondary-storage) → [8 questions](#/subjects/coa/pyq?topic=disk&years=pre2024) |
+| **B** | CPU Performance (CPI, Amdahl) | 4 marks · 2 papers | Solving | [Instruction set architecture](#/subjects/coa/notes?h=instruction-set-architecture) → [1 question](#/subjects/coa/pyq?topic=perf&years=pre2024) |
+| **B** | Memory interfacing (new 2027 wording) | 2 marks · 1 paper | Solving | [Memory interfacing](#/subjects/coa/notes?h=memory-interfacing) → [10 questions](#/subjects/coa/pyq?topic=mem&years=pre2024) |
+| **B** | ALU and control-unit design (new 2027 wording) | 1 mark · 1 paper | Both | [ALU design and arithmetic](#/subjects/coa/notes?h=alu-design-and-arithmetic) · [Control unit design](#/subjects/coa/notes?h=control-unit-design) → [2 questions](#/subjects/coa/pyq?topic=datapath&years=pre2024) |
+
+**A**: master it and solve all its 2007–2023 questions. **B**: learn the method, then solve its questions. **C**: read once and keep its recall cards; solve its questions only if time is left. Keep the 2024–2026 papers unseen: they are your full-length mocks.
+
+**How to study it**
+
+- Cache first (28 of 83 marks): address split, miss counting by simulation, average access time. Then pipelining (18), then instruction formats and addressing modes (17).
+- Hardwired versus microprogrammed control and memory interfacing are newly named in 2027 and have little past data: learn the sizing methods once and solve 3–4 questions each.
+- Disk-time numericals still gave 6 marks in 2024–26 through file and I/O questions: quick wins.
+<!-- plan:end -->
+
 ```widget
 type: weightage-topics
 ```

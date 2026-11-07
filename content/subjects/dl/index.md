@@ -2,6 +2,27 @@
 
 Boolean algebra and minimisation (algebraic, Karnaugh map, tabular), design of combinational and sequential circuits, and number representation with fixed- and floating-point arithmetic. Typically 5–9 marks per paper, often the easiest marks on the paper.
 
+<!-- plan:start -->
+## Battle plan
+
+Expected **7 marks** per paper (5–9 across the 10 papers of 2021–26) · default budget **12 hours** · week 1 of the [13-week plan](#/strategy?h=the-13-week-plan).
+
+| Priority | Topic | Last 10 papers | Learn by | Study, then practise |
+|---|---|---|---|---|
+| **A** | Boolean Algebra & Minimization | 22 marks · 8 papers | Solving | [Boolean algebra](#/subjects/dl/notes?h=boolean-algebra) · [Karnaugh-map minimisation](#/subjects/dl/notes?h=karnaugh-map-minimisation) · [Tabular (Quine–McCluskey) method](#/subjects/dl/notes?h=tabular-quine-mccluskey-method) → [31 questions](#/subjects/dl/pyq?topic=bool&years=pre2024) |
+| **A** | Sequential Circuits | 14 marks · 6 papers | Solving | [Sequential circuits](#/subjects/dl/notes?h=sequential-circuits) → [15 questions](#/subjects/dl/pyq?topic=seq&years=pre2024) |
+| **A** | Floating Point (IEEE 754) | 12 marks · 8 papers | Solving | [Floating point (IEEE 754)](#/subjects/dl/notes?h=floating-point-ieee-754) → [9 questions](#/subjects/dl/pyq?topic=fp&years=pre2024) |
+| **A** | Number Systems & Fixed-Point Arithmetic | 11 marks · 10 papers | Solving | [Number representation](#/subjects/dl/notes?h=number-representation) → [18 questions](#/subjects/dl/pyq?topic=numsys&years=pre2024) |
+| **A** | Combinational Circuits | 11 marks · 6 papers | Solving | [Combinational circuits](#/subjects/dl/notes?h=combinational-circuits) → [18 questions](#/subjects/dl/pyq?topic=comb&years=pre2024) |
+
+**A**: master it and solve all its 2007–2023 questions. **B**: learn the method, then solve its questions. **C**: read once and keep its recall cards; solve its questions only if time is left. Keep the 2024–2026 papers unseen: they are your full-length mocks.
+
+**How to study it**
+
+- Every topic here is a procedure: K-map and Quine–McCluskey, multiplexer and decoder design, flip-flop and counter tracing, base conversion, IEEE 754 encoding. That is why it returns the most marks per hour in the syllabus: do it first.
+- For each procedure, solve 3 past questions, then time yourself: a 2-mark question should take under 4 minutes.
+<!-- plan:end -->
+
 ```widget
 type: weightage-topics
 ```

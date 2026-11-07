@@ -1,85 +1,101 @@
 # Preparation strategy
 
-A plan you can actually follow: what to study first, how to split the remaining weeks before February 2027, a daily routine, and the error-tracking system that turns mock tests into marks.
+A plan for the time left before February 2027: the score to aim for, the order of subjects with an hour budget for each, how to study when logic comes faster than theory, a daily routine, and the mock schedule.
 
-## Principles
+## The target
 
-1. **Return on investment decides the order.** Study high-weightage, high-repeat topics first (see [topic weightage](#/analysis)). Digital Logic and Compiler Design are small; Engineering + Discrete Mathematics, Programming & DS, OS, COA, Algorithms and Networks carry most of the paper.
-2. **Previous-year questions are the real syllabus.** GATE repeats ideas, not questions. After each topic, solve every PYQ on it (each subject's **Previous-year questions** tab).
-3. **Active recall beats re-reading.** Close the notes and reproduce the result, the formula or the algorithm on paper.
-4. **Every mistake gets logged.** Most marks are lost to the same few misconceptions, repeated. The three-notebook system below makes them visible.
-5. **Practise in exam conditions.** 3 hours, virtual calculator, no breaks, negative marking.
+- **AIR under 100** has needed roughly **70–75 marks out of 100** in recent CS papers. These are third-party marks-versus-rank estimates; the organising institute does not publish the table.
+- Aim for **75**: 13 of 15 in General Aptitude and about 62 of the 85 technical marks.
+- That leaves an error budget of about 25 marks across the whole paper, negative marking and slips included. Every technical subject is worth 6.7–9.3 marks a paper, so dropping one subject spends a third of that budget. **Skip topics, never subjects.** Each subject's overview has a "Battle plan" table that ranks its topics as A (master), B (method plus questions) or C (skim).
 
-## Subject priority
+## Where the marks are
 
-| Priority | Subjects | Why |
-|---|---|---|
-| **Must master** | Engineering + Discrete Mathematics, Programming & Data Structures, Operating System, Computer Organization, Algorithms | Highest combined weight; questions are predictable in type |
-| **High** | Computer Networks, Theory of Computation, Databases | Steady 6–10 marks each; formula- and rule-driven |
-| **Finish quickly** | Digital Logic, Compiler Design | Low weight, but the easy questions are very easy; do not skip them |
-| **Every day** | General Aptitude | 15 marks for 20 minutes of daily practice |
+Average marks per paper over the 10 papers of 2021–2026 (range in brackets), and the default study budget used by the plan below:
 
-> [!NOTE] Exact numbers
-> The marks-per-subject chart on the [home page](#/) and the [topic weightage](#/analysis) page are computed from every tagged past question. Use them to fine-tune this order.
-
-## If you are starting now: a 13-week plan to February 2027
-
-The first CS session can be as early as **6 February 2027**. From the week of 9 November 2026 that is about 13 weeks. This plan assumes you have seen most subjects once (college courses count); if not, cut the "Finish quickly" subjects to their core topics and keep the mock phase.
-
-| Weeks | Dates | Focus | Daily maths slot |
+| Subject | Marks per paper | Default hours | Plan week |
 |---|---|---|---|
-| 1–3 | 9 Nov – 29 Nov | **Systems:** Operating System, COA, C programming + data structures | Discrete Mathematics (logic, sets, relations, functions) |
-| 4–6 | 30 Nov – 20 Dec | **Core CS:** Algorithms, Databases | Discrete Mathematics (graphs, combinatorics, groups) |
-| 7–8 | 21 Dec – 3 Jan | **Theory:** Theory of Computation, Compiler Design | Linear algebra, calculus |
-| 9–10 | 4 Jan – 17 Jan | **Networks + Digital Logic** (2027 syllabus topics) | Probability and statistics |
-| 11–13 | 18 Jan – exam | **Mocks and revision:** 2–3 full mocks per week, error-log revision, formula sheets | Mixed PYQ sets |
+| [Digital Logic](#/subjects/dl) | 7.0 (5–9) | 12 | 1 |
+| [Engineering Mathematics](#/subjects/em) | 7.8 (6–9) | 12 | 1 |
+| [Computer Organization](#/subjects/coa) | 8.3 (5–10) | 22 | 2 |
+| [Operating System](#/subjects/os) | 8.0 (6–10) | 18 | 3 |
+| [Programming & Data Structures](#/subjects/pds) | 9.3 (6–12) | 24 | 4 |
+| [Algorithms](#/subjects/algo) | 7.7 (4–12) | 22 | 5–6 |
+| [Discrete Mathematics](#/subjects/dm) | 7.4 (3–15) | 24 | 6–7 |
+| [Theory of Computation](#/subjects/toc) | 7.4 (6–9) | 20 | 7–8 |
+| [Compiler Design](#/subjects/cd) | 6.7 (4–8) | 14 | 8 |
+| [Databases](#/subjects/db) | 7.3 (5–9) | 20 | 8–9 |
+| [Computer Networks](#/subjects/cn) | 8.1 (6–10) | 22 | 9–10 |
+| [General Aptitude](#/subjects/ga) | 15 | 20 minutes a day | every day |
 
-Rules for each week:
+The spread is flat: no technical subject is "small". Digital Logic and Compiler Design are often called low-weight, but they averaged 7.0 and 6.7 marks, the same as Databases and Theory of Computation, and both are almost entirely procedures (K-maps, IEEE 754, FIRST/FOLLOW, parsing tables). That makes them the cheapest marks in the syllabus, so the plan does them early instead of deferring them. The numbers come from the [topic weightage](#/analysis) analysis of every past question.
 
-- Finish the week's notes by Thursday; Friday–Saturday solve that subject's PYQs (2010 onwards first); Sunday is revision + one sectional test.
-- 20 minutes of General Aptitude every day, no exceptions.
-- From week 6, one full-length paper every Sunday.
+## How to study when logic comes faster than theory
 
-## With 8–12 months: four phases
+Most GATE CS marks come from procedures and numericals: every Battle-plan table marks each topic as learnt by **solving**, by **recall**, or both. Use a different loop for each.
 
-If you are preparing for a later GATE, use the same order with more room:
+1. **Solve first, read second** (solve-type topics, most of the paper). Attempt two or three past questions on the topic cold, then read the notes section, then finish the topic's questions. A failed attempt before studying improves what you learn from the reading (pretesting effect: Richland, Kornell & Kao 2009; review in Pan & Carpenter 2023), and once you have some skill, solving problems teaches more than studying worked examples (expertise reversal: Kalyuga et al. 2003).
+2. **Derive, don't memorise** (theory). Where the notes say "derive, don't memorise", learn the two or three rules that generate a table (closure and decidability, normal forms, parser power) and rebuild the table from them. What you generate is remembered better than what you read (generation effect, meta-analysis d ≈ 0.40: Bertsch et al. 2007), and explaining why a fact holds helps further (self-explanation, g ≈ 0.55: Bisra et al. 2018).
+3. **Retrieve and space what is left.** The facts that don't reduce to a rule are in the recall cards. Answer them from memory when the home-page review queue says they are due (retrieval practice, g ≈ 0.6: Adesope et al. 2017; spacing: Cepeda et al. 2008). Don't reread notes as revision.
+4. **Interleave finished subjects.** Mixed sets of past questions make you choose the method, which is what the exam tests (interleaving meta-analysis, g ≈ 0.42: Brunmair & Richter 2019; mathematics: Rohrer & Taylor 2007).
+5. **Log every miss.** Most lost marks come from the same few misconceptions, repeated. The three notebooks below make them visible.
 
-| Phase | Length | Subjects | Goal |
+## The 13-week plan
+
+**Day 0, Sunday 8 November: diagnostic.** Take the [predicted 2027 paper](mock/) as a timed 3-hour mock. Each subject's progress report then shows your score. If you score 70% or more in a subject and have already solved its past questions, halve its block and give the hours to your weakest subject. Otherwise keep the default order below.
+
+The hours assume about 4–4½ focused hours on weekdays and 7 on weekend days, about 35 a week: roughly 24 hours on the week's subject (19 in a mock week), the rest on General Aptitude, review and the error log.
+
+| Week | Dates | Main block: notes and past questions | Full mock (3 h + 2 h analysis) |
 |---|---|---|---|
-| 1. Systems anchor | ~2 months | OS, COA, C + data structures | Concepts plus all numerical types (scheduling, paging, cache, pipelines) |
-| 2. Core engineering | ~2 months | Algorithms, Discrete Maths, Databases | Asymptotics, recurrences, graph algorithms, logic, SQL/RA, normalisation, transactions |
-| 3. Networks and theory | ~2 months | Networks, TOC, Engineering Maths | Subnetting, TCP, routing; automata and decidability; probability and linear algebra |
-| 4. Execution | last 2 months | Digital Logic, Compiler Design, then mocks only | Clear the small subjects in two weeks, then full mocks and error analysis |
+| 1 | 9–15 Nov | Digital Logic (12 h), then Engineering Mathematics (12 h) | |
+| 2 | 16–22 Nov | Computer Organization (22 h) | |
+| 3 | 23–29 Nov | Operating System (18 h) | Sun 29 Nov: GATE 2024 Set 1 |
+| 4 | 30 Nov – 6 Dec | Programming & Data Structures (24 h) | |
+| 5 | 7–13 Dec | Algorithms (22 h, finishes early in week 6) | Sun 13 Dec: GATE 2024 Set 2 |
+| 6 | 14–20 Dec | Discrete Mathematics (24 h, finishes early in week 7) | |
+| 7 | 21–27 Dec | Theory of Computation (20 h, finishes early in week 8) | Sun 27 Dec: GATE 2025 Set 1 |
+| 8 | 28 Dec – 3 Jan | Compiler Design (14 h), then start Databases | |
+| 9 | 4–10 Jan | Databases (20 h in all), then start Computer Networks | Sun 10 Jan: GATE 2025 Set 2 |
+| 10 | 11–17 Jan | Computer Networks (22 h in all) | Sun 17 Jan: GATE 2026 Set 1 |
+| 11 | 18–24 Jan | Repair: the three subjects that lost the most marks in mocks 1–5 | Midweek: GATE 2026 Set 2; Sunday: a test-series mock |
+| 12 | 25–31 Jan | Repair, the autopsy book, every formula sheet in self-test mode | Two test-series mocks |
+| 13 | 1–5 Feb | Light: one mock early in the week, the review queue, sleep shifted to your exam slot | Exams from Sat 6 Feb |
+
+Why this order:
+
+- **Digital Logic and Engineering Mathematics first:** the most marks per hour (procedures and short calculations), and a fast start.
+- **Prerequisites before what uses them:** caches before paging (COA, then OS), data structures before algorithms, graph algorithms before graph theory, automata and grammars before lexing and parsing (TOC, then CD).
+- **Databases and Networks last among the new subjects:** nothing else depends on them, and most of their marks are numericals (CIDR, TCP windows, normal forms, schedules).
+
+Rules that keep the plan alive:
+
+- **Running late?** If a block overruns by more than two days, drop its Priority C topics and the pre-2014 questions on its Priority B topics. Never push the next subject back.
+- **Repair weeks:** in each repair subject, redo the questions you marked "Got it wrong" (the "My result" filter on the PYQ tab), then its Priority A questions from 2014–2023.
+- **The 2024–2026 papers stay unseen** until their mock date. Practise by topic only on 2007–2023: the PYQ tab's "Before 2024 (topic practice)" filter does this, and every Battle-plan link opens with it.
 
 ## Daily routine
 
 | Block | Time | What to do |
 |---|---|---|
-| Morning recall | 45 min | Revise yesterday's formula sheet and notes from memory, then check |
-| Practice | 1 hour | 5–10 NAT or MSQ problems from 2021–2026 papers |
-| Deep work | 2 hours | New theory and hard problems; phone in another room |
-| Night log | 30 min | Write the day's mistakes in the error log; set tomorrow's exact targets |
+| Morning review | 45 min | The home-page review queue (recall cards and topic self-tests that are due), then one formula sheet in self-test mode |
+| Practice | 60 min | 40 minutes of past questions on the week's topics (from week 3, every third day a mixed set from finished subjects), then 20 minutes of General Aptitude |
+| Deep work | 2 h | The week's subject, solve-first: three questions cold, the notes section, then the rest of the topic's questions. Phone in another room |
+| Night log | 30 min | Write the day's misses in the autopsy book; set tomorrow's exact topics |
 
-Protect sleep and exercise. Consistent 4–5 focused hours a day for 13 weeks beats 10-hour days that collapse after two weeks.
+On weekends, make the deep-work block 4–5 hours. Protect sleep and exercise: sleep consolidates what you studied that day (Diekelmann & Born 2010), and steady 4–5 focused hours a day for 13 weeks beat 10-hour days that collapse after two.
 
 ## The three-notebook system
 
-1. **Theory vault:** condensed diagrams, flows and the precise edge-case rules that MSQs test (for example "every regular language is context-free, but the complement of a CFL need not be a CFL").
-2. **Formula ledger:** every formula and standard result you need, in one place. The **Formulae** page of each subject on this site is a ready-made starting point; add your own.
-3. **Autopsy book:** every PYQ or mock question you got wrong or guessed. For each, write the exact logical failure and the principle that fixes it. Re-attempt these questions weekly; this notebook is your highest-value revision material in the last month.
-
-## How to use previous-year questions
-
-- **Topic-wise first:** after finishing a topic, solve its PYQs from the subject's PYQ tab, newest first.
-- **Year-wise later:** in the mock phase, take complete past papers (2015–2026) as timed tests.
-- **Mark the patterns:** most numerical PYQs follow a handful of templates (effective memory access time, pipeline speed-up, TCP window growth, Bayes, recurrences). Recognising the template is half the solution.
+1. **Theory vault:** the rules that generate the facts (closure, decidability, normal forms), diagrams, and the precise edge cases that MSQs test, for example "every regular language is context-free, but the complement of a CFL need not be a CFL".
+2. **Formula ledger:** every formula and standard result you need. Each subject's **Formulae** page is the starting point; add your own.
+3. **Autopsy book:** every past or mock question you got wrong or guessed. Write the exact logical failure and the principle that fixes it, and re-attempt these questions weekly. In the last month this is your highest-value revision.
 
 ## Mock tests
 
-- Start full-length mocks about six weeks before the exam; take at least 10 in total.
-- Take them at the same time of day as your exam session (morning 9:30–12:30 or afternoon 14:30–17:30).
-- Spend as long analysing a mock as taking it: classify every lost mark as concept gap, calculation slip, misread or time pressure.
-- Use the [predicted 2027 mock](mock/) on this site for the full GATE CBT experience.
+- **Seven full papers under exam conditions:** the day-0 diagnostic and the six 2024–2026 sets on the dates above. Add a test series for weeks 11–13 if you have one; if not, retake the predicted paper after week 10.
+- **Same time of day as your exam slot** (forenoon 9:30–12:30 or afternoon 14:30–17:30), with the on-screen virtual calculator only.
+- **Analyse as long as you test.** Classify every lost mark: concept gap (back to the notes section and five of its questions), calculation slip (add a check step), misread (underline what is asked before solving) or time pressure (apply the pass system below).
+- The [past papers page](#/papers) lists the papers and official keys for scoring.
 
 ## Exam-day tactics
 
@@ -95,3 +111,7 @@ Protect sleep and exercise. Consistent 4–5 focused hours a day for 13 weeks be
 > - **Paging + cache in one question:** a 2-mark NAT may chain TLB, page table and cache. Write the full address-translation path first.
 > - **C tracing:** nested recursion with `static` variables and pointer arithmetic. Trace the call stack on paper, one frame per line.
 > - **TCP windows:** check whether the window is given in bytes or segments, and where the slow-start threshold is.
+
+## Sources
+
+Adesope, Trevisan & Sundararajan 2017, Rev. Educ. Res. · Bertsch et al. 2007, Memory & Cognition 35:201 · Bisra et al. 2018, Educ. Psychol. Rev. 30:703 · Brunmair & Richter 2019, Psychol. Bull. 145:1029 · Cepeda et al. 2008, Psychol. Sci. 19:1095 · Diekelmann & Born 2010, Nat. Rev. Neurosci. 11:114 · Kalyuga, Ayres, Chandler & Sweller 2003, Educ. Psychol. 38:23 · Pan & Carpenter 2023, Educ. Psychol. Rev. 35:97 · Richland, Kornell & Kao 2009, J. Exp. Psychol. Appl. 15:243 · Rohrer & Taylor 2007, Instr. Sci. 35:481. Rank estimates: [Physics Wallah](https://www.pw.live/gate/exams/gate-marks-vs-rank) and [Careers360](https://engineering.careers360.com/articles/gate-cse-marks-vs-rank-2026) marks-versus-rank tables.

@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 6. Two kinds of question dominate: cons
 
 ## Finite automata
 
+**Priority A** · last 10 papers: 27 marks, asked in 10 (for Finite Automata & Regular Expressions as a whole) · learn by solving · practise: [34 questions from 2007–2023 →](#/subjects/toc/pyq?topic=fa&years=pre2024)
+
 **Key idea:** a DFA has exactly one move per (state, symbol); an NFA may have zero, one or many, plus ε-moves. Both accept exactly the **regular languages**.
 
 - **Subset construction** turns an $n$-state NFA into a DFA with at most $2^n$ states (the bound is reached, e.g. "the $n$-th symbol from the end is 1" needs $2^n$ DFA states but only $n + 1$ NFA states).
@@ -37,6 +39,8 @@ Minimal DFA sizes worth memorising (alphabet $\{a, b\}$ unless stated):
 
 ## Regular expressions
 
+**Priority A** · last 10 papers: 27 marks, asked in 10 (for Finite Automata & Regular Expressions as a whole) · learn by solving · practise: [34 questions from 2007–2023 →](#/subjects/toc/pyq?topic=fa&years=pre2024)
+
 Operators: union $+$, concatenation, Kleene star $^*$ (and $r^+ = rr^*$).
 
 | Identity | |
@@ -59,6 +63,8 @@ Operators: union $+$, concatenation, Kleene star $^*$ (and $r^+ = rr^*$).
 > $R = QP^*$.
 
 ## Regular languages and their properties
+
+**Priority A** · last 10 papers: 12 marks, asked in 6 · learn by solving + recall cards · practise: [18 questions from 2007–2023 →](#/subjects/toc/pyq?topic=reg&years=pre2024)
 
 **Closure:** union, intersection, complement, difference, concatenation, star, reversal, homomorphism, inverse homomorphism, quotient by any language. All finite languages are regular.
 
@@ -92,6 +98,8 @@ Operators: union $+$, concatenation, Kleene star $^*$ (and $r^+ = rr^*$).
 
 ## Context-free grammars
 
+**Priority A** · last 10 papers: 15 marks, asked in 7 (for CFGs & Pushdown Automata as a whole) · learn by solving · practise: [10 questions from 2007–2023 →](#/subjects/toc/pyq?topic=cfg&years=pre2024)
+
 A CFG has rules $A \to \alpha$. A grammar is **ambiguous** if some string has two different leftmost derivations (parse trees). Some CFLs are **inherently ambiguous**, e.g. $\{a^ib^jc^k : i = j \text{ or } j = k\}$.
 
 Standard grammars:
@@ -113,6 +121,8 @@ Standard grammars:
 
 ## Pushdown automata
 
+**Priority A** · last 10 papers: 15 marks, asked in 7 (for CFGs & Pushdown Automata as a whole) · learn by solving · practise: [10 questions from 2007–2023 →](#/subjects/toc/pyq?topic=cfg&years=pre2024)
+
 A PDA is an NFA with a stack. Nondeterministic PDAs accept exactly the CFLs; acceptance by final state and by empty stack are equivalent for NPDAs.
 
 **Deterministic PDAs** accept the **deterministic CFLs** (DCFLs), a proper subset of the CFLs: every DCFL has an unambiguous grammar, and a DPDA accepting by empty stack can only accept prefix-free languages.
@@ -130,7 +140,17 @@ A PDA is an NFA with a stack. Nondeterministic PDAs accept exactly the CFLs; acc
 
 ## Context-free languages and closure
 
+**Priority A** · last 10 papers: 12 marks, asked in 7 · learn by solving + recall cards · practise: [21 questions from 2007–2023 →](#/subjects/toc/pyq?topic=cfl&years=pre2024)
+
 **Pumping lemma (CFL):** every long enough $s \in L$ splits as $uvxyz$ with $\lvert vxy \rvert \le p$, $\lvert vy \rvert \ge 1$, and $uv^ixy^iz \in L$ for all $i \ge 0$. It shows $a^nb^nc^n$, $ww$, $a^{n^2}$ and $a^p$ ($p$ prime) are not context-free.
+
+> [!KEY] Derive, don't memorise: the closure table from four rules
+> 1. **Regular:** closed under everything below. A DFA is complemented by swapping accepting states, and two DFAs run in parallel.
+> 2. **CFL:** closed under what a grammar or a PDA can build: union ($S \to S_1 \mid S_2$), concatenation ($S \to S_1 S_2$), star, reversal (reverse every right-hand side), homomorphism, inverse homomorphism, and intersection with a regular language (run the PDA and a DFA together). Not intersection: $\{a^nb^nc^m\} \cap \{a^mb^nc^n\} = \{a^nb^nc^n\}$. So not complement either, because union plus complement would give intersection.
+> 3. **DCFL:** keeps complement (a DPDA that reads its whole input can swap accepting states), intersection with a regular language and inverse homomorphism. It loses everything that needs a guess: union, intersection, concatenation, star, reversal, homomorphism.
+> 4. **Recursive and CSL:** closed under everything except homomorphism (erasing symbols can turn a decidable check into an unbounded search). **RE:** closed under everything except complement, since $\overline{A_{TM}}$ is not RE.
+>
+> Rebuild the table from these rules, then check it against the one below.
 
 | Operation | Regular | DCFL | CFL | CSL | Recursive | RE |
 |---|---|---|---|---|---|---|
@@ -155,6 +175,8 @@ A PDA is an NFA with a stack. Nondeterministic PDAs accept exactly the CFLs; acc
 
 ## Turing machines
 
+**Priority B** · last 10 papers: 8 marks, asked in 4 (for Turing Machines & Decidability as a whole) · learn by recall cards · practise: [29 questions from 2007–2023 →](#/subjects/toc/pyq?topic=tm&years=pre2024)
+
 A Turing machine has an infinite tape and a read/write head. Multi-tape, multi-head and nondeterministic TMs are no more powerful (they accept the same languages). A **linear bounded automaton** (tape limited to the input) accepts the context-sensitive languages.
 
 - **Recursive (decidable)** language: some TM halts on every input and accepts exactly $L$.
@@ -168,11 +190,18 @@ A Turing machine has an infinite tape and a read/write head. Multi-tape, multi-h
 
 ## Undecidability
 
+**Priority B** · last 10 papers: 8 marks, asked in 4 (for Turing Machines & Decidability as a whole) · learn by recall cards · practise: [29 questions from 2007–2023 →](#/subjects/toc/pyq?topic=tm&years=pre2024)
+
 **The halting problem** $\text{HALT} = \{\langle M, w\rangle : M \text{ halts on } w\}$ is RE but not recursive; so is $A_{TM}$ (does $M$ accept $w$). Their complements are not RE.
 
 **Rice's theorem:** every non-trivial property of the **language** recognised by a TM is undecidable. "Is $L(M)$ empty / finite / regular / equal to $\Sigma^*$?" are all undecidable. Properties of the machine itself ("does $M$ have 10 states?", "does $M$ move left within 100 steps on input ε?") are not covered and are often decidable.
 
 **Decision problems**
+
+> [!KEY] Derive, don't memorise: the decision table in three rules
+> 1. **Regular:** everything is decidable. A DFA is finite: minimise and compare.
+> 2. **CFL:** only questions about one grammar's own strings are decidable: membership (CYK), emptiness (does the start symbol generate any string?) and finiteness (is there a cycle among the useful variables?). Anything that compares two languages, or asks whether $L = \Sigma^*$, is undecidable. DCFLs get universality back (complement, then test emptiness) and, by a deep 1997 result, equivalence; subset stays undecidable.
+> 3. **CSL and above:** only membership is decidable, and for RE not even that. Every non-trivial property of the language of a Turing machine is undecidable (Rice's theorem).
 
 | Problem | Regular | DCFL | CFL | CSL | Recursive | RE |
 |---|---|---|---|---|---|---|

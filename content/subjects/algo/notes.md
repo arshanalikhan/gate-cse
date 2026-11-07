@@ -4,6 +4,8 @@ Exam-focused notes for GATE 2027 Section 5. GATE tests three skills here: gettin
 
 ## Asymptotic analysis
 
+**Priority B** · last 10 papers: 8 marks, asked in 4 · learn by solving · practise: [19 questions from 2007–2023 →](#/subjects/algo/pyq?topic=asym&years=pre2024)
+
 | Notation | Meaning | Analogy |
 |---|---|---|
 | $f = O(g)$ | $f(n) \le c\,g(n)$ for all $n \ge n_0$ | $\le$ |
@@ -35,6 +37,8 @@ Useful facts:
 > About $\log_2 n$ times, so the loop is $\Theta(\log n)$.
 
 ## Recurrence relations
+
+**Priority B** · last 10 papers: 9 marks, asked in 6 · learn by solving · practise: [9 questions from 2007–2023 →](#/subjects/algo/pyq?topic=recur&years=pre2024)
 
 **Master theorem** for $T(n) = a\,T(n/b) + f(n)$ with $a \ge 1$, $b > 1$. Compare $f(n)$ with $n^{\log_b a}$:
 
@@ -71,6 +75,8 @@ Recurrences GATE keeps returning to:
 > $T(n) = 2^n - 1$, i.e. $\Theta(2^n)$.
 
 ## Searching
+
+**Priority B** · last 10 papers: 9 marks, asked in 6 (for Searching & Sorting as a whole) · learn by solving + recall cards · practise: [28 questions from 2007–2023 →](#/subjects/algo/pyq?topic=sort&years=pre2024)
 
 | Method | Worst case | Precondition |
 |---|---|---|
@@ -112,6 +118,8 @@ def binary_search(a, key):       # a sorted; O(log n)
 ```
 
 ## Sorting
+
+**Priority B** · last 10 papers: 9 marks, asked in 6 (for Searching & Sorting as a whole) · learn by solving + recall cards · practise: [28 questions from 2007–2023 →](#/subjects/algo/pyq?topic=sort&years=pre2024)
 
 | Algorithm | Best | Average | Worst | Stable | In place |
 |---|---|---|---|---|---|
@@ -176,6 +184,8 @@ def merge_sort(a):               # O(n log n), stable
 
 ## Hashing
 
+**Priority B** · last 10 papers: 8 marks, asked in 6 · learn by solving · practise: [12 questions from 2007–2023 →](#/subjects/algo/pyq?topic=hash&years=pre2024)
+
 A hash table with $m$ slots holding $n$ keys has load factor $\alpha = n/m$.
 
 **Chaining:** each slot holds a list. Under simple uniform hashing, an unsuccessful search examines $\Theta(1 + \alpha)$ elements on average; a successful one about $1 + \alpha/2$.
@@ -236,6 +246,8 @@ def insert_key(key):             # linear probing: h(k, i) = (k mod M + i) mod M
 
 ## Divide and conquer
 
+**Priority C** (skim) · not asked in the last 10 papers · learn by solving · practise: [1 question from 2007–2023 →](#/subjects/algo/pyq?topic=dnc&years=pre2024)
+
 Split into subproblems, solve recursively, combine.
 
 | Algorithm | Recurrence | Time |
@@ -271,6 +283,8 @@ def power(x, n):                 # x^n in O(log n) multiplications
 ```
 
 ## Greedy algorithms
+
+**Priority C** (skim) · last 10 papers: 2 marks, asked in 1 · learn by solving · practise: [8 questions from 2007–2023 →](#/subjects/algo/pyq?topic=greedy&years=pre2024)
 
 Make the locally best choice and never revisit it. Correctness needs the **greedy-choice property** and **optimal substructure** (usually shown by an exchange argument).
 
@@ -318,6 +332,8 @@ def huffman_cost(freqs):         # total bits = sum of merge costs
 ```
 
 ## Dynamic programming
+
+**Priority B** · last 10 papers: 5 marks, asked in 3 · learn by solving · practise: [11 questions from 2007–2023 →](#/subjects/algo/pyq?topic=dp&years=pre2024)
 
 Use DP when the problem has **optimal substructure** and **overlapping subproblems**. Define the state, write the recurrence, fix the evaluation order, then read off the answer (and reconstruct the choice if asked).
 
@@ -367,6 +383,8 @@ def knapsack(weights, values, cap):     # 0/1 knapsack, O(n * cap)
 ```
 
 ## Graph traversal
+
+**Priority A** · last 10 papers: 15 marks, asked in 6 · learn by solving · practise: [14 questions from 2007–2023 →](#/subjects/algo/pyq?topic=traversal&years=pre2024)
 
 | | BFS | DFS |
 |---|---|---|
@@ -430,6 +448,8 @@ def dfs(graph, u, seen=None):    # recursive DFS, returns visit order
 
 ## Minimum spanning trees
 
+**Priority A** · last 10 papers: 15 marks, asked in 7 · learn by solving · practise: [17 questions from 2007–2023 →](#/subjects/algo/pyq?topic=mst&years=pre2024)
+
 A spanning tree of a connected graph has $V - 1$ edges.
 
 - **Cut property:** the lightest edge crossing any cut belongs to some MST (to every MST if it is the unique lightest).
@@ -484,6 +504,8 @@ def kruskal(n, edges):           # edges: (w, u, v); returns MST weight
 ```
 
 ## Shortest paths
+
+**Priority B** · last 10 papers: 6 marks, asked in 3 · learn by solving · practise: [8 questions from 2007–2023 →](#/subjects/algo/pyq?topic=sp&years=pre2024)
 
 All algorithms rely on **relaxation**: if $d[u] + w(u, v) < d[v]$ then set $d[v] = d[u] + w(u, v)$.
 
