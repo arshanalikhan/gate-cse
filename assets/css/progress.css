@@ -40,3 +40,7 @@
 .pyq-mark:hover { border-color: var(--border-strong); color: var(--text); }
 .pyq-mark-r[aria-pressed="true"] { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 .pyq-mark-w[aria-pressed="true"] { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); }
+
+/* sidebar credit (user request) */
+.nav-credit { margin: 6px 0 4px; padding: 14px 10px 0; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+.nav-credit strong { color: var(--text); font-weight: 600; }

@@ -861,6 +861,10 @@
       }
       nav.append(box);
     }
+    // credit at the foot of the sidebar (user request, 2026-11-07)
+    nav.append(h('p', { class: 'nav-credit' },
+      h('span', { text: 'Created by ' }), h('strong', { text: 'Arshan Ali Khan' }),
+      h('span', { text: ', built with ' }), h('strong', { text: 'Claude' }), h('span', { text: ' (Anthropic).' })));
   }
 
   // Adjacent ```c and ```python blocks become one panel with C / Python tabs.
