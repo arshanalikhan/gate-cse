@@ -65,9 +65,21 @@ The [syllabus page](#/syllabus) lists what changed between 2026 and 2027.
 
 ## How to use these papers
 
-1. **Solve 2021–2026 under exam conditions.** These ten papers use today's pattern (MCQ, MSQ and NAT). Give yourself 3 hours, use only an on-screen scientific calculator (GATE gives you a virtual one, not a physical calculator), and score yourself with the official key and the GATE negative marking.
-2. **Solve the IIT Madras paper of 2019 as a mock.** IIT Madras sets GATE 2027; its last paper shows the examiners' taste for C tracing and OS synchronisation.
-3. **Use older papers by topic, not by year.** 2007–2020 papers are best for practising one topic at a time. Each subject's **Previous-year questions** tab lists every question by topic with a link to the right PDF.
+The papers split into two jobs. Keep the newest six sets unseen so they can serve as realistic full-length mocks, and use everything older for practice by topic. The [preparation strategy](#/strategy) has the same plan with the full schedule.
+
+1. **Start with a diagnostic (Sun 8 Nov).** Take the [predicted 2027 paper](mock/) in the timed mock before the plan begins, to see where you stand.
+2. **Practise by topic with 2007–2023.** Use each subject's **Previous-year questions** tab with the "Before 2024 (topic practice)" filter. It lists every question by topic and links to the right PDF. Include the IIT Madras paper of 2019: IIT Madras sets GATE 2027, and that paper shows its taste for C tracing and OS synchronisation.
+3. **Keep the six 2024–2026 sets unseen as full timed mocks.** Take them in this order, each in 3 hours under exam conditions with only an on-screen virtual calculator. Score yourself with the official key and GATE negative marking.
+
+| Mock | Paper | Date |
+|---|---|---|
+| 1 | GATE 2024 Set 1 | Sun 29 Nov |
+| 2 | GATE 2024 Set 2 | Sun 13 Dec |
+| 3 | GATE 2025 Set 1 | Sun 27 Dec |
+| 4 | GATE 2025 Set 2 | Sun 10 Jan |
+| 5 | GATE 2026 Set 1 | Sun 17 Jan |
+| 6 | GATE 2026 Set 2 | week of 18 Jan |
+
 4. **Keep an error log.** For every question you get wrong, write down the concept you missed and redo the question a week later.
 
 > [!TIP] Answer keys for older papers
